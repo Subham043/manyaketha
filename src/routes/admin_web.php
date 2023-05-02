@@ -51,6 +51,15 @@ use App\Modules\Team\Controllers\TeamDeleteController;
 use App\Modules\Team\Controllers\TeamHeadingController;
 use App\Modules\Team\Controllers\TeamPaginateController;
 use App\Modules\Team\Controllers\TeamUpdateController;
+use App\Modules\HomePage\Banner\Controllers\BannerCreateController;
+use App\Modules\HomePage\Banner\Controllers\BannerDeleteController;
+use App\Modules\HomePage\Banner\Controllers\BannerPaginateController;
+use App\Modules\HomePage\Banner\Controllers\BannerUpdateController;
+use App\Modules\HomePage\About\Controllers\AboutController;
+use App\Modules\HomePage\AdditionalContent\Controllers\AdditionalContentCreateController;
+use App\Modules\HomePage\AdditionalContent\Controllers\AdditionalContentDeleteController;
+use App\Modules\HomePage\AdditionalContent\Controllers\AdditionalContentPaginateController;
+use App\Modules\HomePage\AdditionalContent\Controllers\AdditionalContentUpdateController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -191,6 +200,34 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/update/{id}', [TeamUpdateController::class, 'post', 'as' => 'team.update.post'])->name('team.update.post');
         Route::get('/delete/{id}', [TeamDeleteController::class, 'get', 'as' => 'team.delete.get'])->name('team.delete.get');
         Route::post('/heading', [TeamHeadingController::class, 'post', 'as' => 'team.heading.post'])->name('team.heading.post');
+
+    });
+
+    Route::prefix('/home-page')->group(function () {
+        Route::prefix('/banner')->group(function () {
+            Route::get('/', [BannerPaginateController::class, 'get', 'as' => 'home_page.banner.paginate.get'])->name('home_page.banner.paginate.get');
+            Route::get('/create', [BannerCreateController::class, 'get', 'as' => 'home_page.banner.create.get'])->name('home_page.banner.create.get');
+            Route::post('/create', [BannerCreateController::class, 'post', 'as' => 'home_page.banner.create.post'])->name('home_page.banner.create.post');
+            Route::get('/update/{id}', [BannerUpdateController::class, 'get', 'as' => 'home_page.banner.update.get'])->name('home_page.banner.update.get');
+            Route::post('/update/{id}', [BannerUpdateController::class, 'post', 'as' => 'home_page.banner.update.post'])->name('home_page.banner.update.post');
+            Route::get('/delete/{id}', [BannerDeleteController::class, 'get', 'as' => 'home_page.banner.delete.get'])->name('home_page.banner.delete.get');
+
+        });
+
+        Route::prefix('/about-section')->group(function () {
+            Route::get('/', [AboutController::class, 'get', 'as' => 'home_page.about.get'])->name('home_page.about.get');
+            Route::post('/', [AboutController::class, 'post', 'as' => 'home_page.about.post'])->name('home_page.about.post');
+        });
+
+        Route::prefix('/additional-content')->group(function () {
+            Route::get('/', [AdditionalContentPaginateController::class, 'get', 'as' => 'home_page.additional_content.paginate.get'])->name('home_page.additional_content.paginate.get');
+            Route::get('/create', [AdditionalContentCreateController::class, 'get', 'as' => 'home_page.additional_content.create.get'])->name('home_page.additional_content.create.get');
+            Route::post('/create', [AdditionalContentCreateController::class, 'post', 'as' => 'home_page.additional_content.create.post'])->name('home_page.additional_content.create.post');
+            Route::get('/update/{id}', [AdditionalContentUpdateController::class, 'get', 'as' => 'home_page.additional_content.update.get'])->name('home_page.additional_content.update.get');
+            Route::post('/update/{id}', [AdditionalContentUpdateController::class, 'post', 'as' => 'home_page.additional_content.update.post'])->name('home_page.additional_content.update.post');
+            Route::get('/delete/{id}', [AdditionalContentDeleteController::class, 'get', 'as' => 'home_page.additional_content.delete.get'])->name('home_page.additional_content.delete.get');
+
+        });
 
     });
 

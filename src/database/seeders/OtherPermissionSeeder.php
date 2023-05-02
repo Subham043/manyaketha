@@ -47,6 +47,21 @@ class OtherPermissionSeeder extends Seeder
         Permission::create(['name' => 'create teams']);
         Permission::create(['name' => 'list teams']);
 
+        //permission for home page banners
+        Permission::create(['name' => 'edit home page banners']);
+        Permission::create(['name' => 'delete home page banners']);
+        Permission::create(['name' => 'create home page banners']);
+        Permission::create(['name' => 'list home page banners']);
+
+        //permission for home page about
+        Permission::create(['name' => 'edit home page about']);
+
+        //permission for home page additional content
+        Permission::create(['name' => 'edit home page additional content']);
+        Permission::create(['name' => 'delete home page additional content']);
+        Permission::create(['name' => 'create home page additional content']);
+        Permission::create(['name' => 'list home page additional content']);
+
 
     }
 }

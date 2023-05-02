@@ -552,7 +552,11 @@ img {
 .main-header .header-upper .logo-box .logo {
     position: relative;
     display: block;
-    padding: 29px 0px;
+    padding: 5px 0px;
+}
+.main-header .header-upper .logo-box .logo img{
+    height: 100px;
+    object-fit: contain;
 }
 
 .main-header .header-upper .right-column {
@@ -1800,7 +1804,7 @@ img {
 }
 
 .main-header.header-style-two .header-upper.style-two .main-menu .navigation>li {
-    padding: 44px 0;
+    padding: 25px 0;
 }
 
 /***
