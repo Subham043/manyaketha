@@ -31,7 +31,7 @@ class TestimonialService
                 ->appends(request()->query());
     }
 
-    public function getById(Int $id): Testimonial
+    public function getById(Int $id): Testimonial|null
     {
         return Testimonial::findOrFail($id);
     }
