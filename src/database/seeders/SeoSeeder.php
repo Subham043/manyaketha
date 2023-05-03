@@ -28,23 +28,13 @@ class SeoSeeder extends Seeder
         ]);
 
         Seo::create([
-            'page_name' => 'Project Ongoing Page',
-            'slug' => 'project-ongoing-page',
+            'page_name' => 'Service Page',
+            'slug' => 'service-page',
         ]);
 
         Seo::create([
-            'page_name' => 'Project Completed Page',
-            'slug' => 'project-completed-page',
-        ]);
-
-        Seo::create([
-            'page_name' => 'Award Page',
-            'slug' => 'award-page',
-        ]);
-
-        Seo::create([
-            'page_name' => 'Csr Page',
-            'slug' => 'csr-page',
+            'page_name' => 'Project Page',
+            'slug' => 'project-page',
         ]);
 
         Seo::create([
