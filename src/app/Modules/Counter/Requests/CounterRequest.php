@@ -29,7 +29,7 @@ class CounterRequest extends FormRequest
         return [
             'is_draft' => 'required|boolean',
             'title' => 'required|string|max:500',
-            'counter' => 'required|string|max:250',
+            'counter' => 'required|numeric|max:250',
         ];
     }
 
