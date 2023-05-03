@@ -101,13 +101,13 @@
                             <div class="image">
                                 <img src="{{$service->image_link}}" alt="">
                                 <div class="overlay">
-                                    <div class="link-btn"><a href="service-details.html"><i class="flaticon-add"></i></a></div>
+                                    <div class="link-btn"><a href="{{route('services_detail.get', $service->slug)}}"><i class="flaticon-add"></i></a></div>
                                 </div>
                             </div>
                             <div class="lower-content">
                                 <h4><span>{!!$service->name!!}</span></h4>
                                 <div class="text">{{Str::limit($service->description_unfiltered, 150)}}</div>
-                                <div class="read-more-btn"><a href="service-details.html">Learn More</a></div>
+                                <div class="read-more-btn"><a href="{{route('services_detail.get', $service->slug)}}">Learn More</a></div>
                             </div>
                         </div>
                     </div>

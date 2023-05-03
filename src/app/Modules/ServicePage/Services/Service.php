@@ -116,7 +116,6 @@ class Service
     public function main_paginate(Int $total = 10, bool $status = false): LengthAwarePaginator
     {
         $query = ServiceModel::where('is_draft', true)
-                    ->where('is_completed', $status)
                     ->latest();
         return QueryBuilder::for($query)
                 ->allowedFilters([

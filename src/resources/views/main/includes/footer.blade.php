@@ -8,7 +8,7 @@
                 <!--Column-->
                 <div class="column col-lg-3 col-md-6">
                     <div class="widget about-widget">
-                        <div class="logo"><a href="index.html"><img src="{{asset('assets/images/logo-two.png')}}" alt=""></a></div>
+                        <div class="logo"><a href="index.html"><img src="{{asset('assets/images/logo.png')}}" alt=""></a></div>
                         <div class="text">Magna aliqa enim sed ipsum nisi ainy <br> veniam quis nostrul aliqua enim lorem <br> ipsum gui dolor sit amet tempor. </div>
                         <ul class="social-links">
                             <li><a href="#"><i class="fab fa-twitter"></i></a></li>

@@ -12,4 +12,5 @@
 
     <!-- App Css-->
     @vite(['resources/css/app.css'])
+    @yield('css')
 </head>
