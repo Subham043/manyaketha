@@ -608,13 +608,6 @@
         </div>
     </section>
 
-    <!-- CTA Section Three -->
-    <section class="cta-section-three" style="background-image: url({{asset('assets/images/background/bg-5.jpg')}});">
-        <div class="auto-container">
-            <h3><i class="fas fa-phone"></i>Need Emergency Repair? Call Us 24/7 For Expert Help <strong>1500.963.321</strong></h3>
-        </div>
-    </section>
-
     <!-- Team Section -->
     <section class="team-section">
         <div class="shape-one"><img src="{{asset('assets/images/shape/shape-4.png')}}" alt=""></div>
@@ -687,8 +680,8 @@
     </section>
 
     <!-- Two Column section -->
-    <section class="two-column-section" style="background-image: url({{asset('assets/images/background/bg-4.jpg')}});">
-        <div class="divider">ROFALCO</div>
+    <section class="two-column-section">
+        <div class="divider">MANYAKETHA VENTURES</div>
         <div class="auto-container">
             <div class="row no-gutters">
                 <div class="col-xl-6 left-column">

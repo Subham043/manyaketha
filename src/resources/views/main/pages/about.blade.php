@@ -164,69 +164,10 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section class="skills-section">
+    <!-- CTA Section Three -->
+    <section class="cta-section-three">
         <div class="auto-container">
-            <div class="row no-gutters">
-                <div class="col-xl-6 left-column">
-                    <div class="inner-container">
-                        <div class="content">
-                            <div class="sec-title light">
-                                <div class="sub-title">Dependable & Sincere Company</div>
-                                <h2>Need Any Kind Roofing? <br> <strong>Your Trusted Partner</strong></h2>
-                                <div class="text">Magna aliqa enim sed ipsum nisi ainy veniam quis nostrul aliqua enim lorem ipsum gui dolor sit amet tempor. Lorem ipsum dolor sit ametys consectetur adipisicing elit sed eiusmod tempor incididunt ut labore dolore magna sed. </div>
-                            </div>
-                            <div class="progress-levels">
-                                <!--Skill Box-->
-                                <div class="progress-box wow fadeIn" data-wow-delay="100ms" data-wow-duration="1500ms">
-                                    <h5>re-Roofing</h5>
-                                    <div class="inner">
-                                        <div class="bar">
-                                            <div class="bar-innner"><div class="bar-fill" data-percent="88"><div class="percent"></div></div></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--Skill Box-->
-                                <div class="progress-box wow fadeIn" data-wow-delay="100ms" data-wow-duration="1500ms">
-                                    <h5>Leak repairs</h5>
-                                    <div class="inner">
-                                        <div class="bar">
-                                            <div class="bar-innner"><div class="bar-fill" data-percent="65"><div class="percent"></div></div></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--Skill Box-->
-                                <div class="progress-box wow fadeIn" data-wow-delay="100ms" data-wow-duration="1500ms">
-                                    <h5>Roof coating</h5>
-                                    <div class="inner">
-                                        <div class="bar">
-                                            <div class="bar-innner"><div class="bar-fill" data-percent="75"><div class="percent"></div></div></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6">
-                    <div class="row no-gutters">
-                        <div class="col-md-6">
-                            <div class="image"><img src="{{asset('assets/images/resource/image-10.jpg')}}" alt=""></div>
-                            <div class="lower-content">
-                                <h2>Rofalco is critical <br> for any new roofing <br> Project.</h2>
-                                <div class="icon"><img src="{{asset('assets/images/icons/icon-10.png')}}" alt=""></div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="lower-content style-two">
-                                <h2>Committed to <br> provide the roofing <br> excellence.</h2>
-                                <div class="icon"><img src="{{asset('assets/images/icons/icon-11.png')}}" alt=""></div>
-                            </div>
-                            <div class="image"><img src="{{asset('assets/images/resource/image-11.jpg')}}" alt=""></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <h3><i class="fas fa-phone"></i>Need Emergency Repair? Call Us 24/7 For Expert Help <strong>1500.963.321</strong></h3>
         </div>
     </section>
 

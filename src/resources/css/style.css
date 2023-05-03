@@ -316,7 +316,7 @@ img {
     top: 0;
     width: 100%;
     height: 100%;
-    background: #0a273d;
+    background: #232828;
 }
 
 .owl-nav,
@@ -404,7 +404,7 @@ img {
     text-align: center;
     z-index: 100;
     cursor: pointer;
-    background: #25283a;
+    background: #fcd82f;
     border-radius: 50%;
     margin-left: -26px;
     display: none;
@@ -2030,7 +2030,7 @@ img {
     display: inline-block;
     font-size: 14px;
     line-height: 1.2em;
-    color: #ffffff;
+    color: #fff;
     font-family: cerebri-light;
     text-transform: uppercase;
     margin-bottom: 30px;
@@ -2043,7 +2043,7 @@ img {
     -ms-transform: translateY(20px);
     transform: translateY(20px);
     padding: 13px 30px;
-    background-color: #3a7d7c;
+    background-color: #f90902;
     border-radius: 21px;
 }
 
@@ -2218,7 +2218,7 @@ img {
 }
 
 .sec-title.light .sub-title {
-    color: #fff;
+    color: #f50903;
 }
 
 .sec-title h2 {
@@ -2234,7 +2234,7 @@ img {
 }
 
 .sec-title.light h2 {
-    color: #fff;
+    color: #000;
 }
 
 .sec-title .text {
@@ -2243,7 +2243,7 @@ img {
 }
 
 .sec-title.light .text {
-    color: #fff;
+    color: #000;
 }
 
 
@@ -2905,7 +2905,8 @@ img {
     top: 0;
     right: 0;
     height: 100%;
-    background-image: url(../images/shape/shape-2.jpg);
+    /* background-image: url(../images/shape/shape-2.jpg); */
+    background-color: #ffefa4a1;
 }
 
 .features-section-two .single-block {
@@ -3593,7 +3594,8 @@ img {
     top: 0;
     right: 0;
     bottom: 0;
-    background-image: url(../images/shape/shape-2.jpg);
+    /* background-image: url(../images/shape/shape-2.jpg); */
+    background-color: #ffefa4a1;
 }
 
 .features-section-three .auto-container {
@@ -3630,7 +3632,7 @@ img {
     top: 20px;
     width: 100px;
     height: 100px;
-    background-color: #edf9f9;
+    background-color: #fe0a010d;
     border-radius: 50%;
     transform: translateX(-50%);
 }
@@ -3674,16 +3676,16 @@ img {
 }
 
 .feature-block-three .overlay .icon:before {
-    background-color: #488685;
+    background-color: #d7be5252;
     top: -45px;
 }
 
 .feature-block-three .overlay h4 {
-    color: #fff;
+    color: #000;
 }
 
 .feature-block-three .text {
-    color: #fff;
+    color: #000;
     font-family: cerebri-light;
 }
 
@@ -4209,7 +4211,8 @@ img {
     right: 0;
     height: 100%;
     max-height: 700px;
-    background-image: url(../images/shape/shape-2.jpg);
+    /* background-image: url(../images/shape/shape-2.jpg); */
+    background-color: #ffefa4a1;
 }
 
 /* Style Two */
@@ -4351,13 +4354,13 @@ img {
 }
 
 .working-process.style-two .process-block .icon:before {
-    background-color: #edf7f7;
+    background-color: #ffdb302b;
     transform: scale3d(1, 1, 1);
     opacity: 1;
 }
 
 .working-process.style-two .process-block .inner-box:hover .icon:before {
-    background-color: #3a7d7c;
+    background-color: #ffdb31;
 }
 
 /* Services Details */
@@ -5673,6 +5676,7 @@ img {
     position: relative;
     padding: 110px 0 60px;
     background-size: cover;
+    background-color: #ffefa4a1;
 }
 
 .two-column-section .auto-container {
@@ -5694,7 +5698,7 @@ img {
     left: 50%;
     transform: translate(-50%, -50%) rotate(-90deg);
     color: #fff;
-    background-color: #3c5d5c;
+    background-color: #f61d2b;
     padding: 1px 18px;
     padding-right: 12px;
     font-size: 14px;
@@ -5709,7 +5713,7 @@ img {
     top: 0;
     bottom: 0;
     width: 1px;
-    background: #3c5d5c;
+    background: #f61d2b;
 }
 
 .two-column-section .testimonial-block .author-box {
@@ -5754,11 +5758,13 @@ img {
     background-size: cover;
     text-align: center;
     padding: 73px 0;
+    background-color: #f8f2c5;
+
 }
 
 .cta-section-three h3 {
     font-size: 30px;
-    color: #fff;
+    color: #000;
     font-family: cerebri-medium;
 }
 
@@ -5778,7 +5784,7 @@ img {
 .portfolio-section-two {
     position: relative;
     padding: 100px 0 0;
-    background-color: #3a7d7c;
+    background-color: #ffefa4a1;
 }
 
 .portfolio-section-two .auto-container {
@@ -5865,15 +5871,15 @@ img {
 }
 
 .portfolio-section-two .filter-tabs li.active {
-    color: #fff;
-    border-color: #fff;
+    color: #000;
+    border-color: #000;
 }
 
 .portfolio-section-two .filter-tabs li {
     border: 2px solid transparent;
     margin: 0;
     padding: 4.5px 24px;
-    color: #fff;
+    color: #000;
     border-radius: 3px;
 }
 

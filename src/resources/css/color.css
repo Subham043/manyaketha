@@ -46,7 +46,7 @@ a {
 }
 
 .btn-style-one {
-    background-color: #f50303;
+    background-color: #ffda32;
 }
 
 .btn-style-one.style-three {
@@ -269,7 +269,7 @@ a {
 }
 
 .sec-title .sub-title {
-    color: #ffdb31;
+    color: #f50903;
 }
 
 .service-block-one h4:before {
@@ -293,7 +293,7 @@ a {
 }
 
 .news-block-one .post-meta li {
-    color: #ffdb31;
+    color: #f50303;
 }
 
 .news-block-one .post-meta li:before {
@@ -301,7 +301,7 @@ a {
 }
 
 .feature-block-three .read-more-btn {
-    color: #ffdb31;
+    color: #f50303;
 }
 
 .feature-block-three .overlay {
