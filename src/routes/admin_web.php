@@ -65,6 +65,11 @@ use App\Modules\AboutPage\AdditionalContent\Controllers\AdditionalContentCreateC
 use App\Modules\AboutPage\AdditionalContent\Controllers\AdditionalContentDeleteController as AdditionalContentPageDeleteController;
 use App\Modules\AboutPage\AdditionalContent\Controllers\AdditionalContentPaginateController as AdditionalContentPagePaginateController;
 use App\Modules\AboutPage\AdditionalContent\Controllers\AdditionalContentUpdateController as AdditionalContentPageUpdateController;
+use App\Modules\Procedure\Controllers\ProcedureCreateController;
+use App\Modules\Procedure\Controllers\ProcedureDeleteController;
+use App\Modules\Procedure\Controllers\ProcedureHeadingController;
+use App\Modules\Procedure\Controllers\ProcedurePaginateController;
+use App\Modules\Procedure\Controllers\ProcedureUpdateController;
 use App\Modules\ProjectPage\Category\Controllers\CategoryCreateController;
 use App\Modules\ProjectPage\Category\Controllers\CategoryDeleteController;
 use App\Modules\ProjectPage\Category\Controllers\CategoryPaginateController;
@@ -206,6 +211,17 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/update/{id}', [TestimonialUpdateController::class, 'post', 'as' => 'testimonial.update.post'])->name('testimonial.update.post');
         Route::get('/delete/{id}', [TestimonialDeleteController::class, 'get', 'as' => 'testimonial.delete.get'])->name('testimonial.delete.get');
         Route::post('/heading', [TestimonialHeadingController::class, 'post', 'as' => 'testimonial.heading.post'])->name('testimonial.heading.post');
+
+    });
+
+    Route::prefix('/procedure')->group(function () {
+        Route::get('/', [ProcedurePaginateController::class, 'get', 'as' => 'procedure.paginate.get'])->name('procedure.paginate.get');
+        Route::get('/create', [ProcedureCreateController::class, 'get', 'as' => 'procedure.create.get'])->name('procedure.create.get');
+        Route::post('/create', [ProcedureCreateController::class, 'post', 'as' => 'procedure.create.post'])->name('procedure.create.post');
+        Route::get('/update/{id}', [ProcedureUpdateController::class, 'get', 'as' => 'procedure.update.get'])->name('procedure.update.get');
+        Route::post('/update/{id}', [ProcedureUpdateController::class, 'post', 'as' => 'procedure.update.post'])->name('procedure.update.post');
+        Route::get('/delete/{id}', [ProcedureDeleteController::class, 'get', 'as' => 'procedure.delete.get'])->name('procedure.delete.get');
+        Route::post('/heading', [ProcedureHeadingController::class, 'post', 'as' => 'procedure.heading.post'])->name('procedure.heading.post');
 
     });
 

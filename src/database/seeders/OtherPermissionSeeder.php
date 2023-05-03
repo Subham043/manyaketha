@@ -89,6 +89,12 @@ class OtherPermissionSeeder extends Seeder
         Permission::create(['name' => 'create services']);
         Permission::create(['name' => 'list services']);
 
+        //permission for procedures
+        Permission::create(['name' => 'edit procedures']);
+        Permission::create(['name' => 'delete procedures']);
+        Permission::create(['name' => 'create procedures']);
+        Permission::create(['name' => 'list procedures']);
+
 
     }
 }
