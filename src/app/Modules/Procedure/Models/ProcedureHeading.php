@@ -23,6 +23,7 @@ class ProcedureHeading extends Model
     protected $fillable = [
         'heading',
         'sub_heading',
+        'description',
     ];
 
     protected $casts = [

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Testimonial\Models;
+namespace App\Modules\ServicePage\Models;
 
 use App\Modules\Authentication\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -9,11 +9,11 @@ use Illuminate\Support\Facades\Cache;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
 
-class TestimonialHeading extends Model
+class ServiceHeading extends Model
 {
     use HasFactory, LogsActivity;
 
-    protected $table = 'testimonial_headings';
+    protected $table = 'service_headings';
 
     /**
      * The attributes that are mass assignable.
@@ -35,13 +35,13 @@ class TestimonialHeading extends Model
     {
         parent::boot();
         self::created(function ($model) {
-            Cache::forget('testimonial_heading_'.$model->id);
+            Cache::forget('service_heading_'.$model->id);
         });
         self::updated(function ($model) {
-            Cache::forget('testimonial_heading_'.$model->id);
+            Cache::forget('service_heading_'.$model->id);
         });
         self::deleted(function ($model) {
-            Cache::forget('testimonial_heading_'.$model->id);
+            Cache::forget('service_heading_'.$model->id);
         });
     }
 
@@ -53,10 +53,10 @@ class TestimonialHeading extends Model
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-        ->useLogName('testimonial heading section')
+        ->useLogName('service heading section')
         ->setDescriptionForEvent(
                 function(string $eventName){
-                    $desc = "Testimonial heading detail has been {$eventName}";
+                    $desc = "Service heading detail has been {$eventName}";
                     $desc .= auth()->user() ? " by ".auth()->user()->name."<".auth()->user()->email.">" : "";
                     return $desc;
                 }

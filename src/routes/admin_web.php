@@ -65,6 +65,7 @@ use App\Modules\AboutPage\AdditionalContent\Controllers\AdditionalContentCreateC
 use App\Modules\AboutPage\AdditionalContent\Controllers\AdditionalContentDeleteController as AdditionalContentPageDeleteController;
 use App\Modules\AboutPage\AdditionalContent\Controllers\AdditionalContentPaginateController as AdditionalContentPagePaginateController;
 use App\Modules\AboutPage\AdditionalContent\Controllers\AdditionalContentUpdateController as AdditionalContentPageUpdateController;
+use App\Modules\Blog\Controllers\BlogHeadingController;
 use App\Modules\Feature\Controllers\FeatureCreateController;
 use App\Modules\Feature\Controllers\FeatureDeleteController;
 use App\Modules\Feature\Controllers\FeatureHeadingController;
@@ -81,10 +82,12 @@ use App\Modules\ProjectPage\Category\Controllers\CategoryPaginateController;
 use App\Modules\ProjectPage\Category\Controllers\CategoryUpdateController;
 use App\Modules\ProjectPage\Project\Controllers\ProjectCreateController;
 use App\Modules\ProjectPage\Project\Controllers\ProjectDeleteController;
+use App\Modules\ProjectPage\Project\Controllers\ProjectHeadingController;
 use App\Modules\ProjectPage\Project\Controllers\ProjectPaginateController;
 use App\Modules\ProjectPage\Project\Controllers\ProjectUpdateController;
 use App\Modules\ServicePage\Controllers\ServiceCreateController;
 use App\Modules\ServicePage\Controllers\ServiceDeleteController;
+use App\Modules\ServicePage\Controllers\ServiceHeadingController;
 use App\Modules\ServicePage\Controllers\ServicePaginateController;
 use App\Modules\ServicePage\Controllers\ServiceUpdateController;
 use Illuminate\Support\Facades\Route;
@@ -185,7 +188,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/update/{id}', [BlogUpdateController::class, 'get', 'as' => 'blog.update.get'])->name('blog.update.get');
         Route::post('/update/{id}', [BlogUpdateController::class, 'post', 'as' => 'blog.update.post'])->name('blog.update.post');
         Route::get('/delete/{id}', [BlogDeleteController::class, 'get', 'as' => 'blog.delete.get'])->name('blog.delete.get');
-
+        Route::post('/heading', [BlogHeadingController::class, 'post', 'as' => 'blog.heading.post'])->name('blog.heading.post');
     });
 
     Route::prefix('/partner')->group(function () {
@@ -307,6 +310,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/update/{id}', [ProjectUpdateController::class, 'get', 'as' => 'project.update.get'])->name('project.update.get');
         Route::post('/update/{id}', [ProjectUpdateController::class, 'post', 'as' => 'project.update.post'])->name('project.update.post');
         Route::get('/delete/{id}', [ProjectDeleteController::class, 'get', 'as' => 'project.delete.get'])->name('project.delete.get');
+        Route::post('/heading', [ProjectHeadingController::class, 'post', 'as' => 'project.heading.post'])->name('project.heading.post');
 
         Route::prefix('/common-amenity')->group(function () {
             Route::get('/', [CategoryPaginateController::class, 'get', 'as' => 'project.category.paginate.get'])->name('project.category.paginate.get');
@@ -326,6 +330,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/update/{id}', [ServiceUpdateController::class, 'get', 'as' => 'service.update.get'])->name('service.update.get');
         Route::post('/update/{id}', [ServiceUpdateController::class, 'post', 'as' => 'service.update.post'])->name('service.update.post');
         Route::get('/delete/{id}', [ServiceDeleteController::class, 'get', 'as' => 'service.delete.get'])->name('service.delete.get');
+        Route::post('/heading', [ServiceHeadingController::class, 'post', 'as' => 'service.heading.post'])->name('service.heading.post');
 
     });
 

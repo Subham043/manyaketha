@@ -23,13 +23,16 @@
                             <div class="live-preview">
                                 <div class="row gy-4">
                                     <div class="col-xxl-6 col-md-6">
-                                        @include('admin.includes.input', ['key'=>'heading', 'label'=>'Heading', 'value'=>!empty($staffHeading) ? (old('heading') ? old('heading') : $staffHeading->heading) : old('heading')])
+                                        @include('admin.includes.input', ['key'=>'heading', 'label'=>'Heading', 'value'=>!empty($teamHeading) ? (old('heading') ? old('heading') : $teamHeading->heading) : old('heading')])
                                         <p>
                                             <code>Note: </code> Put the text in between span tags to make it highlighted
                                         </p>
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
-                                        @include('admin.includes.input', ['key'=>'sub_heading', 'label'=>'Sub Heading', 'value'=>!empty($staffHeading) ? (old('sub_heading') ? old('sub_heading') : $staffHeading->sub_heading) : old('sub_heading')])
+                                        @include('admin.includes.input', ['key'=>'sub_heading', 'label'=>'Sub Heading', 'value'=>!empty($teamHeading) ? (old('sub_heading') ? old('sub_heading') : $teamHeading->sub_heading) : old('sub_heading')])
+                                    </div>
+                                    <div class="col-xxl-12 col-md-12">
+                                        @include('admin.includes.textarea', ['key'=>'description', 'label'=>'Description', 'value'=>!empty($teamHeading) ? (old('description') ? old('description') : $teamHeading->description) : old('description')])
                                     </div>
                                     <div class="col-xxl-12 col-md-12">
                                         <button type="submit" class="btn btn-primary waves-effect waves-light" id="submitBtn">Update</button>
@@ -164,6 +167,12 @@ validation
         errorMessage: 'Sub Heading is invalid',
     },
   ])
+.addField('#description', [
+    {
+      rule: 'required',
+      errorMessage: 'Description is required',
+    },
+  ])
   .onSuccess(async (event) => {
     var submitBtn = document.getElementById('submitBtn')
     submitBtn.innerHTML = spinner
@@ -172,6 +181,7 @@ validation
         var formData = new FormData();
         formData.append('heading',document.getElementById('heading').value)
         formData.append('sub_heading',document.getElementById('sub_heading').value)
+        formData.append('description',document.getElementById('description').value)
 
         const response = await axios.post('{{route('team.heading.post')}}', formData)
         successToast(response.data.message)
@@ -181,6 +191,9 @@ validation
         }
         if(error?.response?.data?.errors?.sub_heading){
             validation.showErrors({'#sub_heading': error?.response?.data?.errors?.sub_heading[0]})
+        }
+        if(error?.response?.data?.errors?.description){
+            validation.showErrors({'#description': error?.response?.data?.errors?.description[0]})
         }
         if(error?.response?.data?.message){
             errorToast(error?.response?.data?.message)

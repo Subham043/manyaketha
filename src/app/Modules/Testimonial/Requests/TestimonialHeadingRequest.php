@@ -29,6 +29,7 @@ class TestimonialHeadingRequest extends FormRequest
         return [
             'heading' => 'required|string|max:250',
             'sub_heading' => 'required|string|max:250',
+            'description' => 'required|string|max:500',
         ];
     }
 

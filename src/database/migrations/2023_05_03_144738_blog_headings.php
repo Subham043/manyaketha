@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('feature_headings', function (Blueprint $table) {
+        Schema::create('blog_headings', function (Blueprint $table) {
             $table->id();
             $table->string('heading', 250);
             $table->string('sub_heading', 250);
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('feature_headings');
+        Schema::dropIfExists('blog_headings');
     }
 };

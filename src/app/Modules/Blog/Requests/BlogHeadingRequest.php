@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Modules\Team\Requests;
+namespace App\Modules\Blog\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Stevebauman\Purify\Facades\Purify;
 
 
-class TeamHeadingRequest extends FormRequest
+class BlogHeadingRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
