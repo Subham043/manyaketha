@@ -3,10 +3,10 @@
 @import url('./image-previewer.css');
 @import url('./bootstrap.min.css');
 @import url('./icons.min.css');
-@import url('./app.min.css');
 @import url('./iziToast.min.css');
 @import url('./choices.min.css');
 @import url('./quill.snow.css');
+@import url('./app.min.css');
 
 .invalid-message {
     color: red;

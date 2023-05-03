@@ -69,6 +69,10 @@ use App\Modules\ProjectPage\Category\Controllers\CategoryCreateController;
 use App\Modules\ProjectPage\Category\Controllers\CategoryDeleteController;
 use App\Modules\ProjectPage\Category\Controllers\CategoryPaginateController;
 use App\Modules\ProjectPage\Category\Controllers\CategoryUpdateController;
+use App\Modules\ProjectPage\Project\Controllers\ProjectCreateController;
+use App\Modules\ProjectPage\Project\Controllers\ProjectDeleteController;
+use App\Modules\ProjectPage\Project\Controllers\ProjectPaginateController;
+use App\Modules\ProjectPage\Project\Controllers\ProjectUpdateController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -260,6 +264,14 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::prefix('/project')->group(function () {
+
+        Route::get('/', [ProjectPaginateController::class, 'get', 'as' => 'project.paginate.get'])->name('project.paginate.get');
+        Route::get('/create', [ProjectCreateController::class, 'get', 'as' => 'project.create.get'])->name('project.create.get');
+        Route::post('/create', [ProjectCreateController::class, 'post', 'as' => 'project.create.post'])->name('project.create.post');
+        Route::get('/update/{id}', [ProjectUpdateController::class, 'get', 'as' => 'project.update.get'])->name('project.update.get');
+        Route::post('/update/{id}', [ProjectUpdateController::class, 'post', 'as' => 'project.update.post'])->name('project.update.post');
+        Route::get('/delete/{id}', [ProjectDeleteController::class, 'get', 'as' => 'project.delete.get'])->name('project.delete.get');
+
         Route::prefix('/common-amenity')->group(function () {
             Route::get('/', [CategoryPaginateController::class, 'get', 'as' => 'project.category.paginate.get'])->name('project.category.paginate.get');
             Route::get('/create', [CategoryCreateController::class, 'get', 'as' => 'project.category.create.get'])->name('project.category.create.get');

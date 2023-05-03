@@ -191,6 +191,10 @@
                                 <div class="collapse menu-dropdown {{strpos(url()->current(),'project') !== false ? 'show' : ''}}" id="sidebarDashboards8">
                                     <ul class="nav nav-sm flex-column">
 
+                                        <li class="nav-item">
+                                            <a href="{{route('project.paginate.get')}}" class="nav-link {{strpos(url()->current(), route('project.paginate.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Projects </a>
+                                        </li>
+
                                         @can('list project categories')
                                         <li class="nav-item">
                                             <a href="{{route('project.category.paginate.get')}}" class="nav-link {{strpos(url()->current(), route('project.category.paginate.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Category </a>
