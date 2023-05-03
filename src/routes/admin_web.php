@@ -65,6 +65,11 @@ use App\Modules\AboutPage\AdditionalContent\Controllers\AdditionalContentCreateC
 use App\Modules\AboutPage\AdditionalContent\Controllers\AdditionalContentDeleteController as AdditionalContentPageDeleteController;
 use App\Modules\AboutPage\AdditionalContent\Controllers\AdditionalContentPaginateController as AdditionalContentPagePaginateController;
 use App\Modules\AboutPage\AdditionalContent\Controllers\AdditionalContentUpdateController as AdditionalContentPageUpdateController;
+use App\Modules\Feature\Controllers\FeatureCreateController;
+use App\Modules\Feature\Controllers\FeatureDeleteController;
+use App\Modules\Feature\Controllers\FeatureHeadingController;
+use App\Modules\Feature\Controllers\FeaturePaginateController;
+use App\Modules\Feature\Controllers\FeatureUpdateController;
 use App\Modules\Procedure\Controllers\ProcedureCreateController;
 use App\Modules\Procedure\Controllers\ProcedureDeleteController;
 use App\Modules\Procedure\Controllers\ProcedureHeadingController;
@@ -222,6 +227,17 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/update/{id}', [ProcedureUpdateController::class, 'post', 'as' => 'procedure.update.post'])->name('procedure.update.post');
         Route::get('/delete/{id}', [ProcedureDeleteController::class, 'get', 'as' => 'procedure.delete.get'])->name('procedure.delete.get');
         Route::post('/heading', [ProcedureHeadingController::class, 'post', 'as' => 'procedure.heading.post'])->name('procedure.heading.post');
+
+    });
+
+    Route::prefix('/feature')->group(function () {
+        Route::get('/', [FeaturePaginateController::class, 'get', 'as' => 'feature.paginate.get'])->name('feature.paginate.get');
+        Route::get('/create', [FeatureCreateController::class, 'get', 'as' => 'feature.create.get'])->name('feature.create.get');
+        Route::post('/create', [FeatureCreateController::class, 'post', 'as' => 'feature.create.post'])->name('feature.create.post');
+        Route::get('/update/{id}', [FeatureUpdateController::class, 'get', 'as' => 'feature.update.get'])->name('feature.update.get');
+        Route::post('/update/{id}', [FeatureUpdateController::class, 'post', 'as' => 'feature.update.post'])->name('feature.update.post');
+        Route::get('/delete/{id}', [FeatureDeleteController::class, 'get', 'as' => 'feature.delete.get'])->name('feature.delete.get');
+        Route::post('/heading', [FeatureHeadingController::class, 'post', 'as' => 'feature.heading.post'])->name('feature.heading.post');
 
     });
 

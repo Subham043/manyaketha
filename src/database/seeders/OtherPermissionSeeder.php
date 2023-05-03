@@ -95,6 +95,12 @@ class OtherPermissionSeeder extends Seeder
         Permission::create(['name' => 'create procedures']);
         Permission::create(['name' => 'list procedures']);
 
+        //permission for features
+        Permission::create(['name' => 'edit features']);
+        Permission::create(['name' => 'delete features']);
+        Permission::create(['name' => 'create features']);
+        Permission::create(['name' => 'list features']);
+
 
     }
 }

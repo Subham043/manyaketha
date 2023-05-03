@@ -105,6 +105,14 @@
                             </li>
                             @endcan
 
+                            @can('list features')
+                            <li class="nav-item">
+                                <a class="nav-link menu-link {{strpos(url()->current(),route('feature.paginate.get')) !== false ? 'active' : ''}}" href="{{route('feature.paginate.get')}}">
+                                    <i class="ri-function-line"></i> <span data-key="t-widgets">Feature</span>
+                                </a>
+                            </li>
+                            @endcan
+
                             @can('list procedures')
                             <li class="nav-item">
                                 <a class="nav-link menu-link {{strpos(url()->current(),route('procedure.paginate.get')) !== false ? 'active' : ''}}" href="{{route('procedure.paginate.get')}}">
