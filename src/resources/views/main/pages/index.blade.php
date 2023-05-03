@@ -47,7 +47,7 @@
                                 <h1>Committed To Roofing <br> Excellence From 15 Years</h1>
                                 <div class="text">Eiusmod tempor incididunt labore dolore magna aliqua</div>
                                 <div class="link-box">
-                                    <a href="#" class="theme-btn btn-style-one"><span>Learn More</span></a>
+                                    <a href="#" class="theme-btn btn-style-one style-two"><span>Learn More</span></a>
                                     <a href="#" class="theme-btn btn-style-one style-four"><span>How It Works</span></a>
                                 </div>
                             </div>
@@ -63,7 +63,7 @@
                                 <h4>Dependable & Sincere Company</h4>
                                 <h1>Roofing Contractors of <br> High Choice Offering <br> The Highest Quality </h1>
                                 <div class="link-box">
-                                    <a href="#" class="theme-btn btn-style-one"><span>Learn More</span></a>
+                                    <a href="#" class="theme-btn btn-style-one style-two"><span>Learn More</span></a>
                                     <a href="#" class="theme-btn btn-style-one style-four"><span>How It Works</span></a>
                                 </div>
                             </div>
