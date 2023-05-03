@@ -71,6 +71,12 @@ class OtherPermissionSeeder extends Seeder
         Permission::create(['name' => 'create about page additional content']);
         Permission::create(['name' => 'list about page additional content']);
 
+        //permission for project categories
+        Permission::create(['name' => 'edit project categories']);
+        Permission::create(['name' => 'delete project categories']);
+        Permission::create(['name' => 'create project categories']);
+        Permission::create(['name' => 'list project categories']);
+
 
     }
 }

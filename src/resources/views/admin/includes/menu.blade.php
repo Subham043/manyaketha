@@ -182,6 +182,26 @@
                                 </div>
                             </li>
 
+                            @can('list projects')
+                            <li class="nav-item">
+                                <a class="nav-link menu-link {{strpos(url()->current(),'project') !== false ? 'active' : ''}}" href="#sidebarDashboards8" data-bs-toggle="collapse" role="button"
+                                    aria-expanded="{{strpos(url()->current(),'project') !== false ? 'true' : 'false'}}" aria-controls="sidebarDashboards8">
+                                    <i class="ri-building-line"></i> <span data-key="t-dashboards">Project Management</span>
+                                </a>
+                                <div class="collapse menu-dropdown {{strpos(url()->current(),'project') !== false ? 'show' : ''}}" id="sidebarDashboards8">
+                                    <ul class="nav nav-sm flex-column">
+
+                                        @can('list project categories')
+                                        <li class="nav-item">
+                                            <a href="{{route('project.category.paginate.get')}}" class="nav-link {{strpos(url()->current(), route('project.category.paginate.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Category </a>
+                                        </li>
+                                        @endcan
+
+                                    </ul>
+                                </div>
+                            </li>
+                            @endcan
+
                             <li class="nav-item">
                                 <a class="nav-link menu-link {{strpos(url()->current(),'setting') !== false ? 'active' : ''}}" href="#sidebarDashboards6" data-bs-toggle="collapse" role="button"
                                     aria-expanded="{{strpos(url()->current(),'setting') !== false ? 'true' : 'false'}}" aria-controls="sidebarDashboards6">

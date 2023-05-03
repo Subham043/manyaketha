@@ -65,6 +65,10 @@ use App\Modules\AboutPage\AdditionalContent\Controllers\AdditionalContentCreateC
 use App\Modules\AboutPage\AdditionalContent\Controllers\AdditionalContentDeleteController as AdditionalContentPageDeleteController;
 use App\Modules\AboutPage\AdditionalContent\Controllers\AdditionalContentPaginateController as AdditionalContentPagePaginateController;
 use App\Modules\AboutPage\AdditionalContent\Controllers\AdditionalContentUpdateController as AdditionalContentPageUpdateController;
+use App\Modules\ProjectPage\Category\Controllers\CategoryCreateController;
+use App\Modules\ProjectPage\Category\Controllers\CategoryDeleteController;
+use App\Modules\ProjectPage\Category\Controllers\CategoryPaginateController;
+use App\Modules\ProjectPage\Category\Controllers\CategoryUpdateController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -253,6 +257,17 @@ Route::middleware(['auth'])->group(function () {
 
         });
 
+    });
+
+    Route::prefix('/project')->group(function () {
+        Route::prefix('/common-amenity')->group(function () {
+            Route::get('/', [CategoryPaginateController::class, 'get', 'as' => 'project.category.paginate.get'])->name('project.category.paginate.get');
+            Route::get('/create', [CategoryCreateController::class, 'get', 'as' => 'project.category.create.get'])->name('project.category.create.get');
+            Route::post('/create', [CategoryCreateController::class, 'post', 'as' => 'project.category.create.post'])->name('project.category.create.post');
+            Route::get('/update/{id}', [CategoryUpdateController::class, 'get', 'as' => 'project.category.update.get'])->name('project.category.update.get');
+            Route::post('/update/{id}', [CategoryUpdateController::class, 'post', 'as' => 'project.category.update.post'])->name('project.category.update.post');
+            Route::get('/delete/{id}', [CategoryDeleteController::class, 'get', 'as' => 'project.category.delete.get'])->name('project.category.delete.get');
+        });
     });
 
     Route::get('/logout', [LogoutController::class, 'get', 'as' => 'logout.get'])->name('logout.get');
