@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\HomePage\AdditionalContent\Models;
+namespace App\Modules\AboutPage\About\Models;
 
 use App\Modules\Authentication\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -10,11 +10,11 @@ use Illuminate\Support\Facades\Cache;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
 
-class AdditionalContent extends Model
+class About extends Model
 {
     use HasFactory, LogsActivity;
 
-    protected $table = 'home_page_contents';
+    protected $table = 'about_page_abouts';
 
     /**
      * The attributes that are mass assignable.
@@ -24,21 +24,17 @@ class AdditionalContent extends Model
     protected $fillable = [
         'heading',
         'sub_heading',
-        'button_text',
-        'button_link',
         'description',
         'description_unfiltered',
         'image',
-        'is_draft'
     ];
 
     protected $casts = [
-        'is_draft' => 'boolean',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
 
-    public $image_path = 'home_page_contents';
+    public $image_path = 'about_page_abouts';
 
     protected $appends = ['image_link'];
 
@@ -46,13 +42,13 @@ class AdditionalContent extends Model
     {
         parent::boot();
         self::created(function ($model) {
-            Cache::forget('home_page_additional_main');
+            Cache::forget('about_page_about_main_'.$model->id);
         });
         self::updated(function ($model) {
-            Cache::forget('home_page_additional_main');
+            Cache::forget('about_page_about_main_'.$model->id);
         });
         self::deleted(function ($model) {
-            Cache::forget('home_page_additional_main');
+            Cache::forget('about_page_about_main_'.$model->id);
         });
     }
 
@@ -78,13 +74,13 @@ class AdditionalContent extends Model
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-        ->useLogName('Home page additional content section')
+        ->useLogName('about page about section')
         ->setDescriptionForEvent(
-            function(string $eventName){
-                $desc = "Additional content with heading ".$this->heading." has been {$eventName}";
-                $desc .= auth()->user() ? " by ".auth()->user()->name."<".auth()->user()->email.">" : "";
-                return $desc;
-            }
+                function(string $eventName){
+                    $desc = "About page about detail has been {$eventName}";
+                    $desc .= auth()->user() ? " by ".auth()->user()->name."<".auth()->user()->email.">" : "";
+                    return $desc;
+                }
             )
         ->logFillable()
         ->logOnlyDirty();

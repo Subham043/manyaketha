@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\HomePage\AdditionalContent\Models;
+namespace App\Modules\AboutPage\AdditionalContent\Models;
 
 use App\Modules\Authentication\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,7 +14,7 @@ class AdditionalContent extends Model
 {
     use HasFactory, LogsActivity;
 
-    protected $table = 'home_page_contents';
+    protected $table = 'about_page_contents';
 
     /**
      * The attributes that are mass assignable.
@@ -38,7 +38,7 @@ class AdditionalContent extends Model
         'updated_at' => 'datetime',
     ];
 
-    public $image_path = 'home_page_contents';
+    public $image_path = 'about_page_contents';
 
     protected $appends = ['image_link'];
 
@@ -46,13 +46,13 @@ class AdditionalContent extends Model
     {
         parent::boot();
         self::created(function ($model) {
-            Cache::forget('home_page_additional_main');
+            Cache::forget('about_page_additional_main');
         });
         self::updated(function ($model) {
-            Cache::forget('home_page_additional_main');
+            Cache::forget('about_page_additional_main');
         });
         self::deleted(function ($model) {
-            Cache::forget('home_page_additional_main');
+            Cache::forget('about_page_additional_main');
         });
     }
 
@@ -78,7 +78,7 @@ class AdditionalContent extends Model
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-        ->useLogName('Home page additional content section')
+        ->useLogName('About page additional content section')
         ->setDescriptionForEvent(
             function(string $eventName){
                 $desc = "Additional content with heading ".$this->heading." has been {$eventName}";

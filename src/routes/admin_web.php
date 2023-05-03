@@ -60,6 +60,11 @@ use App\Modules\HomePage\AdditionalContent\Controllers\AdditionalContentCreateCo
 use App\Modules\HomePage\AdditionalContent\Controllers\AdditionalContentDeleteController;
 use App\Modules\HomePage\AdditionalContent\Controllers\AdditionalContentPaginateController;
 use App\Modules\HomePage\AdditionalContent\Controllers\AdditionalContentUpdateController;
+use App\Modules\AboutPage\About\Controllers\AboutController as AboutPageController;
+use App\Modules\AboutPage\AdditionalContent\Controllers\AdditionalContentCreateController as AdditionalContentPageCreateController;
+use App\Modules\AboutPage\AdditionalContent\Controllers\AdditionalContentDeleteController as AdditionalContentPageDeleteController;
+use App\Modules\AboutPage\AdditionalContent\Controllers\AdditionalContentPaginateController as AdditionalContentPagePaginateController;
+use App\Modules\AboutPage\AdditionalContent\Controllers\AdditionalContentUpdateController as AdditionalContentPageUpdateController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -226,6 +231,25 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/update/{id}', [AdditionalContentUpdateController::class, 'get', 'as' => 'home_page.additional_content.update.get'])->name('home_page.additional_content.update.get');
             Route::post('/update/{id}', [AdditionalContentUpdateController::class, 'post', 'as' => 'home_page.additional_content.update.post'])->name('home_page.additional_content.update.post');
             Route::get('/delete/{id}', [AdditionalContentDeleteController::class, 'get', 'as' => 'home_page.additional_content.delete.get'])->name('home_page.additional_content.delete.get');
+
+        });
+
+    });
+
+    Route::prefix('/about-page')->group(function () {
+
+        Route::prefix('/about-section')->group(function () {
+            Route::get('/', [AboutPageController::class, 'get', 'as' => 'about_page.about.get'])->name('about_page.about.get');
+            Route::post('/', [AboutPageController::class, 'post', 'as' => 'about_page.about.post'])->name('about_page.about.post');
+        });
+
+        Route::prefix('/additional-content')->group(function () {
+            Route::get('/', [AdditionalContentPagePaginateController::class, 'get', 'as' => 'about_page.additional_content.paginate.get'])->name('about_page.additional_content.paginate.get');
+            Route::get('/create', [AdditionalContentPageCreateController::class, 'get', 'as' => 'about_page.additional_content.create.get'])->name('about_page.additional_content.create.get');
+            Route::post('/create', [AdditionalContentPageCreateController::class, 'post', 'as' => 'about_page.additional_content.create.post'])->name('about_page.additional_content.create.post');
+            Route::get('/update/{id}', [AdditionalContentPageUpdateController::class, 'get', 'as' => 'about_page.additional_content.update.get'])->name('about_page.additional_content.update.get');
+            Route::post('/update/{id}', [AdditionalContentPageUpdateController::class, 'post', 'as' => 'about_page.additional_content.update.post'])->name('about_page.additional_content.update.post');
+            Route::get('/delete/{id}', [AdditionalContentPageDeleteController::class, 'get', 'as' => 'about_page.additional_content.delete.get'])->name('about_page.additional_content.delete.get');
 
         });
 

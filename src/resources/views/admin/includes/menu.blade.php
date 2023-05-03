@@ -159,6 +159,30 @@
                             </li>
 
                             <li class="nav-item">
+                                <a class="nav-link menu-link {{strpos(url()->current(),'about-page') !== false ? 'active' : ''}}" href="#sidebarDashboards3" data-bs-toggle="collapse" role="button"
+                                    aria-expanded="{{strpos(url()->current(),'about-page') !== false ? 'true' : 'false'}}" aria-controls="sidebarDashboards3">
+                                    <i class="ri-slideshow-line"></i> <span data-key="t-dashboards">About Page</span>
+                                </a>
+                                <div class="collapse menu-dropdown {{strpos(url()->current(),'about-page') !== false ? 'show' : ''}}" id="sidebarDashboards3">
+                                    <ul class="nav nav-sm flex-column">
+
+                                        @can('edit about page about')
+                                            <li class="nav-item">
+                                                <a href="{{route('about_page.about.get')}}" class="nav-link {{strpos(url()->current(), route('about_page.about.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> About Section </a>
+                                            </li>
+                                        @endcan
+
+                                        @can('list about page additional content')
+                                            <li class="nav-item">
+                                                <a href="{{route('about_page.additional_content.paginate.get')}}" class="nav-link {{strpos(url()->current(), route('about_page.additional_content.paginate.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Additional Content Section </a>
+                                            </li>
+                                        @endcan
+
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li class="nav-item">
                                 <a class="nav-link menu-link {{strpos(url()->current(),'setting') !== false ? 'active' : ''}}" href="#sidebarDashboards6" data-bs-toggle="collapse" role="button"
                                     aria-expanded="{{strpos(url()->current(),'setting') !== false ? 'true' : 'false'}}" aria-controls="sidebarDashboards6">
                                     <i class="ri-tools-line"></i> <span data-key="t-dashboards">Application Settings</span>
