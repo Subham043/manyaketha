@@ -73,6 +73,10 @@ use App\Modules\ProjectPage\Project\Controllers\ProjectCreateController;
 use App\Modules\ProjectPage\Project\Controllers\ProjectDeleteController;
 use App\Modules\ProjectPage\Project\Controllers\ProjectPaginateController;
 use App\Modules\ProjectPage\Project\Controllers\ProjectUpdateController;
+use App\Modules\ServicePage\Controllers\ServiceCreateController;
+use App\Modules\ServicePage\Controllers\ServiceDeleteController;
+use App\Modules\ServicePage\Controllers\ServicePaginateController;
+use App\Modules\ServicePage\Controllers\ServiceUpdateController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -280,6 +284,17 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/update/{id}', [CategoryUpdateController::class, 'post', 'as' => 'project.category.update.post'])->name('project.category.update.post');
             Route::get('/delete/{id}', [CategoryDeleteController::class, 'get', 'as' => 'project.category.delete.get'])->name('project.category.delete.get');
         });
+    });
+
+    Route::prefix('/service')->group(function () {
+
+        Route::get('/', [ServicePaginateController::class, 'get', 'as' => 'service.paginate.get'])->name('service.paginate.get');
+        Route::get('/create', [ServiceCreateController::class, 'get', 'as' => 'service.create.get'])->name('service.create.get');
+        Route::post('/create', [ServiceCreateController::class, 'post', 'as' => 'service.create.post'])->name('service.create.post');
+        Route::get('/update/{id}', [ServiceUpdateController::class, 'get', 'as' => 'service.update.get'])->name('service.update.get');
+        Route::post('/update/{id}', [ServiceUpdateController::class, 'post', 'as' => 'service.update.post'])->name('service.update.post');
+        Route::get('/delete/{id}', [ServiceDeleteController::class, 'get', 'as' => 'service.delete.get'])->name('service.delete.get');
+
     });
 
     Route::get('/logout', [LogoutController::class, 'get', 'as' => 'logout.get'])->name('logout.get');

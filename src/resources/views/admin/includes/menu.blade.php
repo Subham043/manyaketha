@@ -129,6 +129,14 @@
                             </li>
                             @endcan
 
+                            @can('list services')
+                            <li class="nav-item">
+                                <a class="nav-link menu-link {{strpos(url()->current(),route('service.paginate.get')) !== false ? 'active' : ''}}" href="{{route('service.paginate.get')}}">
+                                    <i class="ri-briefcase-line"></i> <span data-key="t-widgets">Services</span>
+                                </a>
+                            </li>
+                            @endcan
+
                             <li class="nav-item">
                                 <a class="nav-link menu-link {{strpos(url()->current(),'home-page') !== false ? 'active' : ''}}" href="#sidebarDashboards1" data-bs-toggle="collapse" role="button"
                                     aria-expanded="{{strpos(url()->current(),'home-page') !== false ? 'true' : 'false'}}" aria-controls="sidebarDashboards1">
