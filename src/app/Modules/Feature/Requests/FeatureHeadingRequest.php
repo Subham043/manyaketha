@@ -55,7 +55,7 @@ class FeatureHeadingRequest extends FormRequest
     {
         $this->replace(
             Purify::clean(
-                $this->validated()
+                $this->all()
             )
         );
     }

@@ -215,7 +215,7 @@ validation
         files: {
             extensions: ['pdf'],
             maxSize: 5000000,
-            minSize: 10000,
+            minSize: 100,
         },
         },
     },
@@ -235,7 +235,7 @@ validation
         files: {
             extensions: ['jpeg', 'jpg', 'png', 'webp'],
             maxSize: 500000,
-            minSize: 10000,
+            minSize: 100,
             types: ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'],
         },
         },

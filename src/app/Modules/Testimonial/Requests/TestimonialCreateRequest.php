@@ -30,7 +30,7 @@ class TestimonialCreateRequest extends FormRequest
             'name' => 'required|string|max:250',
             'designation' => 'required|string|max:250',
             'message' => 'required|string|max:500',
-            'image' => 'required|image|min:10|max:500',
+            'image' => 'required|image|min:1|max:500',
             'is_draft' => 'required|boolean',
         ];
     }
@@ -60,7 +60,7 @@ class TestimonialCreateRequest extends FormRequest
     {
         $this->replace(
             Purify::clean(
-                $this->validated()
+                $this->all()
             )
         );
     }

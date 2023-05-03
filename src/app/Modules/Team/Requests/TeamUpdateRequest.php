@@ -26,7 +26,7 @@ class TeamUpdateRequest extends TeamCreateRequest
         return [
             'name' => 'required|string|max:250',
             'designation' => 'required|string|max:250',
-            'image' => 'nullable|image|min:10|max:500',
+            'image' => 'nullable|image|min:1|max:500',
             'facebook' => 'nullable|url|max:250',
             'instagram' => 'nullable|url|max:250',
             'linkedin' => 'nullable|url|max:250',

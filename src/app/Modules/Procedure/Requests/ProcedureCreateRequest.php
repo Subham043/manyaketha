@@ -28,7 +28,7 @@ class ProcedureCreateRequest extends FormRequest
     {
         return [
             'title' => 'required|string|max:250',
-            'image' => 'required|image|min:10|max:500',
+            'image' => 'required|image|min:1|max:500',
             'is_draft' => 'required|boolean',
         ];
     }
@@ -56,7 +56,7 @@ class ProcedureCreateRequest extends FormRequest
     {
         $this->replace(
             Purify::clean(
-                $this->validated()
+                $this->all()
             )
         );
     }

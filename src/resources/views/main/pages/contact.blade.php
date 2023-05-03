@@ -6,23 +6,7 @@
 
     @include('main.includes.header')
 
-    <!-- Page Title -->
-    <section class="page-title" style="background-image: url({{asset('assets/images/background/bg-3.jpg')}});">
-        <div class="auto-container">
-            <div class="content-box">
-                <div class="content-wrapper">
-                    <div class="title">
-                        <h1>Contact Us</h1>
-                    </div>
-                    <ul class="bread-crumb">
-                        <li><a href="index.html">Home</a></li>
-                        <li>Contact</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Page Title -->
+    @include('main.includes.breadcrumb')
 
     <!-- Contact Section -->
     <section class="contact-section">
@@ -112,16 +96,7 @@
     </section>
 
 
-    <!-- CTA Section Two -->
-    <section class="cta-section-two">
-        <div class="auto-container">
-            <div class="wrapper-box">
-                <h3>Need Roof Service & Maintenance Or Have <br> Any Questions? We are Ready to Help!</h3>
-                <div class="link-btn"><a href="#" class="theme-btn btn-style-one style-three"><span>Learn More</span></a></div>
-                <div class="icon"><img src="{{asset('assets/images/icons/icon-12.png')}}" alt=""></div>
-            </div>
-        </div>
-    </section>
+    @include('main.includes.cta2')
 
     @include('main.includes.footer')
 

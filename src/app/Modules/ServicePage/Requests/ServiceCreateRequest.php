@@ -32,7 +32,7 @@ class ServiceCreateRequest extends FormRequest
             'heading' => 'required|string|max:500',
             'description' => 'required|string',
             'description_unfiltered' => 'required|string',
-            'image' => 'required|image|min:10|max:5000',
+            'image' => 'required|image|min:1|max:5000',
             'brochure' => 'nullable|mimes:pdf|min:10|max:5000',
             'is_draft' => 'required|boolean',
             'meta_title' => 'nullable|string',

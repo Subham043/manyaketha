@@ -15,7 +15,7 @@ class ProjectUpdateRequest extends ProjectCreateRequest
     {
         return [
             'is_draft' => 'required|boolean',
-            'image' => 'nullable|image|min:10|max:500',
+            'image' => 'nullable|image|min:1|max:500',
             'image_title' => 'required|string|max:500',
             'category_id' => 'required|numeric|exists:project_categories,id',
         ];

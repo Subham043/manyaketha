@@ -33,7 +33,7 @@ class AdditionalContentCreateRequest extends FormRequest
             'button_link' => 'required_with:button_text|url|max:250',
             'description' => 'required|string',
             'description_unfiltered' => 'required|string',
-            'image' => 'required|image|min:10|max:500',
+            'image' => 'required|image|min:1|max:500',
             'is_draft' => 'required|boolean',
         ];
     }
@@ -65,7 +65,7 @@ class AdditionalContentCreateRequest extends FormRequest
     {
         $this->replace(
             Purify::clean(
-                $this->validated()
+                $this->all()
             )
         );
     }

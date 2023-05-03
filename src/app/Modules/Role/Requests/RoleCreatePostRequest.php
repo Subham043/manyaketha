@@ -42,7 +42,7 @@ class RoleCreatePostRequest extends FormRequest
     {
         $this->replace(
             Purify::clean(
-                $this->validated()
+                $this->all()
             )
         );
     }

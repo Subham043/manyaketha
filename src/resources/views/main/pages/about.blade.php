@@ -6,23 +6,7 @@
 
     @include('main.includes.header')
 
-    <!-- Page Title -->
-    <section class="page-title" style="background-image: url({{asset('assets/images/background/bg-3.jpg')}});">
-        <div class="auto-container">
-            <div class="content-box">
-                <div class="content-wrapper">
-                    <div class="title">
-                        <h1>About Rofalco</h1>
-                    </div>
-                    <ul class="bread-crumb">
-                        <li><a href="index.html">Home</a></li>
-                        <li>About Rofalco</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Page Title -->
+    @include('main.includes.breadcrumb')
 
     <!-- About Section -->
     <section class="about-section-two">
@@ -69,56 +53,7 @@
                 <h2><strong>Our Advantages</strong></h2>
                 <div class="text">Incididunt ut labore et dolore magna aliqua quis nostrud exercitation ullamco laboris <br> nisi ut aliquip ex ea consequat duis aute irure dolor reprehenderit </div>
             </div>
-            <div class="row">
-                <div class="col-xl-3 col-md-6 feature-block-three">
-                    <div class="icon-box">
-                        <div class="icon"><img src="{{asset('assets/images/icons/icon-13.png')}}" alt=""></div>
-                        <h4>Safety & Reliability</h4>
-                        <a href="#" class="read-more-btn"><i class="fas fa-long-arrow-right"></i>Read More</a>
-                        <div class="overlay">
-                            <div class="icon"><img src="{{asset('assets/images/icons/icon-17.png')}}" alt=""></div>
-                            <h4>Safety & Reliability</h4>
-                            <div class="text">Lonse gatetur adipisicing elitya sed <br> eius mod tempor incididunt ut labore <br> dolore magna aliqua minis. </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-md-6 feature-block-three">
-                    <div class="icon-box">
-                        <div class="icon"><img src="{{asset('assets/images/icons/icon-14.png')}}" alt=""></div>
-                        <h4>Long-Term Plans</h4>
-                        <a href="#" class="read-more-btn"><i class="fas fa-long-arrow-right"></i>Read More</a>
-                        <div class="overlay">
-                            <div class="icon"><img src="{{asset('assets/images/icons/icon-18.png')}}" alt=""></div>
-                            <h4>Long-Term Plans</h4>
-                            <div class="text">Lonse gatetur adipisicing elitya sed <br> eius mod tempor incididunt ut labore <br> dolore magna aliqua minis. </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-md-6 feature-block-three">
-                    <div class="icon-box">
-                        <div class="icon"><img src="{{asset('assets/images/icons/icon-15.png')}}" alt=""></div>
-                        <h4>Fully Experienced</h4>
-                        <a href="#" class="read-more-btn"><i class="fas fa-long-arrow-right"></i>Read More</a>
-                        <div class="overlay">
-                            <div class="icon"><img src="{{asset('assets/images/icons/icon-19.png')}}" alt=""></div>
-                            <h4>Fully Experienced</h4>
-                            <div class="text">Lonse gatetur adipisicing elitya sed <br> eius mod tempor incididunt ut labore <br> dolore magna aliqua minis. </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-md-6 feature-block-three">
-                    <div class="icon-box">
-                        <div class="icon"><img src="{{asset('assets/images/icons/icon-16.png')}}" alt=""></div>
-                        <h4>Quality Materials</h4>
-                        <a href="#" class="read-more-btn"><i class="fas fa-long-arrow-right"></i>Read More</a>
-                        <div class="overlay">
-                            <div class="icon"><img src="{{asset('assets/images/icons/icon-20.png')}}" alt=""></div>
-                            <h4>Quality Materials</h4>
-                            <div class="text">Lonse gatetur adipisicing elitya sed <br> eius mod tempor incididunt ut labore <br> dolore magna aliqua minis. </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @include('main.includes.feature')
         </div>
     </section>
 
@@ -171,75 +106,7 @@
         </div>
     </section>
 
-    <!-- Team Section -->
-    <section class="team-section">
-        <div class="auto-container">
-            <div class="sec-title text-center">
-                <div class="sub-title">Dependable & Sincere Company</div>
-                <h2><strong>The Roofing Experts</strong></h2>
-                <div class="text">Incididunt ut labore et dolore magna aliqua quis nostrud exercitation ullamco laboris <br> nisi ut aliquip ex ea consequat duis aute irure dolor reprehenderit</div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6 team-block-one">
-                    <div class="inner-box">
-                        <div class="image">
-                            <img src="{{asset('assets/images/resource/team-1.jpg')}}" alt="">
-                            <div class="overlay-box">
-                                <ul class="social-links">
-                                    <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-google-plus-g"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <h4>James Logan</h4>
-                            <div class="designation">CEO | Director</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 team-block-one">
-                    <div class="inner-box">
-                        <div class="image">
-                            <img src="{{asset('assets/images/resource/team-2.jpg')}}" alt="">
-                            <div class="overlay-box">
-                                <ul class="social-links">
-                                    <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-google-plus-g"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <h4>Kathrine Daniel</h4>
-                            <div class="designation">Chief exective</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 team-block-one">
-                    <div class="inner-box">
-                        <div class="image">
-                            <img src="{{asset('assets/images/resource/team-3.jpg')}}" alt="">
-                            <div class="overlay-box">
-                                <ul class="social-links">
-                                    <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-google-plus-g"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <h4>Paul Steven</h4>
-                            <div class="designation">CEO | partner</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    @include('main.includes.team')
 
     <!-- Clients Logo Section -->
     <section class="clients-logo-section style-two">
@@ -255,16 +122,7 @@
         </div>
     </section>
 
-    <!-- CTA Section Two -->
-    <section class="cta-section-two">
-        <div class="auto-container">
-            <div class="wrapper-box">
-                <h3>Need Roof Service & Maintenance Or Have <br> Any Questions? We are Ready to Help!</h3>
-                <div class="link-btn"><a href="#" class="theme-btn btn-style-one style-three"><span>Learn More</span></a></div>
-                <div class="icon"><img src="{{asset('assets/images/icons/icon-12.png')}}" alt=""></div>
-            </div>
-        </div>
-    </section>
+    @include('main.includes.cta2')
 
     @include('main.includes.footer')
 

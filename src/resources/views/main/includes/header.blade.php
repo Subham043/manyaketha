@@ -6,13 +6,13 @@
         <div class="auto-container">
             <div class="inner-container">
                 <div class="left-column">
-                    <div class="text">Best Global Rooftop Services Company</div>
-                </div>
-                <div class="right-column">
+                    {{-- <div class="text">Best Global Rooftop Services Company</div> --}}
                     <div class="contact-info">
                         <li><a href="#"><i class="fas fa-phone"></i>Phone: 1-258-985-703</a></li>
                         <li><a href="#"><i class="far fa-envelope"></i>info@my-domain.com</a></li>
                     </div>
+                </div>
+                <div class="right-column">
                     <div class="social-links">
                         <ul>
                             <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>

@@ -1259,7 +1259,7 @@ img {
 
 .header-top .contact-info {
     position: relative;
-    margin-right: 25px;
+    /* margin-right: 25px; */
 }
 
 .header-top .contact-info li {
@@ -1275,7 +1275,7 @@ img {
     top: 2px;
     width: 1px;
     height: 20px;
-    background-color: #fff;
+    /* background-color: #fff; */
     opacity: .35;
 }
 
