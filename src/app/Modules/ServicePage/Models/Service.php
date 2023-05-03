@@ -57,14 +57,17 @@ class Service extends Model
         parent::boot();
         self::created(function ($model) {
             Cache::forget('all_service_main');
+            Cache::forget('latest_six_service_main');
             Cache::forget('service_'.$model->slug);
         });
         self::updated(function ($model) {
             Cache::forget('all_service_main');
+            Cache::forget('latest_six_service_main');
             Cache::forget('service_'.$model->slug);
         });
         self::deleted(function ($model) {
             Cache::forget('all_service_main');
+            Cache::forget('latest_six_service_main');
             Cache::forget('service_'.$model->slug);
         });
     }

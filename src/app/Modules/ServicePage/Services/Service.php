@@ -95,6 +95,7 @@ class Service
     public function clear_cache(ServiceModel $service): void
     {
         Cache::forget('all_service_main');
+        Cache::forget('latest_six_service_main');
         Cache::forget('service_'.$service->slug);
     }
 
@@ -102,6 +103,13 @@ class Service
     {
         return Cache::remember('all_service_main', 60*60*24, function(){
             return ServiceModel::where('is_draft', true)->get();
+        });
+    }
+
+    public function main_latest_six()
+    {
+        return Cache::remember('latest_six_service_main', 60*60*24, function(){
+            return ServiceModel::where('is_draft', true)->limit(6)->get();
         });
     }
 

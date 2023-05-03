@@ -3,10 +3,11 @@
 namespace App\Modules\ProjectPage\Category\Models;
 
 use App\Modules\Authentication\Models\User;
-use App\Modules\ProjectPage\Projects\Models\Project;
+use App\Modules\ProjectPage\Project\Models\Project;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Support\Facades\Cache;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
 
@@ -31,6 +32,20 @@ class Category extends Model
     ];
 
     protected $appends = ['slug'];
+
+    public static function boot()
+    {
+        parent::boot();
+        self::created(function ($model) {
+            Cache::forget('project_category_four_main');
+        });
+        self::updated(function ($model) {
+            Cache::forget('project_category_four_main');
+        });
+        self::deleted(function ($model) {
+            Cache::forget('project_category_four_main');
+        });
+    }
 
     protected function slug(): Attribute
     {

@@ -76,161 +76,47 @@
         </div>
     </section>
 
-    @include('main.includes.about', ['about'=>$about])
+    @include('main.includes.about', ['about'=>$about, 'ptop' => true])
 
     @include('main.includes.counter', ['counter'=>$counter])
 
+    @if(count($service)>0)
     <!-- Services Section Two -->
-    <section class="services-section-two style-two">
+    <section class="services-section-two style-two pb-0">
         <div class="auto-container">
+            @if($headingService)
             <div class="row align-items-center justify-content-between m-0">
-                <div class="sec-title">
-                    <div class="sub-title">Dependable & Sincere Company</div>
-                    <h2>Quality & Reability <br> <strong>With 100% Satisfaction</strong></h2>
+                <div class="sec-title col-lg-6 col-sm-12 p-0">
+                    <div class="sub-title">{!!$headingService->sub_heading!!}</div>
+                    <h2>{!!$headingService->heading!!}</h2>
                 </div>
-                <div class="text">Incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam <br> quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea consequat <br> duis aute irure dolor in reprehenderit in voluptate. </div>
+                <div class="text col-lg-6 col-sm-12 p-0">{!!$headingService->description!!}</div>
             </div>
+            @endif
             <div class="row">
                 <div class="theme_carousel owl-theme owl-carousel" data-options='{"loop": true, "margin": 0, "autoheight":true, "lazyload":true, "nav": true, "dots": true, "autoplay": true, "autoplayTimeout": 6000, "smartSpeed": 300, "responsive":{ "0" :{ "items": "1" }, "600" :{ "items" : "2" }, "768" :{ "items" : "2" } , "992":{ "items" : "3" }, "1200":{ "items" : "3" }}}'>
+                    @foreach($service as $service)
                     <div class="service-block-two col-12">
                         <div class="inner-box">
                             <div class="image">
-                                <img src="{{asset('assets/images/resource/image-3.jpg')}}" alt="">
+                                <img src="{{$service->image_link}}" alt="">
                                 <div class="overlay">
                                     <div class="link-btn"><a href="service-details.html"><i class="flaticon-add"></i></a></div>
                                 </div>
                             </div>
                             <div class="lower-content">
-                                <h4><span>Roof Maintenance</span></h4>
-                                <div class="text">Magna aliqa enim sed ipsum nisi ainy veniam quis nostrul aliqua enim lorem ipsum gui dolor sit amet tempor.</div>
+                                <h4><span>{!!$service->name!!}</span></h4>
+                                <div class="text">{{Str::limit($service->description_unfiltered, 150)}}</div>
                                 <div class="read-more-btn"><a href="service-details.html">Learn More</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="service-block-two col-12">
-                        <div class="inner-box">
-                            <div class="image">
-                                <img src="{{asset('assets/images/resource/image-4.jpg')}}" alt="">
-                                <div class="overlay">
-                                    <div class="link-btn"><a href="service-details.html"><i class="flaticon-add"></i></a></div>
-                                </div>
-                            </div>
-                            <div class="lower-content">
-                                <h4><span>Roof Inspection</span></h4>
-                                <div class="text">Magna aliqa enim sed ipsum nisi ainy veniam quis nostrul aliqua enim lorem ipsum gui dolor sit amet tempor.</div>
-                                <div class="read-more-btn"><a href="service-details.html">Learn More</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="service-block-two col-12">
-                        <div class="inner-box">
-                            <div class="image">
-                                <img src="{{asset('assets/images/resource/image-5.jpg')}}" alt="">
-                                <div class="overlay">
-                                    <div class="link-btn"><a href="service-details.html"><i class="flaticon-add"></i></a></div>
-                                </div>
-                            </div>
-                            <div class="lower-content">
-                                <h4><span>Insulation & Repairs</span></h4>
-                                <div class="text">Magna aliqa enim sed ipsum nisi ainy veniam quis nostrul aliqua enim lorem ipsum gui dolor sit amet tempor.</div>
-                                <div class="read-more-btn"><a href="service-details.html">Learn More</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="service-block-two col-12">
-                        <div class="inner-box">
-                            <div class="image">
-                                <img src="{{asset('assets/images/resource/image-3.jpg')}}" alt="">
-                                <div class="overlay">
-                                    <div class="link-btn"><a href="service-details.html"><i class="flaticon-add"></i></a></div>
-                                </div>
-                            </div>
-                            <div class="lower-content">
-                                <h4><span>Roof Maintenance</span></h4>
-                                <div class="text">Magna aliqa enim sed ipsum nisi ainy veniam quis nostrul aliqua enim lorem ipsum gui dolor sit amet tempor.</div>
-                                <div class="read-more-btn"><a href="service-details.html">Learn More</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="service-block-two col-12">
-                        <div class="inner-box">
-                            <div class="image">
-                                <img src="{{asset('assets/images/resource/image-4.jpg')}}" alt="">
-                                <div class="overlay">
-                                    <div class="link-btn"><a href="service-details.html"><i class="flaticon-add"></i></a></div>
-                                </div>
-                            </div>
-                            <div class="lower-content">
-                                <h4><span>Roof Inspection</span></h4>
-                                <div class="text">Magna aliqa enim sed ipsum nisi ainy veniam quis nostrul aliqua enim lorem ipsum gui dolor sit amet tempor.</div>
-                                <div class="read-more-btn"><a href="service-details.html">Learn More</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="service-block-two col-12">
-                        <div class="inner-box">
-                            <div class="image">
-                                <img src="{{asset('assets/images/resource/image-5.jpg')}}" alt="">
-                                <div class="overlay">
-                                    <div class="link-btn"><a href="service-details.html"><i class="flaticon-add"></i></a></div>
-                                </div>
-                            </div>
-                            <div class="lower-content">
-                                <h4><span>Insulation & Repairs</span></h4>
-                                <div class="text">Magna aliqa enim sed ipsum nisi ainy veniam quis nostrul aliqua enim lorem ipsum gui dolor sit amet tempor.</div>
-                                <div class="read-more-btn"><a href="service-details.html">Learn More</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="service-block-two col-12">
-                        <div class="inner-box">
-                            <div class="image">
-                                <img src="{{asset('assets/images/resource/image-3.jpg')}}" alt="">
-                                <div class="overlay">
-                                    <div class="link-btn"><a href="service-details.html"><i class="flaticon-add"></i></a></div>
-                                </div>
-                            </div>
-                            <div class="lower-content">
-                                <h4><span>Roof Maintenance</span></h4>
-                                <div class="text">Magna aliqa enim sed ipsum nisi ainy veniam quis nostrul aliqua enim lorem ipsum gui dolor sit amet tempor.</div>
-                                <div class="read-more-btn"><a href="service-details.html">Learn More</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="service-block-two col-12">
-                        <div class="inner-box">
-                            <div class="image">
-                                <img src="{{asset('assets/images/resource/image-4.jpg')}}" alt="">
-                                <div class="overlay">
-                                    <div class="link-btn"><a href="service-details.html"><i class="flaticon-add"></i></a></div>
-                                </div>
-                            </div>
-                            <div class="lower-content">
-                                <h4><span>Roof Inspection</span></h4>
-                                <div class="text">Magna aliqa enim sed ipsum nisi ainy veniam quis nostrul aliqua enim lorem ipsum gui dolor sit amet tempor.</div>
-                                <div class="read-more-btn"><a href="service-details.html">Learn More</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="service-block-two col-12">
-                        <div class="inner-box">
-                            <div class="image">
-                                <img src="{{asset('assets/images/resource/image-5.jpg')}}" alt="">
-                                <div class="overlay">
-                                    <div class="link-btn"><a href="service-details.html"><i class="flaticon-add"></i></a></div>
-                                </div>
-                            </div>
-                            <div class="lower-content">
-                                <h4><span>Insulation & Repairs</span></h4>
-                                <div class="text">Magna aliqa enim sed ipsum nisi ainy veniam quis nostrul aliqua enim lorem ipsum gui dolor sit amet tempor.</div>
-                                <div class="read-more-btn"><a href="service-details.html">Learn More</a></div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
     </section>
+    @endif
 
     @include('main.includes.cta1')
 
@@ -344,7 +230,7 @@
     @include('main.includes.procedure', ['procedure'=>$procedure, 'procedureHeading'=>$procedureHeading])
 
 
-    @include('main.includes.additional_content', ['additionalContent'=>$additionalContent])
+    @include('main.includes.additional_content', ['additionalContent'=>$additionalContent, 'styleTwo' => true])
 
     @include('main.includes.team', ['team'=>$team, 'teamHeading'=>$teamHeading])
 
@@ -434,33 +320,36 @@
         </div>
     </section>
 
+    @if(count($blog)>0)
     <!-- Latest News -->
     <section class="latest-news-section">
         <div class="auto-container">
+            @if($blogHeading)
             <div class="row align-items-center justify-content-between m-0">
-                <div class="sec-title">
-                    <div class="sub-title">Dependable & Sincere Company</div>
-                    <h2>Latest News From <br> <strong>Rofalco Since 2005</strong></h2>
+                <div class="sec-title col-lg-6 col-sm-12">
+                    <div class="sub-title">{!!$blogHeading->sub_heading!!}</div>
+                    <h2>{!!$blogHeading->heading!!}</h2>
                 </div>
-                <div class="text">Incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam <br> quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea consequat <br> duis aute irure dolor in reprehenderit in voluptate. </div>
+                <div class="text col-lg-6 col-sm-12">{!!$blogHeading->description!!}</div>
             </div>
+            @endif
             <div class="row">
+                @foreach($blog as $blog)
                 <div class="col-lg-6 news-block-one">
                     <div class="inner-box">
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="image"><a href="blog-details.html"><img src="{{asset('assets/images/resource/news-1.jpg')}}" alt=""></a></div>
+                                <div class="image"><a href="{{route('blogs_detail.get', $blog->slug)}}"><img src="{{$blog->image_link}}" alt=""></a></div>
                             </div>
                             <div class="col-md-6">
                                 <div class="content-box">
                                     <ul class="post-meta">
-                                        <li>John Smith</li>
-                                        <li>April 28, 2020</li>
+                                        <li>{{$blog->created_at->format('j F, Y')}}</li>
                                     </ul>
-                                    <a href="blog-details.html"><h4>Reviewing a Residential <br> Roof’s Warrenty</h4></a>
-                                    <div class="text">Magna aliqa enim sed ipsum nisi ainy <br> ipsum gui dolor sit amet tempor lorem <br> adipisicing elit, sed eiusmod...</div>
+                                    <a href="{{route('blogs_detail.get', $blog->slug)}}"><h4>{{Str::limit($blog->name, 20)}}</h4></a>
+                                    <div class="text">{{Str::limit($blog->description_unfiltered, 100)}}</div>
                                     <div class="row m-0 justify-content-between">
-                                        <div class="read-more-btn"><a href="blog-details.html" class="theme-btn">Read more</a></div>
+                                        <div class="read-more-btn"><a href="{{route('blogs_detail.get', $blog->slug)}}" class="theme-btn">Read more</a></div>
                                         <div class="share-icon style-two post-share-icon">
                                             <div class="share-btn"><span class="fas fa-share-alt"></span></div>
                                             <ul class="social-links">
@@ -475,39 +364,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 news-block-one">
-                    <div class="inner-box">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="image"><a href="blog-details.html"><img src="{{asset('assets/images/resource/news-2.jpg')}}" alt=""></a></div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="content-box">
-                                    <ul class="post-meta">
-                                        <li>John Smith</li>
-                                        <li>April 28, 2020</li>
-                                    </ul>
-                                    <a href="blog-details.html"><h4>Asphalt Roof Cleaning <br> & Repairing Do’s</h4></a>
-                                    <div class="text">Magna aliqa enim sed ipsum nisi ainy <br> ipsum gui dolor sit amet tempor lorem <br> adipisicing elit, sed eiusmod...</div>
-                                    <div class="row m-0 justify-content-between">
-                                        <div class="read-more-btn"><a href="blog-details.html" class="theme-btn">Read more</a></div>
-                                        <div class="share-icon style-two post-share-icon">
-                                            <div class="share-btn"><span class="fas fa-share-alt"></span></div>
-                                            <ul class="social-links">
-                                                <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
-                                                <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                                                <li><a href="#"><span class="fab fa-skype"></span></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
+    @endif
 
     @include('main.includes.cta2')
 

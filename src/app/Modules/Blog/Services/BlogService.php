@@ -82,7 +82,15 @@ class BlogService
     public function main_all()
     {
         return Cache::remember('all_blog_main', 60*60*24, function(){
-            return Blog::where('is_draft', true)->limit(3)->latest()
+            return Blog::where('is_draft', true)->latest()
+            ->get();
+        });
+    }
+
+    public function main_latest_six()
+    {
+        return Cache::remember('latest_six_blog_main', 60*60*24, function(){
+            return Blog::where('is_draft', true)->limit(2)->latest()
             ->get();
         });
     }

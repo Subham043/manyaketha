@@ -2,6 +2,8 @@
 
 namespace App\Modules\Main\HomePage;
 
+use App\Modules\Blog\Services\BlogHeadingService;
+use App\Modules\Blog\Services\BlogService;
 use App\Modules\Counter\Services\CounterService;
 use App\Modules\Feature\Services\FeatureService;
 use App\Modules\HomePage\About\Services\AboutService;
@@ -12,7 +14,11 @@ use App\Modules\Main\BaseController\BaseController;
 use App\Modules\Partner\Services\PartnerService;
 use App\Modules\Procedure\Services\ProcedureHeadingService;
 use App\Modules\Procedure\Services\ProcedureService;
+use App\Modules\ProjectPage\Category\Services\CategoryService;
+use App\Modules\ProjectPage\Project\Services\ProjectHeadingService;
 use App\Modules\Seo\Services\SeoService;
+use App\Modules\ServicePage\Services\HeadingService;
+use App\Modules\ServicePage\Services\Service;
 use App\Modules\Settings\Services\ChatbotService;
 use App\Modules\Settings\Services\GeneralService;
 use App\Modules\Settings\Services\ThemeService;
@@ -35,6 +41,12 @@ class HomePageController extends BaseController
     private TestimonialHeadingService $testimonialHeadingService;
     private TeamService $teamService;
     private TeamHeadingService $teamHeadingService;
+    private BlogService $blogService;
+    private BlogHeadingService $blogHeadingService;
+    private CategoryService $projectService;
+    private ProjectHeadingService $projectHeadingService;
+    private Service $service;
+    private HeadingService $headingService;
 
     public function __construct(
         SeoService $seoService,
@@ -54,6 +66,12 @@ class HomePageController extends BaseController
         TestimonialHeadingService $testimonialHeadingService,
         TeamService $teamService,
         TeamHeadingService $teamHeadingService,
+        BlogService $blogService,
+        BlogHeadingService $blogHeadingService,
+        CategoryService $projectService,
+        ProjectHeadingService $projectHeadingService,
+        Service $service,
+        HeadingService $headingService,
     )
     {
         parent::__construct($seoService, $generalService, $themeService, $chatbotService, $legalService);
@@ -69,6 +87,12 @@ class HomePageController extends BaseController
         $this->testimonialHeadingService = $testimonialHeadingService;
         $this->teamService = $teamService;
         $this->teamHeadingService = $teamHeadingService;
+        $this->blogService = $blogService;
+        $this->blogHeadingService = $blogHeadingService;
+        $this->projectService = $projectService;
+        $this->projectHeadingService = $projectHeadingService;
+        $this->service = $service;
+        $this->headingService = $headingService;
     }
 
     public function get(){
@@ -88,6 +112,12 @@ class HomePageController extends BaseController
         $testimonialHeading = $this->testimonialHeadingService->getById(1);
         $team = $this->teamService->main_all();
         $teamHeading = $this->teamHeadingService->getById(1);
+        $blog = $this->blogService->main_latest_six();
+        $blogHeading = $this->blogHeadingService->getById(1);
+        $project = $this->projectService->main_latest_four();
+        $projectHeading = $this->projectHeadingService->getById(1);
+        $service = $this->service->main_latest_six();
+        $headingService = $this->headingService->getById(1);
         $about = $this->aboutService->getById(1);
         return view('main.pages.index', compact([
             'legal',
@@ -107,6 +137,12 @@ class HomePageController extends BaseController
             'testimonialHeading',
             'team',
             'teamHeading',
+            'blog',
+            'blogHeading',
+            'project',
+            'projectHeading',
+            'service',
+            'headingService',
         ]));
     }
 

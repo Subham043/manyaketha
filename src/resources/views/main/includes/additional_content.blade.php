@@ -1,6 +1,6 @@
 @if(count($additionalContent)>0)
 <!-- Features Section Two -->
-<section class="features-section-two style-two">
+<section @class(["features-section-two", "style-two"=>$styleTwo])>
     <div class="auto-container">
         @foreach($additionalContent as $additionalContent)
         <div class="single-block">
