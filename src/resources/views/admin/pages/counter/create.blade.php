@@ -23,11 +23,14 @@
                         <div class="card-body">
                             <div class="live-preview">
                                 <div class="row gy-4">
-                                    <div class="col-xxl-6 col-md-6">
+                                    <div class="col-xxl-4 col-md-4">
                                         @include('admin.includes.input', ['key'=>'title', 'label'=>'Title', 'value'=>old('title')])
                                     </div>
-                                    <div class="col-xxl-6 col-md-6">
+                                    <div class="col-xxl-4 col-md-4">
                                         @include('admin.includes.input', ['key'=>'counter', 'label'=>'Counter', 'value'=>old('counter')])
+                                    </div>
+                                    <div class="col-xxl-4 col-md-4">
+                                        @include('admin.includes.file_input', ['key'=>'image', 'label'=>'Icon'])
                                     </div>
 
                                     <div class="col-lg-12 col-md-12">
@@ -95,6 +98,31 @@ validation
       errorMessage: 'Counter is required',
     },
   ])
+  .addField('#image', [
+    {
+      rule: 'required',
+      errorMessage: 'Image is required',
+    },
+    {
+        rule: 'minFilesCount',
+        value: 1,
+    },
+    {
+        rule: 'maxFilesCount',
+        value: 1,
+    },
+    {
+        rule: 'files',
+        value: {
+        files: {
+            extensions: ['jpeg', 'jpg', 'png', 'webp'],
+            maxSize: 500000,
+            minSize: 100,
+            types: ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'],
+        },
+        },
+    },
+  ])
   .onSuccess(async (event) => {
     var submitBtn = document.getElementById('submitBtn')
     submitBtn.innerHTML = spinner
@@ -104,6 +132,9 @@ validation
         formData.append('is_draft',document.getElementById('is_draft').checked ? 1 : 0)
         formData.append('counter',document.getElementById('counter').value)
         formData.append('title',document.getElementById('title').value)
+        if((document.getElementById('image').files).length>0){
+            formData.append('image',document.getElementById('image').files[0])
+        }
 
         const response = await axios.post('{{route('counter.create.post')}}', formData)
         successToast(response.data.message)
@@ -114,6 +145,9 @@ validation
         }
         if(error?.response?.data?.errors?.counter){
             validation.showErrors({'#counter': error?.response?.data?.errors?.counter[0]})
+        }
+        if(error?.response?.data?.errors?.image){
+            validation.showErrors({'#image': error?.response?.data?.errors?.image[0]})
         }
         if(error?.response?.data?.message){
             errorToast(error?.response?.data?.message)

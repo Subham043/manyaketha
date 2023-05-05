@@ -2,6 +2,7 @@
 
 namespace App\Modules\Counter\Services;
 
+use App\Http\Services\FileService;
 use App\Modules\Counter\Models\Counter;
 use Illuminate\Database\Eloquent\Collection;
 use Spatie\QueryBuilder\QueryBuilder;
@@ -49,9 +50,27 @@ class CounterService
         return $counter;
     }
 
+    public function saveImage(Counter $counter): Counter
+    {
+        $this->deleteImage($counter);
+        $counter_image = (new FileService)->save_file('image', (new Counter)->image_path);
+        return $this->update([
+            'image' => $counter_image,
+        ], $counter);
+    }
+
     public function delete(Counter $counter): bool|null
     {
+        $this->deleteImage($counter);
         return $counter->delete();
+    }
+
+    public function deleteImage(Counter $counter): void
+    {
+        if($counter->image){
+            $path = str_replace("storage","app/public",$counter->image);
+            (new FileService)->delete_file($path);
+        }
     }
 
     public function main_all(): Collection

@@ -23,6 +23,7 @@ class Counter extends Model
      */
     protected $fillable = [
         'title',
+        'image',
         'counter',
         'is_draft'
     ];
@@ -32,6 +33,10 @@ class Counter extends Model
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
+
+    public $image_path = 'partners';
+
+    protected $appends = ['image_link'];
 
     public static function boot()
     {
@@ -45,6 +50,20 @@ class Counter extends Model
         self::deleted(function ($model) {
             Cache::forget('counters_main');
         });
+    }
+
+    protected function image(): Attribute
+    {
+        return Attribute::make(
+            set: fn (string $value) => 'storage/'.$this->image_path.'/'.$value,
+        );
+    }
+
+    protected function imageLink(): Attribute
+    {
+        return new Attribute(
+            get: fn () => asset($this->image),
+        );
     }
 
     public function user()

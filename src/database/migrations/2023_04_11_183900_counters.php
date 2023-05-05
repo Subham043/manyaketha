@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title', 500)->nullable();
             $table->string('counter', 500)->nullable();
+            $table->string('image', 500)->nullable();
             $table->boolean('is_draft')->default(0);
             $table->foreignId('user_id')->nullable()->constrained('users')->nullOnDelete();
             $table->timestamps();

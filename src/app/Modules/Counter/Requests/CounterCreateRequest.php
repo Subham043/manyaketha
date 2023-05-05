@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Stevebauman\Purify\Facades\Purify;
 
 
-class CounterRequest extends FormRequest
+class CounterCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,7 +29,8 @@ class CounterRequest extends FormRequest
         return [
             'is_draft' => 'required|boolean',
             'title' => 'required|string|max:500',
-            'counter' => 'required|numeric|max:250',
+            'counter' => 'required|numeric',
+            'image' => 'required|image|min:1|max:500',
         ];
     }
 
@@ -44,6 +45,7 @@ class CounterRequest extends FormRequest
             'is_draft' => 'Draft',
             'counter' => 'Counter',
             'title' => 'Title',
+            'image' => 'Icon',
         ];
     }
 

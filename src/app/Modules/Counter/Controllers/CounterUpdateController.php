@@ -3,7 +3,7 @@
 namespace App\Modules\Counter\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Modules\Counter\Requests\CounterRequest;
+use App\Modules\Counter\Requests\CounterUpdateRequest;
 use App\Modules\Counter\Services\CounterService;
 
 class CounterUpdateController extends Controller
@@ -21,7 +21,7 @@ class CounterUpdateController extends Controller
         return view('admin.pages.counter.update', compact('data'));
     }
 
-    public function post(CounterRequest $request, $id){
+    public function post(CounterUpdateRequest $request, $id){
         $counter = $this->counterService->getById($id);
         try {
             //code...
@@ -29,6 +29,9 @@ class CounterUpdateController extends Controller
                 $request->validated(),
                 $counter
             );
+            if($request->hasFile('image')){
+                $this->counterService->saveImage($counter);
+            }
             return response()->json(["message" => "Counter updated successfully."], 201);
         } catch (\Throwable $th) {
             return response()->json(["message" => "Something went wrong. Please try again"], 400);

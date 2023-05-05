@@ -3,7 +3,7 @@
 namespace App\Modules\Counter\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Modules\Counter\Requests\CounterRequest;
+use App\Modules\Counter\Requests\CounterCreateRequest;
 use App\Modules\Counter\Services\CounterService;
 
 class CounterCreateController extends Controller
@@ -20,13 +20,16 @@ class CounterCreateController extends Controller
         return view('admin.pages.counter.create');
     }
 
-    public function post(CounterRequest $request){
+    public function post(CounterCreateRequest $request){
 
         try {
             //code...
-            $this->counterService->create(
+            $counter = $this->counterService->create(
                 $request->validated()
             );
+            if($request->hasFile('image')){
+                $this->counterService->saveImage($counter);
+            }
             return response()->json(["message" => "Counter created successfully."], 201);
         } catch (\Throwable $th) {
             return response()->json(["message" => "Something went wrong. Please try again"], 400);
