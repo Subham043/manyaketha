@@ -1,12 +1,41 @@
 @extends('main.layouts.index')
 
+    @section('css')
+        <title>{{$seo->meta_title}}</title>
+        <meta name="description" content="{{$seo->meta_description}}"/>
+        <meta name="keywords" content="{{$seo->meta_keywords}}"/>
+
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:type" content="profile" />
+        <meta property="og:title" content="{{$seo->meta_title}}" />
+        <meta property="og:description" content="{{$seo->meta_description}}" />
+        <meta property="og:url" content="{{Request::url()}}" />
+        <meta property="og:site_name" content="{{$seo->meta_title}}" />
+        <meta property="og:image" content="{{ asset('assets/images/logo.png')}}" />
+        <meta name="twitter:card" content="{{ asset('assets/images/logo.png')}}" />
+        <meta name="twitter:label1" content="{{$seo->meta_title}}" />
+        <meta name="twitter:data1" content="{{$seo->meta_description}}" />
+
+        <link rel="icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" sizes="32x32" />
+        <link rel="icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" sizes="192x192" />
+        <link rel="apple-touch-icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" />
+
+        {!!$seo->meta_header_script_nonce!!}
+        {!!$seo->meta_header_no_script_nonce!!}
+    @stop
+
     @section('content')
 
     @include('main.includes.preloader')
 
     @include('main.includes.header')
 
-    @include('main.includes.breadcrumb')
+    @include('main.includes.breadcrumb', [
+        'page' => 'Contact Us',
+        'data' => [
+            'Contact Us' => null
+        ]
+    ])
 
     <!-- Contact Section -->
     <section class="contact-section">
@@ -15,35 +44,11 @@
                 <div class="col-lg-3">
                     <div class="contact-info-area mb-30">
                         <div class="sec-title mb-30">
-                            <div class="sub-title">Rofalco Contact</div>
                             <h2><strong>Contact Us</strong></h2>
                         </div>
-                        <ul class="contact-info">
-                            <li>
-                                <div class="icon"><span class="flaticon-gps"></span></div>
-                                <div class="text">2912  Carolyns Circle <br>Dallas TX - 75234</div>
-                            </li>
-                            <li>
-                                <div class="icon"><span class="flaticon-phone"></span></div>
-                                <div class="text">
-                                    <a href="tel:1(258)985-703">1 (258) 985-703</a> <br>
-                                    <a href="tel:1(258)985-706">1 (258) 985-706</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="icon"><span class="flaticon-comment"></span></div>
-                                <div class="text">
-                                    <a href="mailto:support@rofalco.com">support@rofalco.com</a> <br>
-                                    <a href="mailto:info@my-domain.com">info@my-domain.com</a>
-                                </div>
-                            </li>
-                        </ul>
+                        @include('main.includes.common_contact_info')
                         <ul class="social-links">
-                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                            <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                            <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
+                            @include('main.includes.common_social_info')
                         </ul>
                     </div>
                 </div>
@@ -102,3 +107,9 @@
 
     @stop
 
+    @section('js')
+
+        {!!$seo->meta_footer_script_nonce!!}
+        {!!$seo->meta_footer_no_script_nonce!!}
+
+    @stop

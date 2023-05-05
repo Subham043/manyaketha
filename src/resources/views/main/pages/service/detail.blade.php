@@ -1,12 +1,44 @@
 @extends('main.layouts.index')
 
+    @section('css')
+
+        <title>{{$data->meta_title}}</title>
+        <meta name="description" content="{{$data->meta_description}}"/>
+        <meta name="keywords" content="{{$data->meta_keywords}}"/>
+
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:type" content="profile" />
+        <meta property="og:title" content="{{$data->meta_title}}" />
+        <meta property="og:description" content="{{$data->meta_description}}" />
+        <meta property="og:url" content="{{Request::url()}}" />
+        <meta property="og:site_name" content="{{$data->meta_title}}" />
+        <meta property="og:image" content="{{ asset('assets/images/logo.png')}}" />
+        <meta name="twitter:card" content="{{ asset('assets/images/logo.png')}}" />
+        <meta name="twitter:label1" content="{{$data->meta_title}}" />
+        <meta name="twitter:data1" content="{{$data->meta_description}}" />
+
+        <link rel="icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" sizes="32x32" />
+        <link rel="icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" sizes="192x192" />
+        <link rel="apple-touch-icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" />
+
+        {!!$data->meta_header_script!!}
+        {!!$data->meta_header_no_script!!}
+
+    @stop
+
     @section('content')
 
     @include('main.includes.preloader')
 
     @include('main.includes.header')
 
-    @include('main.includes.breadcrumb')
+    @include('main.includes.breadcrumb', [
+        'page' => 'Services',
+        'data' => [
+            'Services' => route('services.get'),
+            $data->name => null
+        ]
+    ])
 
     <!-- Service Details -->
     <section class="services-details">
@@ -66,26 +98,7 @@
                         <div class="widget contact-widget style-two">
                             <div class="widget-content">
                                 <h3 class="widget-title">Get in touch</h3>
-                                <ul class="contact-info">
-                                    <li>
-                                        <div class="icon"><span class="flaticon-gps"></span></div>
-                                        <div class="text">2912  Carolyns Circle <br>Dallas TX - 75234</div>
-                                    </li>
-                                    <li>
-                                        <div class="icon"><span class="flaticon-phone"></span></div>
-                                        <div class="text">
-                                            <a href="tel:1(258)985-703">1 (258) 985-703</a> <br>
-                                            <a href="tel:1(258)985-706">1 (258) 985-706</a>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="icon"><span class="flaticon-comment"></span></div>
-                                        <div class="text">
-                                            <a href="mailto:support@rofalco.com">support@rofalco.com</a> <br>
-                                            <a href="mailto:info@my-domain.com">info@my-domain.com</a>
-                                        </div>
-                                    </li>
-                                </ul>
+                                @include('main.includes.common_contact_info')
                             </div>
                         </div>
                         @if($data->brochure)
@@ -135,3 +148,9 @@
 
     @stop
 
+    @section('js')
+
+        {!!$data->meta_footer_script_nonce!!}
+        {!!$data->meta_footer_no_script_nonce!!}
+
+    @stop

@@ -6,19 +6,15 @@
         <div class="auto-container">
             <div class="inner-container">
                 <div class="left-column">
-                    {{-- <div class="text">Best Global Rooftop Services Company</div> --}}
                     <div class="contact-info">
-                        <li><a href="#"><i class="fas fa-phone"></i>Phone: 1-258-985-703</a></li>
-                        <li><a href="#"><i class="far fa-envelope"></i>info@my-domain.com</a></li>
+                        <li><a href="tel:{{ empty($generalSetting) ? '' : $generalSetting->phone}}"><i class="fas fa-phone"></i>Phone: {{ empty($generalSetting) ? '' : $generalSetting->phone}}</a></li>
+                        <li><a href="mailto:{{ empty($generalSetting) ? '' : $generalSetting->email}}"><i class="far fa-envelope"></i>{{ empty($generalSetting) ? '' : $generalSetting->email}}</a></li>
                     </div>
                 </div>
                 <div class="right-column">
                     <div class="social-links">
                         <ul>
-                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
-                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                            @include('main.includes.common_social_info')
                         </ul>
                     </div>
                 </div>
@@ -32,7 +28,7 @@
             <div class="inner-container">
                 <!--Logo-->
                 <div class="logo-box">
-                    <div class="logo"><a href="index.html"><img src="{{asset('assets/images/logo.png')}}" alt=""></a></div>
+                    <div class="logo"><a href="{{route('home_page.get')}}"><img src="{{ empty($generalSetting) ? asset('assets/images/logo.png') : $generalSetting->website_logo_link}}" alt="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_alt}}" title="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_title}}"></a></div>
                 </div>
                 <div class="right-column">
                     <!--Nav Box-->
@@ -44,45 +40,16 @@
                         <nav class="main-menu navbar-expand-md navbar-light">
                             <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
                                 <ul class="navigation">
-                                    <li class="dropdown"><a href="#">Home</a>
-                                        <ul>
-                                            <li><a href="index.html">Home One</a></li>
-                                            <li><a href="index-2.html">Home Two</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li class="dropdown"><a href="#">Services</a>
-                                        <ul>
-                                            <li><a href="service-1.html">Services One</a></li>
-                                            <li><a href="service-2.html">Services Two</a></li>
-                                            <li><a href="roof-maintenance.html">Roof Maintenance</a></li>
-                                            <li><a href="insulation.html">Insulation & Repairs</a></li>
-                                            <li><a href="roof-inspection.html">Roof Inspection</a></li>
-                                            <li><a href="roof-replacement.html">Roof Replacement</a></li>
-                                            <li><a href="roof-coating.html">Roof Coating</a></li>
-                                            <li><a href="roof-solar.html">Roof Solar Systems</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown"><a href="#">Pages</a>
-                                        <ul>
-                                            <li><a href="team.html">Our Team</a></li>
-                                            <li><a href="portfolio.html">Portfolio</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown"><a href="#">News</a>
-                                        <ul>
-                                            <li><a href="blog.html">Blog Grid</a></li>
-                                            <li><a href="blog-2.html">Blog Classic</a></li>
-                                            <li><a href="blog-details.html">Blog Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="{{route('home_page.get')}}">Home</a></li>
+                                    <li><a href="{{route('about_page.get')}}">About Us</a></li>
+                                    <li><a href="{{route('services.get')}}">Services</a></li>
+                                    <li><a href="{{route('services.get')}}">Projects</a></li>
+                                    <li><a href="{{route('blogs.get')}}">Blogs</a></li>
                                 </ul>
                             </div>
                         </nav>
                     </div>
-                    <div class="search-btn"><button type="button" class="theme-btn search-toggler"><span class="far fa-search"></span></button></div>
-                    <div class="link-btn"><a href="#" class="theme-btn btn-style-one">free estimate</a></div>
+                    <div class="link-btn"><a href="{{route('contact_page.get')}}" class="theme-btn btn-style-one">Contact Us</a></div>
                 </div>
             </div>
         </div>
@@ -111,7 +78,7 @@
         <div class="close-btn"><span class="icon flaticon-remove"></span></div>
 
         <nav class="menu-box">
-            <div class="nav-logo"><a href="index.html"><img src="{{asset('assets/images/logo.png')}}" alt="" title=""></a></div>
+            <div class="nav-logo"><a href="{{route('home_page.get')}}"><img src="{{ empty($generalSetting) ? asset('assets/images/logo.png') : $generalSetting->website_logo_link}}" alt="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_alt}}" title="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_title}}"></a></div>
             <div class="menu-outer"><!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header--></div>
             <!--Social Links-->
             <div class="social-links">

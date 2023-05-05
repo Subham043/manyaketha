@@ -8,13 +8,9 @@
                 <!--Column-->
                 <div class="column col-lg-3 col-md-6">
                     <div class="widget about-widget">
-                        <div class="logo"><a href="index.html"><img src="{{asset('assets/images/logo.png')}}" alt=""></a></div>
+                        <div class="logo"><a href="{{route('home_page.get')}}"><img src="{{ empty($generalSetting) ? asset('assets/images/logo.png') : $generalSetting->website_footer_logo_link}}" alt="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_alt}}" title="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_title}}"></a></div>
                         <ul class="social-links">
-                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                            <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                            <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
+                            @include('main.includes.common_social_info')
                         </ul>
                     </div>
                 </div>
@@ -25,7 +21,7 @@
                         <h3 class="widget-title">Our Services</h3>
                         <div class="widget-content">
                             <ul>
-                                <li><a href="index.html">Commercial Roofing</a></li>
+                                <li><a href="{{route('home_page.get')}}">Commercial Roofing</a></li>
                                 <li><a href="#">Residential Roofing</a></li>
                                 <li><a href="#">Roof Repair & Replacement</a></li>
                                 <li><a href="#">Roof Inspections</a></li>
@@ -42,12 +38,10 @@
                         <h3 class="widget-title">Quick links</h3>
                         <div class="widget-content">
                             <ul>
-                                <li><a href="index.html">Our Locations</a></li>
-                                <li><a href="#">About Rofalco</a></li>
-                                <li><a href="#">Projects Gallery</a></li>
-                                <li><a href="#">Terms of Payment</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
-                                <li><a href="#">Contact us</a></li>
+                                <li><a href="{{route('about_page.get')}}">About Us</a></li>
+                                <li><a href="{{route('services.get')}}">Services</a></li>
+                                <li><a href="{{route('services.get')}}">Projects</a></li>
+                                <li><a href="{{route('contact_page.get')}}">Contact us</a></li>
                             </ul>
                         </div>
                     </div>
@@ -58,26 +52,7 @@
                     <div class="widget contact-widget">
                         <h3 class="widget-title">Get in touch</h3>
                         <div class="widget-content">
-                            <ul class="contact-info">
-                                <li>
-                                    <div class="icon"><span class="flaticon-gps"></span></div>
-                                    <div class="text">2912  Carolyns Circle <br>Dallas TX - 75234</div>
-                                </li>
-                                <li>
-                                    <div class="icon"><span class="flaticon-phone"></span></div>
-                                    <div class="text">
-                                        <a href="tel:1(258)985-703">1 (258) 985-703</a> <br>
-                                        <a href="tel:1(258)985-706">1 (258) 985-706</a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon"><span class="flaticon-comment"></span></div>
-                                    <div class="text">
-                                        <a href="mailto:support@rofalco.com">support@rofalco.com</a> <br>
-                                        <a href="mailto:info@my-domain.com">info@my-domain.com</a>
-                                    </div>
-                                </li>
-                            </ul>
+                            @include('main.includes.common_contact_info')
                         </div>
                     </div>
                 </div>
@@ -89,7 +64,12 @@
     <div class="footer-bottom">
         <div class="auto-container">
             <div class="copyright">
-                <div class="text">(c) {{date('Y')}} ROFALCO - Roofing Services. All rights reserved.</div>
+                <div class="text">(c) {{date('Y')}} {{ empty($generalSetting) ? '' : $generalSetting->website_name}}. All rights reserved.</div>
+                <ul class="social-links d-flex gap-1 flex-wrap justify-content-center align-items-center">
+                    @foreach($legal as $legal)
+                        <li><a href="{{route('legal.get', $legal->slug)}}">{{$legal->page_name}}</a></li>
+                    @endforeach
+                </ul>
             </div>
         </div>
     </div>

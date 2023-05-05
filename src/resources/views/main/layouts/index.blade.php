@@ -9,6 +9,8 @@
 
         @yield('content')
 
+        @include('cookie-consent::index')
+
     </div>
     <!--End pagewrapper-->
 
@@ -16,8 +18,6 @@
     <div class="scroll-to-top scroll-to-target" data-target="html"><span class="flaticon-right-arrow"></span></div>
 
     @include('main.includes.common_script')
-
-    @yield('javascript')
 
 </body>
 

@@ -4,11 +4,17 @@
         <div class="content-box">
             <div class="content-wrapper">
                 <div class="title">
-                    <h1>Contact Us</h1>
+                    <h1>{{$page}}</h1>
                 </div>
                 <ul class="bread-crumb">
                     <li><a href="index.html">Home</a></li>
-                    <li>Contact</li>
+                    @foreach($data as $k => $v)
+                        @if($v)
+                            <li><a href="{{$v}}">{{$k}}</a></li>
+                        @else
+                        <li>{{$k}}</li>
+                        @endif
+                    @endforeach
                 </ul>
             </div>
         </div>

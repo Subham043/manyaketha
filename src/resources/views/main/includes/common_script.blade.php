@@ -12,4 +12,8 @@
 <script src="{{asset('assets/js/TweenMax.min.js')}}"></script>
 <script src="{{asset('assets/js/swiper.min.js')}}"></script>
 
-<script src="{{asset('assets/js/script.js')}}"></script>
+@vite(['resources/js/app.js'])
+
+{!! empty($chatbotSetting) ? '' : $chatbotSetting->chatbot_script_nonce !!}
+
+@yield('js')

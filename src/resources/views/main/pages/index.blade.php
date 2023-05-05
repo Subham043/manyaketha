@@ -1,38 +1,34 @@
 @extends('main.layouts.index')
 
+    @section('css')
+        <title>{{$seo->meta_title}}</title>
+        <meta name="description" content="{{$seo->meta_description}}"/>
+        <meta name="keywords" content="{{$seo->meta_keywords}}"/>
+
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:type" content="profile" />
+        <meta property="og:title" content="{{$seo->meta_title}}" />
+        <meta property="og:description" content="{{$seo->meta_description}}" />
+        <meta property="og:url" content="{{Request::url()}}" />
+        <meta property="og:site_name" content="{{$seo->meta_title}}" />
+        <meta property="og:image" content="{{ asset('assets/images/logo.png')}}" />
+        <meta name="twitter:card" content="{{ asset('assets/images/logo.png')}}" />
+        <meta name="twitter:label1" content="{{$seo->meta_title}}" />
+        <meta name="twitter:data1" content="{{$seo->meta_description}}" />
+
+        <link rel="icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" sizes="32x32" />
+        <link rel="icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" sizes="192x192" />
+        <link rel="apple-touch-icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" />
+
+        {!!$seo->meta_header_script_nonce!!}
+        {!!$seo->meta_header_no_script_nonce!!}
+    @stop
+
     @section('content')
 
     @include('main.includes.preloader')
 
     @include('main.includes.header')
-
-    <!--Search Popup-->
-    <div id="search-popup" class="search-popup">
-        <div class="close-search theme-btn"><span class="flaticon-remove"></span></div>
-        <div class="popup-inner">
-            <div class="overlay-layer"></div>
-            <div class="search-form">
-                <form method="post" action="http://html.tonatheme.com/2020/Rofalco/index.html">
-                    <div class="form-group">
-                        <fieldset>
-                            <input type="search" class="form-control" name="search-input" value="" placeholder="Search Here" required >
-                            <input type="submit" value="Search Now!" class="theme-btn">
-                        </fieldset>
-                    </div>
-                </form>
-                <br>
-                <h3>Recent Search Keywords</h3>
-                <ul class="recent-searches">
-                    <li><a href="#">Finance</a></li>
-                    <li><a href="#">Idea</a></li>
-                    <li><a href="#">Service</a></li>
-                    <li><a href="#">Growth</a></li>
-                    <li><a href="#">Plan</a></li>
-                </ul>
-            </div>
-
-        </div>
-    </div>
 
     @if(count($banner)>0)
     <!-- Bnner Section -->
@@ -373,6 +369,13 @@
     @include('main.includes.cta2')
 
     @include('main.includes.footer')
+
+    @stop
+
+    @section('js')
+
+        {!!$seo->meta_footer_script_nonce!!}
+        {!!$seo->meta_footer_no_script_nonce!!}
 
     @stop
 
