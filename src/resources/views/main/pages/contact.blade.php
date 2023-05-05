@@ -41,7 +41,7 @@
     <section class="contact-section">
         <div class="auto-container">
             <div class="row">
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                     <div class="contact-info-area mb-30">
                         <div class="sec-title mb-30">
                             <h2><strong>Contact Us</strong></h2>
@@ -52,7 +52,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-9">
+                <div class="col-lg-8">
                     <div class="contact-form-area mb-30">
                         <div class="sec-title mb-30">
                             <h2><strong>Get Free Consultation</strong></h2>

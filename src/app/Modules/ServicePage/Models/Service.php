@@ -12,7 +12,7 @@ use Spatie\Activitylog\LogOptions;
 use Spatie\Sitemap\Contracts\Sitemapable;
 use Spatie\Sitemap\Tags\Url;
 
-class Service extends Model
+class Service extends Model implements Sitemapable
 {
     use HasFactory, LogsActivity;
 
@@ -154,6 +154,11 @@ class Service extends Model
         ->logFillable()
         ->logOnlyDirty();
         // Chain fluent methods for configuration options
+    }
+
+    public function toSitemapTag(): Url | string | array
+    {
+        return route('services_detail.get', $this->slug);
     }
 
 }
