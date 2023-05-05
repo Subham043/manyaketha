@@ -28,6 +28,8 @@ class GeneralRequest extends FormRequest
      */
     public function rules()
     {
+        $general = (new GeneralService)->getById(1);
+
         return [
             'facebook' => 'nullable|url|max:250',
             'instagram' => 'nullable|url|max:250',
@@ -39,12 +41,13 @@ class GeneralRequest extends FormRequest
             'website_logo_alt' => 'nullable|string|max:500',
             'website_logo_title' => 'nullable|string|max:500',
             'website_name' => 'required|string|max:500',
-            'website_logo' => ['image','min:10','max:500', Rule::requiredIf(function (){
-                $general = (new GeneralService)->getById(1);
+            'website_logo' => ['image','min:10','max:500', Rule::requiredIf(function () use($general){
                 return empty($general->website_logo);
             })],
-            'website_favicon' => ['image','min:10','max:500', Rule::requiredIf(function (){
-                $general = (new GeneralService)->getById(1);
+            'website_footer_logo' => ['image','min:10','max:500', Rule::requiredIf(function () use($general){
+                return empty($general->website_footer_logo);
+            })],
+            'website_favicon' => ['image','min:10','max:500', Rule::requiredIf(function () use($general){
                 return empty($general->website_favicon);
             })],
         ];

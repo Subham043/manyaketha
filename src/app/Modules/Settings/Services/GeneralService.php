@@ -47,6 +47,24 @@ class GeneralService
         }
     }
 
+    public function saveFooterLogoImage(General $general): General
+    {
+        $this->deleteFooterLogo($general);
+        $website_footer_logo = (new FileService)->save_file('website_footer_logo', (new General)->footer_logo_path);
+        $general->update([
+            'website_footer_logo' => $website_footer_logo,
+        ]);
+        return $general;
+    }
+
+    public function deleteFooterLogo(General $general): void
+    {
+        if($general->website_footer_logo){
+            $path = str_replace("storage","app/public",$general->website_footer_logo);
+            (new FileService)->delete_file($path);
+        }
+    }
+
     public function saveFaviconImage(General $general): General
     {
         $this->deleteFavicon($general);

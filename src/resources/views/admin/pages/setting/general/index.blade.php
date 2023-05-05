@@ -20,23 +20,29 @@
                         <div class="card-body">
                             <div class="live-preview">
                                 <div class="row gy-4">
-                                    <div class="col-xxl-3 col-md-3">
-                                        @include('admin.includes.file_input', ['key'=>'website_logo', 'label'=>'Webiste Logo'])
+                                    <div class="col-xxl-4 col-md-4">
+                                        @include('admin.includes.file_input', ['key'=>'website_logo', 'label'=>'Webiste Header Logo'])
                                         @if(!empty($data->website_logo_link))
                                             <img src="{{$data->website_logo_link}}" alt="" class="img-preview">
                                         @endif
                                     </div>
-                                    <div class="col-xxl-3 col-md-3">
-                                        @include('admin.includes.input', ['key'=>'website_logo_alt', 'label'=>'Website Logo Alt', 'value'=>!empty($data) ? (old('website_logo_alt') ? old('website_logo_alt') : $data->website_logo_alt) : old('website_logo_alt')])
+                                    <div class="col-xxl-4 col-md-4">
+                                        @include('admin.includes.file_input', ['key'=>'website_footer_logo', 'label'=>'Webiste Footer Logo'])
+                                        @if(!empty($data->website_footer_logo_link))
+                                            <img src="{{$data->website_footer_logo_link}}" alt="" class="img-preview">
+                                        @endif
                                     </div>
-                                    <div class="col-xxl-3 col-md-3">
-                                        @include('admin.includes.input', ['key'=>'website_logo_title', 'label'=>'Website Logo Title', 'value'=>!empty($data) ? (old('website_logo_title') ? old('website_logo_title') : $data->website_logo_title) : old('website_logo_title')])
-                                    </div>
-                                    <div class="col-xxl-3 col-md-3">
+                                    <div class="col-xxl-4 col-md-4">
                                         @include('admin.includes.file_input', ['key'=>'website_favicon', 'label'=>'Webiste Favicon'])
                                         @if(!empty($data->website_favicon_link))
                                             <img src="{{$data->website_favicon_link}}" alt="" class="img-preview">
                                         @endif
+                                    </div>
+                                    <div class="col-xxl-6 col-md-6">
+                                        @include('admin.includes.input', ['key'=>'website_logo_alt', 'label'=>'Website Logo Alt', 'value'=>!empty($data) ? (old('website_logo_alt') ? old('website_logo_alt') : $data->website_logo_alt) : old('website_logo_alt')])
+                                    </div>
+                                    <div class="col-xxl-6 col-md-6">
+                                        @include('admin.includes.input', ['key'=>'website_logo_title', 'label'=>'Website Logo Title', 'value'=>!empty($data) ? (old('website_logo_title') ? old('website_logo_title') : $data->website_logo_title) : old('website_logo_title')])
                                     </div>
                                     <div class="col-xxl-4 col-md-4">
                                         @include('admin.includes.input', ['key'=>'website_name', 'label'=>'Website Name', 'value'=>!empty($data) ? (old('website_name') ? old('website_name') : $data->website_name) : old('website_name')])
@@ -204,6 +210,27 @@ validation
         },
     },
   ])
+  .addField('#website_footer_logo', [
+    {
+        rule: 'minFilesCount',
+        value: 0,
+    },
+    {
+        rule: 'maxFilesCount',
+        value: 1,
+    },
+    {
+        rule: 'files',
+        value: {
+        files: {
+            extensions: ['jpeg', 'jpg', 'png', 'webp'],
+            maxSize: 500000,
+            minSize: 100,
+            types: ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'],
+        },
+        },
+    },
+  ])
   .addField('#website_favicon', [
     {
         rule: 'minFilesCount',
@@ -254,6 +281,9 @@ validation
         if((document.getElementById('website_logo').files).length>0){
             formData.append('website_logo',document.getElementById('website_logo').files[0])
         }
+        if((document.getElementById('website_footer_logo').files).length>0){
+            formData.append('website_footer_logo',document.getElementById('website_footer_logo').files[0])
+        }
         if((document.getElementById('website_favicon').files).length>0){
             formData.append('website_favicon',document.getElementById('website_favicon').files[0])
         }
@@ -294,6 +324,9 @@ validation
         }
         if(error?.response?.data?.errors?.website_logo){
             validation.showErrors({'#website_logo': error?.response?.data?.errors?.website_logo[0]})
+        }
+        if(error?.response?.data?.errors?.website_footer_logo){
+            validation.showErrors({'#website_footer_logo': error?.response?.data?.errors?.website_footer_logo[0]})
         }
         if(error?.response?.data?.errors?.website_favicon){
             validation.showErrors({'#website_favicon': error?.response?.data?.errors?.website_favicon[0]})

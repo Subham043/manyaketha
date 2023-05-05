@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('general_website_settings', function (Blueprint $table) {
             $table->id();
             $table->string('website_logo', 500)->nullable();
+            $table->string('website_footer_logo', 500)->nullable();
             $table->string('website_logo_alt', 500)->nullable();
             $table->string('website_logo_title', 500)->nullable();
             $table->string('website_favicon', 500)->nullable();

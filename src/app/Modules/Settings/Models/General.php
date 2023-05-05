@@ -30,6 +30,7 @@ class General extends Model
         'instagram',
         'youtube',
         'website_logo',
+        'website_footer_logo',
         'website_logo_alt',
         'website_logo_title',
         'website_favicon',
@@ -42,9 +43,10 @@ class General extends Model
     ];
 
     public $logo_path = 'general_website_settings_logo';
+    public $footer_logo_path = 'general_website_settings_footer_logo';
     public $favicon_path = 'general_website_settings_favicon';
 
-    protected $appends = ['website_logo_link', 'website_favicon_link'];
+    protected $appends = ['website_logo_link', 'website_footer_logo_link', 'website_favicon_link'];
 
     public static function boot()
     {
@@ -67,6 +69,13 @@ class General extends Model
         );
     }
 
+    protected function websiteFooterLogo(): Attribute
+    {
+        return Attribute::make(
+            set: fn (string $value) => !empty($value) ? 'storage/'.$this->footer_logo_path.'/'.$value : $this->website_footer_logo,
+        );
+    }
+
     protected function websiteFavicon(): Attribute
     {
         return Attribute::make(
@@ -78,6 +87,13 @@ class General extends Model
     {
         return new Attribute(
             get: fn () => asset($this->website_logo),
+        );
+    }
+
+    protected function websiteFooterLogoLink(): Attribute
+    {
+        return new Attribute(
+            get: fn () => asset($this->website_footer_logo),
         );
     }
 

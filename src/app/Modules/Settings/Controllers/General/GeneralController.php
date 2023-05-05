@@ -25,10 +25,13 @@ class GeneralController extends Controller
         try {
             //code...
             $general = $this->generalService->createOrUpdate(
-                $request->except(['website_logo', 'website_favicon']),
+                $request->except(['website_logo', 'website_footer_logo', 'website_favicon']),
             );
             if($request->hasFile('website_logo')){
                 $this->generalService->saveLogoImage($general);
+            }
+            if($request->hasFile('website_footer_logo')){
+                $this->generalService->saveFooterLogoImage($general);
             }
             if($request->hasFile('website_favicon')){
                 $this->generalService->saveFaviconImage($general);
