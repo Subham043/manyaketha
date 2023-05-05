@@ -22,7 +22,7 @@ class ContactForm extends Model
         'name',
         'email',
         'phone',
-        'subject',
+        'service',
         'message',
         'page_url',
     ];

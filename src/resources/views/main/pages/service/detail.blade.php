@@ -108,34 +108,7 @@
                             </div>
                         </div>
                         @endif
-                        <div class="widget widget_contact-form">
-                            <h3 class="widget-title">Request a Free Quote</h3>
-                            <div class="text">Fill-in the form & send for a quick estimate</div>
-                            <form action="#" class="">
-                                <div class="form-group">
-                                    <input placeholder="name" type="text">
-                                </div>
-                                <div class="form-group">
-                                    <input placeholder="Email" type="email">
-                                </div>
-                                <div class="form-group">
-                                    <input placeholder="Phone" type="text">
-                                </div>
-                                <div class="form-group">
-                                    <select class="selectpicker" name="subject">
-                                        <option value="*">Service Required</option>
-                                        @if(count($serviceOption)>0)
-                                            @foreach($serviceOption as $v)
-                                            <option value="{!!$v->name!!}">{!!$v->name!!}</option>
-                                            @endforeach
-                                        @endif
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" class="theme-btn btn-style-one w-100"><span>Submit Now</span></button>
-                                </div>
-                            </form>
-                        </div>
+                        @include('main.includes.common_contact')
                     </div>
                 </aside>
             </div>
@@ -149,6 +122,11 @@
     @stop
 
     @section('js')
+
+        <script src="{{ asset('admin/js/pages/just-validate.production.min.js') }}"></script>
+        <script src="{{ asset('admin/js/pages/iziToast.min.js') }}"></script>
+        <script src="{{ asset('admin/js/pages/axios.min.js') }}"></script>
+        @include('main.includes.common_contact_script')
 
         {!!$data->meta_footer_script_nonce!!}
         {!!$data->meta_footer_no_script_nonce!!}

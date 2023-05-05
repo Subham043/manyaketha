@@ -90,15 +90,7 @@
                                 @include('main.includes.common_contact_info')
                             </div>
                         </div>
-                        <div class="widget widget_cta">
-                            <div class="widget-content">
-                                <div class="image"><img src="{{asset('assets/images/resource/news-16.jpg')}}" alt=""></div>
-                                <div class="content">
-                                    <div class="text">Commercial & <br> Specialty Roofing <br> Contractors</div>
-                                    <a href="{{route('contact_page.get')}}" class="theme-btn btn-style-one style-three"><span>Learn More</span></a>
-                                </div>
-                            </div>
-                        </div>
+                        @include('main.includes.common_contact')
                     </div>
                 </aside>
             </div>
@@ -113,6 +105,11 @@
     @stop
 
     @section('js')
+
+        <script src="{{ asset('admin/js/pages/just-validate.production.min.js') }}"></script>
+        <script src="{{ asset('admin/js/pages/iziToast.min.js') }}"></script>
+        <script src="{{ asset('admin/js/pages/axios.min.js') }}"></script>
+        @include('main.includes.common_contact_script')
 
         {!!$data->meta_footer_script_nonce!!}
         {!!$data->meta_footer_no_script_nonce!!}

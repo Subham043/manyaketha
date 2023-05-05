@@ -276,36 +276,32 @@
                         <div class="estimate-form">
                             <div class="title">Get Free Consultation</div>
                             <div class="sub-title">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea duis aute irure dolor in reprehenderit in voluptate. </div>
-                            <form action="#" class="">
+                            <form method="post" id="contactForm">
                                 <div class="row">
                                     <div class="form-group col-md-6">
-                                        <input placeholder="name" type="text">
+                                        <input placeholder="name" id="name" name="name" type="text">
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <input placeholder="Email" type="email">
+                                        <input placeholder="Email" id="email" name="email" type="email">
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <input placeholder="Phone" type="text">
+                                        <input placeholder="Phone" id="phone" name="phone" type="text">
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <select class="selectpicker" name="subject">
-                                            <option value="*">City</option>
-                                            <option value=".category-1">New York</option>
-                                            <option value=".category-2">California</option>
-                                            <option value=".category-3">los angeles</option>
+                                        <select class="selectpicker" name="service" id="service">
+                                            <option value="">Service Required</option>
+                                            @if(count($serviceOption)>0)
+                                                @foreach($serviceOption as $v)
+                                                <option value="{!!$v->name!!}">{!!$v->name!!}</option>
+                                                @endforeach
+                                            @endif
                                         </select>
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <select class="selectpicker" name="subject">
-                                            <option value="*">Subject / Discuss About Service</option>
-                                            <option value=".category-1">Roof Maintenance</option>
-                                            <option value=".category-2">Roof Inspection</option>
-                                            <option value=".category-3">Insulation & Repairs</option>
-                                            <option value=".category-4">Roof Replacement</option>
-                                        </select>
+                                        <textarea name="form_message" id="message" name="message" placeholder="Message"></textarea>
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <button type="submit" class="theme-btn btn-style-one w-100"><span>Submit Now</span></button>
+                                        <button type="submit" class="theme-btn btn-style-one w-100"><span id="submitBtn">Submit Now</span></button>
                                     </div>
                                 </div>
                             </form>
@@ -373,6 +369,11 @@
     @stop
 
     @section('js')
+
+    <script src="{{ asset('admin/js/pages/just-validate.production.min.js') }}"></script>
+    <script src="{{ asset('admin/js/pages/iziToast.min.js') }}"></script>
+    <script src="{{ asset('admin/js/pages/axios.min.js') }}"></script>
+    @include('main.includes.common_contact_script')
 
         {!!$seo->meta_footer_script_nonce!!}
         {!!$seo->meta_footer_no_script_nonce!!}

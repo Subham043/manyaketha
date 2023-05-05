@@ -58,32 +58,32 @@
                             <h2><strong>Get Free Consultation</strong></h2>
                             <div class="text">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea duis aute irure dolor <br> in reprehenderit in voluptate.</div>
                         </div>
-                        <form action="assets/inc/sendmail.php" class="contact-form" id="contact-form" method="post">
+                        <form class="contact-form" id="contactForm" method="post">
                             <div class="row">
                                 <div class="form-group col-lg-6">
-                                    <input name="form_name" placeholder="name" type="text" class="form-control">
+                                    <input name="form_name" placeholder="name" id="name" name="name" type="text" class="form-control">
                                 </div>
                                 <div class="form-group col-lg-6">
-                                    <input name="form_email" placeholder="Email" type="email" class="form-control">
+                                    <input name="form_email" placeholder="Email" id="email" name="email" type="email" class="form-control">
                                 </div>
-                                <div class="form-group col-lg-12">
-                                    <input name="form_phone" placeholder="Phone" type="text" class="form-control">
+                                <div class="form-group col-lg-6">
+                                    <input name="form_phone" placeholder="Phone" id="phone" name="phone" type="text" class="form-control">
                                 </div>
-                                <div class="form-group col-lg-12">
-                                    <select class="selectpicker form-control" name="form_subject">
-                                        <option value="*">Subject / Discuss About Service</option>
-                                        <option value=".category-1">Roof Maintenance</option>
-                                        <option value=".category-2">Roof Inspection</option>
-                                        <option value=".category-3">Insulation & Repairs</option>
-                                        <option value=".category-4">Roof Replacement</option>
+                                <div class="form-group col-lg-6">
+                                    <select class="selectpicker form-control" name="service" id="service">
+                                        <option value="">Service Required</option>
+                                        @if(count($serviceOption)>0)
+                                            @foreach($serviceOption as $v)
+                                            <option value="{!!$v->name!!}">{!!$v->name!!}</option>
+                                            @endforeach
+                                        @endif
                                     </select>
                                 </div>
                                 <div class="form-group col-lg-12">
-                                    <textarea name="form_message" placeholder="Message" class="form-control"></textarea>
+                                    <textarea name="form_message" placeholder="Message" id="message" name="message" class="form-control"></textarea>
                                 </div>
                                 <div class="form-group col-lg-12">
-                                    <input id="form_botcheck" name="form_botcheck" class="form-control" type="hidden" value="">
-                                    <button class="theme-btn btn-style-one w-100" type="submit" data-loading-text="Please wait..."><span>Send Message</span></button>
+                                    <button class="theme-btn btn-style-one w-100" type="submit"><span id="submitBtn">Send Message</span></button>
                                 </div>
                             </div>
                         </form>
@@ -108,6 +108,11 @@
     @stop
 
     @section('js')
+
+        <script src="{{ asset('admin/js/pages/just-validate.production.min.js') }}"></script>
+        <script src="{{ asset('admin/js/pages/iziToast.min.js') }}"></script>
+        <script src="{{ asset('admin/js/pages/axios.min.js') }}"></script>
+        @include('main.includes.common_contact_script')
 
         {!!$seo->meta_footer_script_nonce!!}
         {!!$seo->meta_footer_no_script_nonce!!}
