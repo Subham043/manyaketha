@@ -40,7 +40,7 @@
         <div class="auto-container">
             <div class="row">
                 <div class="col-lg-8 content-side order-lg-2">
-                    <h2>{!! $data->heading !!}</h2>
+                    <h2>{{ $data->heading }}</h2>
                     <div class="text">
                         {!! $data->description !!}
                     </div>
@@ -72,7 +72,7 @@
                                         <option value="*">Service Required</option>
                                         @if(count($serviceOption)>0)
                                             @foreach($serviceOption as $serviceOption)
-                                            <option value="{!!$serviceOption->name!!}">{!!$serviceOption->name!!}</option>
+                                            <option value="{{$serviceOption->name}}">{{$serviceOption->name}}</option>
                                             @endforeach
                                         @endif
                                     </select>

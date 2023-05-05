@@ -53,7 +53,7 @@
                             <div class="content-box">
                                 <div class="bottom-content">
                                     <div class="date"><strong>{{$data->created_at->format('j')}}</strong> <br> {{$data->created_at->format('F')}}</div>
-                                    <h2>{!!$data->heading!!}</h2>
+                                    <h2>{{$data->heading}}</h2>
                                 </div>
                                 <div class="text">
                                     {!!$data->description!!}

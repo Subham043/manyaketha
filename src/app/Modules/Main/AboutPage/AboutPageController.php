@@ -10,6 +10,7 @@ use App\Modules\Legal\Services\LegalService;
 use App\Modules\Main\BaseController\BaseController;
 use App\Modules\Partner\Services\PartnerService;
 use App\Modules\Seo\Services\SeoService;
+use App\Modules\ServicePage\Services\Service;
 use App\Modules\Settings\Services\ChatbotService;
 use App\Modules\Settings\Services\GeneralService;
 use App\Modules\Settings\Services\ThemeService;
@@ -25,6 +26,7 @@ class AboutPageController extends BaseController
     private AdditionalContentService $additionalContentService;
     private TeamService $teamService;
     private TeamHeadingService $teamHeadingService;
+    private Service $service;
 
     public function __construct(
         SeoService $seoService,
@@ -39,6 +41,7 @@ class AboutPageController extends BaseController
         AdditionalContentService $additionalContentService,
         TeamService $teamService,
         TeamHeadingService $teamHeadingService,
+        Service $service,
     )
     {
         parent::__construct($seoService, $generalService, $themeService, $chatbotService, $legalService);
@@ -49,6 +52,7 @@ class AboutPageController extends BaseController
         $this->additionalContentService = $additionalContentService;
         $this->teamService = $teamService;
         $this->teamHeadingService = $teamHeadingService;
+        $this->service = $service;
     }
 
     public function get(){
@@ -64,6 +68,7 @@ class AboutPageController extends BaseController
         $additionalContent = $this->additionalContentService->main_all();
         $team = $this->teamService->main_all();
         $teamHeading = $this->teamHeadingService->getById(1);
+        $serviceOption = $this->service->main_all();
         return view('main.pages.about', compact([
             'seo',
             'generalSetting',
@@ -77,6 +82,7 @@ class AboutPageController extends BaseController
             'additionalContent',
             'team',
             'teamHeading',
+            'serviceOption',
         ]));
     }
 

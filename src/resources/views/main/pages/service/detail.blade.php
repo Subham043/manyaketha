@@ -84,12 +84,12 @@
                 </div>
                 <aside class="col-lg-4 sidebar">
                     <div class="service-sidebar">
-                        @if(count($service)>0)
+                        @if(count($serviceOption)>0)
                         <div class="widget widget_categories_two">
                             <div class="widget-content">
                                 <ul>
-                                    @foreach($service as $service)
-                                    <li @class(["current"=>$data->slug==$service->slug])><a href="{{route('services_detail.get', $service->slug)}}">{!!$service->name!!}</a></li>
+                                    @foreach($serviceOption as $v)
+                                    <li @class(["current"=>$data->slug==$v->slug])><a href="{{route('services_detail.get', $v->slug)}}">{!!$v->name!!}</a></li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -125,8 +125,8 @@
                                     <select class="selectpicker" name="subject">
                                         <option value="*">Service Required</option>
                                         @if(count($serviceOption)>0)
-                                            @foreach($serviceOption as $serviceOption)
-                                            <option value="{!!$serviceOption->name!!}">{!!$serviceOption->name!!}</option>
+                                            @foreach($serviceOption as $v)
+                                            <option value="{!!$v->name!!}">{!!$v->name!!}</option>
                                             @endforeach
                                         @endif
                                     </select>

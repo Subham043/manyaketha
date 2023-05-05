@@ -21,12 +21,9 @@
                         <h3 class="widget-title">Our Services</h3>
                         <div class="widget-content">
                             <ul>
-                                <li><a href="{{route('home_page.get')}}">Commercial Roofing</a></li>
-                                <li><a href="#">Residential Roofing</a></li>
-                                <li><a href="#">Roof Repair & Replacement</a></li>
-                                <li><a href="#">Roof Inspections</a></li>
-                                <li><a href="#">Emergency Roofing Repair</a></li>
-                                <li><a href="#">Roof Survey</a></li>
+                                @foreach($serviceOption as $v)
+                                <li><a href="{{route('services_detail.get', $v->slug)}}">{{$v->name}}</a></li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>

@@ -44,9 +44,9 @@
         <div class="auto-container">
             @if($featureHeading)
             <div class="sec-title text-center">
-                <div class="sub-title">{!!$featureHeading->sub_heading!!}</div>
-                <h2>{!!$featureHeading->heading!!}</h2>
-                <div class="text">{!!$featureHeading->description!!}</div>
+                <div class="sub-title">{{$featureHeading->sub_heading}}</div>
+                <h2>{{$featureHeading->heading}}</h2>
+                <div class="text">{{$featureHeading->description}}</div>
             </div>
             @endif
             @include('main.includes.feature', ['feature'=>$feature])

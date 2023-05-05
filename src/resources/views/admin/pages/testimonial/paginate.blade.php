@@ -24,9 +24,6 @@
                                 <div class="row gy-4">
                                     <div class="col-xxl-6 col-md-6">
                                         @include('admin.includes.input', ['key'=>'heading', 'label'=>'Heading', 'value'=>!empty($testimonialHeading) ? (old('heading') ? old('heading') : $testimonialHeading->heading) : old('heading')])
-                                        <p>
-                                            <code>Note: </code> Put the text in between span tags to make it highlighted
-                                        </p>
                                     </div>
                                     <div class="col-xxl-6 col-md-6">
                                         @include('admin.includes.input', ['key'=>'sub_heading', 'label'=>'Sub Heading', 'value'=>!empty($testimonialHeading) ? (old('sub_heading') ? old('sub_heading') : $testimonialHeading->sub_heading) : old('sub_heading')])

@@ -6,6 +6,7 @@ use App\Modules\Legal\Services\LegalService;
 use App\Modules\Blog\Services\BlogService;
 use App\Modules\Main\BaseController\BaseController;
 use App\Modules\Seo\Services\SeoService;
+use App\Modules\ServicePage\Services\Service;
 use App\Modules\Settings\Services\ChatbotService;
 use App\Modules\Settings\Services\GeneralService;
 use App\Modules\Settings\Services\ThemeService;
@@ -14,6 +15,7 @@ use Illuminate\Http\Request;
 class BlogPageController extends BaseController
 {
     private $blogService;
+    private Service $service;
 
     public function __construct(
         SeoService $seoService,
@@ -22,10 +24,12 @@ class BlogPageController extends BaseController
         ChatbotService $chatbotService,
         LegalService $legalService,
         BlogService $blogService,
+        Service $service,
     )
     {
         parent::__construct($seoService, $generalService, $themeService, $chatbotService, $legalService);
         $this->blogService = $blogService;
+        $this->service = $service;
     }
 
     public function get(Request $request){
@@ -35,13 +39,15 @@ class BlogPageController extends BaseController
         $chatbotSetting = $this->chatbotService->getById(1);
         $blogs = $this->blogService->main_paginate($request->total ?? 10);
         $legal = $this->legalService->main_all();
+        $serviceOption = $this->service->main_all();
         return view('main.pages.blogs.index', compact([
             'seo',
             'generalSetting',
             'themeSetting',
             'chatbotSetting',
             'blogs',
-            'legal'
+            'legal',
+            'serviceOption',
         ]));
     }
 

@@ -37,8 +37,7 @@ class LegalPageController extends Controller
         $themeSetting = $this->themeService->getById(1);
         $chatbotSetting = $this->chatbotService->getById(1);
         $legal = $this->legalService->main_all();
-        $service = $this->service->main_all();
-        $serviceOption = $service;
+        $serviceOption = $this->service->main_all();
         $data = $this->legalService->getBySlugMain($legal_slug);
         return view('main.pages.legal', compact([
             'generalSetting',
@@ -46,7 +45,6 @@ class LegalPageController extends Controller
             'chatbotSetting',
             'data',
             'legal',
-            'service',
             'serviceOption',
         ]));
     }

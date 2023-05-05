@@ -41,9 +41,9 @@
                     <div class="content-outer">
                         <div class="content-box">
                             <div class="inner">
-                                <h4>{!!$banner->sub_title!!}</h4>
-                                <h1>{!!$banner->title!!}</h1>
-                                <div class="text">{!!$banner->description!!}</div>
+                                <h4>{{$banner->sub_title}}</h4>
+                                <h1>{{$banner->title}}</h1>
+                                <div class="text">{{$banner->description}}</div>
                                 <div class="link-box">
                                     <a href="{{$banner->button_link}}" class="theme-btn btn-style-one style-four"><span>View Detail</span></a>
                                     <a href="{{route('contact_page.get')}}" class="theme-btn btn-style-one style-two"><span>Contact Us</span></a>
@@ -76,34 +76,34 @@
 
     @include('main.includes.counter', ['counter'=>$counter])
 
-    @if(count($service)>0)
+    @if(count($services)>0)
     <!-- Services Section Two -->
     <section class="services-section-two style-two pb-0">
         <div class="auto-container">
             @if($headingService)
             <div class="row align-items-center justify-content-between m-0">
                 <div class="sec-title col-lg-6 col-sm-12 p-0">
-                    <div class="sub-title">{!!$headingService->sub_heading!!}</div>
-                    <h2>{!!$headingService->heading!!}</h2>
+                    <div class="sub-title">{{$headingService->sub_heading}}</div>
+                    <h2>{{$headingService->heading}}</h2>
                 </div>
-                <div class="text col-lg-6 col-sm-12 p-0">{!!$headingService->description!!}</div>
+                <div class="text col-lg-6 col-sm-12 p-0">{{$headingService->description}}</div>
             </div>
             @endif
             <div class="row">
                 <div class="theme_carousel owl-theme owl-carousel" data-options='{"loop": true, "margin": 0, "autoheight":true, "lazyload":true, "nav": true, "dots": true, "autoplay": true, "autoplayTimeout": 6000, "smartSpeed": 300, "responsive":{ "0" :{ "items": "1" }, "600" :{ "items" : "2" }, "768" :{ "items" : "2" } , "992":{ "items" : "3" }, "1200":{ "items" : "3" }}}'>
-                    @foreach($service as $service)
+                    @foreach($services as $services)
                     <div class="service-block-two col-12">
                         <div class="inner-box">
                             <div class="image">
-                                <img src="{{$service->image_link}}" alt="">
+                                <img src="{{$services->image_link}}" alt="">
                                 <div class="overlay">
-                                    <div class="link-btn"><a href="{{route('services_detail.get', $service->slug)}}"><i class="flaticon-add"></i></a></div>
+                                    <div class="link-btn"><a href="{{route('services_detail.get', $services->slug)}}"><i class="flaticon-add"></i></a></div>
                                 </div>
                             </div>
                             <div class="lower-content">
-                                <h4><span>{!!$service->name!!}</span></h4>
-                                <div class="text">{{Str::limit($service->description_unfiltered, 150)}}</div>
-                                <div class="read-more-btn"><a href="{{route('services_detail.get', $service->slug)}}">Learn More</a></div>
+                                <h4><span>{!!$services->name!!}</span></h4>
+                                <div class="text">{{Str::limit($services->description_unfiltered, 150)}}</div>
+                                <div class="read-more-btn"><a href="{{route('services_detail.get', $services->slug)}}">Learn More</a></div>
                             </div>
                         </div>
                     </div>
@@ -240,20 +240,20 @@
                     <div class="inner-container">
                         @if($testimonialHeading)
                         <div class="sec-title light">
-                            <div class="sub-title">{!!$testimonialHeading->sub_heading!!}</div>
-                            <h2>{!!$testimonialHeading->heading!!}</h2>
+                            <div class="sub-title">{{$testimonialHeading->sub_heading}}</div>
+                            <h2>{{$testimonialHeading->heading}}</h2>
                         </div>
                         @endif
                         <div class="theme_carousel owl-theme owl-carousel" data-options='{"loop": true, "margin": 0, "autoheight":true, "lazyload":true, "nav": true, "dots": true, "autoplay": true, "autoplayTimeout": 6000, "smartSpeed": 300, "responsive":{ "0" :{ "items": "1" }, "600" :{ "items" : "1" }, "768" :{ "items" : "1" } , "992":{ "items" : "1" }, "1200":{ "items" : "1" }}}'>
                             @foreach($testimonial as $testimonial)
                             <div class="testimonial-block p-0 style-two">
                                 <div class="inner-box">
-                                    <div class="text">“{!!$testimonial->message!!}”</div>
+                                    <div class="text">“{{$testimonial->message}}”</div>
                                     <div class="author-box">
                                         <div class="author-thumb"><img src="{{asset('assets/images/resource/author-1.jpg')}}" alt=""></div>
                                         <div class="content">
-                                            <h4>{!!$testimonial->name!!}</h4>
-                                            <div class="designation">{!!$testimonial->designation!!}</div>
+                                            <h4>{{$testimonial->name}}</h4>
+                                            <div class="designation">{{$testimonial->designation}}</div>
                                             <div class="rating">
                                                 <span class="fas fa-star"></span>
                                                 <span class="fas fa-star"></span>
@@ -323,10 +323,10 @@
             @if($blogHeading)
             <div class="row align-items-center justify-content-between m-0">
                 <div class="sec-title col-lg-6 col-sm-12">
-                    <div class="sub-title">{!!$blogHeading->sub_heading!!}</div>
-                    <h2>{!!$blogHeading->heading!!}</h2>
+                    <div class="sub-title">{{$blogHeading->sub_heading}}</div>
+                    <h2>{{$blogHeading->heading}}</h2>
                 </div>
-                <div class="text col-lg-6 col-sm-12">{!!$blogHeading->description!!}</div>
+                <div class="text col-lg-6 col-sm-12">{{$blogHeading->description}}</div>
             </div>
             @endif
             <div class="row">

@@ -43,16 +43,16 @@
             @if($headingService)
             <div class="row align-items-center justify-content-between m-0">
                 <div class="sec-title col-lg-6 col-sm-12 p-0">
-                    <div class="sub-title">{!!$headingService->sub_heading!!}</div>
-                    <h2>{!!$headingService->heading!!}</h2>
+                    <div class="sub-title">{{$headingService->sub_heading}}</div>
+                    <h2>{{$headingService->heading}}</h2>
                 </div>
-                <div class="text col-lg-6 col-sm-12 p-0">{!!$headingService->description!!}</div>
+                <div class="text col-lg-6 col-sm-12 p-0">{{$headingService->description}}</div>
             </div>
             @endif
-            @if($service->total() > 0)
+            @if($services->total() > 0)
                 <div class="row">
 
-                    @foreach ($service->items() as $k => $v)
+                    @foreach ($services->items() as $k => $v)
 
                         <div class="col-lg-4 col-md-6 service-block-two">
                             <div class="inner-box">
@@ -63,7 +63,7 @@
                                     </div>
                                 </div>
                                 <div class="lower-content">
-                                    <h4><span>{!!$v->name!!}</span></h4>
+                                    <h4><span>{{$v->name}}</span></h4>
                                 <div class="text">{{Str::limit($v->description_unfiltered, 150)}}</div>
                                 <div class="read-more-btn"><a href="{{route('services_detail.get', $v->slug)}}">Learn More</a></div>
                                 </div>
@@ -74,7 +74,7 @@
 
                 </div>
                 <div>
-                    {{$service->onEachSide(5)->links('main.includes.pagination')}}
+                    {{$services->onEachSide(5)->links('main.includes.pagination')}}
                 </div>
             @endif
         </div>

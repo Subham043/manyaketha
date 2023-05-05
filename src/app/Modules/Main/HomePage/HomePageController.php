@@ -116,9 +116,10 @@ class HomePageController extends BaseController
         $blogHeading = $this->blogHeadingService->getById(1);
         $project = $this->projectService->main_latest_four();
         $projectHeading = $this->projectHeadingService->getById(1);
-        $service = $this->service->main_latest_six();
+        $services = $this->service->main_latest_six();
         $headingService = $this->headingService->getById(1);
         $about = $this->aboutService->getById(1);
+        $serviceOption = $this->service->main_all();
         return view('main.pages.index', compact([
             'legal',
             'seo',
@@ -141,8 +142,9 @@ class HomePageController extends BaseController
             'blogHeading',
             'project',
             'projectHeading',
-            'service',
+            'services',
             'headingService',
+            'serviceOption',
         ]));
     }
 

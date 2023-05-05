@@ -39,15 +39,13 @@ class ServiceDetailPageController extends BaseController
         $legal = $this->legalService->main_all();
         $testimonial = $this->testimonialService->main_all();
         $data = $this->service->getBySlugMain($slug);
-        $service = $this->service->main_all();
-        $serviceOption = $service;
+        $serviceOption = $this->service->main_all();
         return view('main.pages.service.detail', compact([
             'seo',
             'generalSetting',
             'themeSetting',
             'chatbotSetting',
             'legal',
-            'service',
             'serviceOption',
             'testimonial',
             'data',

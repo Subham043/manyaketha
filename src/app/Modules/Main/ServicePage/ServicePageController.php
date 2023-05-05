@@ -46,7 +46,8 @@ class ServicePageController extends BaseController
         $themeSetting = $this->themeService->getById(1);
         $chatbotSetting = $this->chatbotService->getById(1);
         $legal = $this->legalService->main_all();
-        $service = $this->service->main_paginate($request->total ?? 10);
+        $services = $this->service->main_paginate($request->total ?? 10);
+        $serviceOption = $this->service->main_all();
         $headingService = $this->headingService->getById(1);
         $procedure = $this->procedureService->main_all();
         $procedureHeading = $this->procedureHeadingService->getById(1);
@@ -56,7 +57,8 @@ class ServicePageController extends BaseController
             'themeSetting',
             'chatbotSetting',
             'legal',
-            'service',
+            'services',
+            'serviceOption',
             'headingService',
             'procedure',
             'procedureHeading',

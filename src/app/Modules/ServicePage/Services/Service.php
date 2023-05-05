@@ -102,7 +102,7 @@ class Service
     public function main_all()
     {
         return Cache::remember('all_service_main', 60*60*24, function(){
-            return ServiceModel::where('is_draft', true)->get();
+            return ServiceModel::select('name', 'heading', 'slug', 'id')->where('is_draft', true)->get();
         });
     }
 

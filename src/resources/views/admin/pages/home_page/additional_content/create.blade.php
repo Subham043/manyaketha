@@ -25,9 +25,6 @@
                                 <div class="row gy-4">
                                     <div class="col-xxl-4 col-md-4">
                                         @include('admin.includes.input', ['key'=>'heading', 'label'=>'Heading', 'value'=>old('heading')])
-                                        <p>
-                                            <code>Note: </code> Put the text in between span tags to make it highlighted
-                                        </p>
                                     </div>
                                     <div class="col-xxl-4 col-md-4">
                                         @include('admin.includes.input', ['key'=>'sub_heading', 'label'=>'Sub-Heading', 'value'=>old('sub_heading')])
