@@ -58,15 +58,9 @@
                                 <div class="text mt-3">
                                     {!!$data->description!!}
                                 </div>
-                                <div class="post-share-info row no-gutters justify-content-between">
-                                    <div class="left-column">
-                                        <div class="tag">
-                                            <span>Tags:</span>
-                                            <a href="#">Roofing</a>
-                                            <a href="#">Coating</a>
-                                            <a href="#">Maintainence</a>
-                                        </div>
-                                    </div>
+                                <div class="post-share-info row no-gutters justify-content-between align-items-center">
+                                    <a href="{{!empty($next) ? route('blogs_detail.get', $next->slug) : '#'}}" class="theme-btn btn-style">Previous Blog</a>
+
                                     <div class="left-column">
                                         <div class="share-icon style-two post-share-icon">
                                             <div class="share-btn"><span class="fas fa-share-alt"></span></div>
@@ -77,6 +71,8 @@
                                             </ul>
                                         </div>
                                     </div>
+
+                                    <a href="{{!empty($prev) ? route('blogs_detail.get', $prev->slug) : '#'}}" class="theme-btn btn-style">Next Blog</a>
                                 </div>
                             </div>
                         </div>
