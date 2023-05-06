@@ -43,7 +43,7 @@
                                     <li><a href="{{route('home_page.get')}}">Home</a></li>
                                     <li><a href="{{route('about_page.get')}}">About Us</a></li>
                                     <li><a href="{{route('services.get')}}">Services</a></li>
-                                    <li><a href="{{route('services.get')}}">Projects</a></li>
+                                    <li><a href="{{route('projects.get')}}">Projects</a></li>
                                     <li><a href="{{route('blogs.get')}}">Blogs</a></li>
                                 </ul>
                             </div>
@@ -57,16 +57,19 @@
     <!--End Header Upper-->
 
     <!-- Sticky Header  -->
-    <div class="sticky-header main-menu">
+    <div class="sticky-header floating-header main-menu">
         <div class="auto-container">
             <div class="inner-container">
                 <div class="nav-outer">
+                    <div class="logo-box">
+                        <div class="logo"><a href="{{route('home_page.get')}}"><img src="{{ empty($generalSetting) ? asset('assets/images/logo.png') : $generalSetting->website_logo_link}}" alt="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_alt}}" title="{{ empty($generalSetting) ? '' : $generalSetting->website_logo_title}}"></a></div>
+                    </div>
+                    {{-- <button type="button" class="theme-btn search-toggler"><span class="far fa-search"></span></button> --}}
                     <!-- Main Menu -->
                     <nav class="main-menu">
                         <!--Keep This Empty / Menu will come through Javascript-->
                     </nav><!-- Main Menu End-->
                     <!-- Main Menu End-->
-                    <button type="button" class="theme-btn search-toggler"><span class="far fa-search"></span></button>
                 </div>
             </div>
         </div>

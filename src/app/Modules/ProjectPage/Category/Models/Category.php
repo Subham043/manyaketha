@@ -38,12 +38,15 @@ class Category extends Model
         parent::boot();
         self::created(function ($model) {
             Cache::forget('project_category_four_main');
+            Cache::forget('project_main_all');
         });
         self::updated(function ($model) {
             Cache::forget('project_category_four_main');
+            Cache::forget('project_main_all');
         });
         self::deleted(function ($model) {
             Cache::forget('project_category_four_main');
+            Cache::forget('project_main_all');
         });
     }
 

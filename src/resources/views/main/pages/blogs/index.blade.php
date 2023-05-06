@@ -60,9 +60,9 @@
                                     <div class="share-icon style-two post-share-icon">
                                         <div class="share-btn"><span class="fas fa-share-alt"></span></div>
                                         <ul class="social-links">
-                                            <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
-                                            <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                                            <li><a href="#"><span class="fab fa-skype"></span></a></li>
+                                            <li><a href="https://www.facebook.com/share.php?u={{route('blogs_detail.get', $v->slug)}}&title={{$v->name}}"><span class="fab fa-facebook-f"></span></a></li>
+                                            <li><a href="https://twitter.com/share?text={{$v->name}}&url={{route('blogs_detail.get', $v->slug)}}"><span class="fab fa-twitter"></span></a></li>
+                                            <li><a href="https://www.linkedin.com/shareArticle?mini=true&url={{route('blogs_detail.get', $v->slug)}}&title={{$v->name}}&source={{$v->name}}"><span class="fab fa-linkedin"></span></a></li>
                                         </ul>
                                     </div>
                                 </div>

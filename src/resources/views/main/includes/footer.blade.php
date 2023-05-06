@@ -37,7 +37,8 @@
                             <ul>
                                 <li><a href="{{route('about_page.get')}}">About Us</a></li>
                                 <li><a href="{{route('services.get')}}">Services</a></li>
-                                <li><a href="{{route('services.get')}}">Projects</a></li>
+                                <li><a href="{{route('projects.get')}}">Projects</a></li>
+                                <li><a href="{{route('blogs.get')}}">Blogs</a></li>
                                 <li><a href="{{route('contact_page.get')}}">Contact us</a></li>
                             </ul>
                         </div>

@@ -116,112 +116,10 @@
 
     @include('main.includes.cta1')
 
-    <!-- Portfolio Section -->
-    <section class="portfolio-section-two">
-        <div class="auto-container">
-            <div class="top-content">
-                <div class="row m-0 justify-content-between align-items-end">
-                    <div class="sec-title light">
-                        <div class="sub-title">Dependable & Sincere Company</div>
-                        <h2><strong>Featured Projects</strong></h2>
-                        <div class="text">Incididunt ut labore et dolore magna aliqua enim ad minim veniam <br> quis nostrud exercitation ullamco laboris nisut aliquip.</div>
-                    </div>
-                    <!--Filter-->
-                    <div class="filters clearfix">
-                        <ul class="filter-tabs filter-btns clearfix">
-                            <li class="filter active" data-role="button" data-filter=".all">All <span class="count">0</span></li>
-                            <li class="filter" data-role="button" data-filter=".cat-1">Residential <span class="count">0</span></li>
-                            <li class="filter" data-role="button" data-filter=".cat-2">Commercial <span class="count">0</span></li>
-                            <li class="filter" data-role="button" data-filter=".cat-3">Roof Repairs <span class="count">0</span></li>
-                            <li class="filter" data-role="button" data-filter=".cat-4">Installation <span class="count">0</span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!--Sortable Galery-->
-            <div class="sortable-masonry">
-
-                <div class="items-container row no-gutters">
-                    <!-- Project Block -->
-                    <div class="gallery-block-two masonry-item all cat-1 col-lg-3 col-md-6">
-                        <div class="inner-box">
-                            <div class="image">
-                                <img src="{{asset('assets/images/gallery/image-13.jpg')}}" alt="">
-                            </div>
-                            <div class="overlay-content">
-                                <div class="border-one"></div>
-                                <div class="border-two"></div>
-                                <div>
-                                    <h4>Roof Repairing</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Project Block -->
-                    <div class="gallery-block-two masonry-item all cat-4 col-lg-3 col-md-6">
-                        <div class="inner-box">
-                            <div class="image">
-                                <img src="{{asset('assets/images/gallery/image-14.jpg')}}" alt="">
-                            </div>
-                            <div class="overlay-content">
-                                <div class="border-one"></div>
-                                <div class="border-two"></div>
-                                <div>
-                                    <h4>Insulation</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Project Block -->
-                    <div class="gallery-block-two masonry-item all cat-1 cat-3 col-lg-3 col-md-6">
-                        <div class="inner-box">
-                            <div class="image">
-                                <img src="{{asset('assets/images/gallery/image-15.jpg')}}" alt="">
-                            </div>
-                            <div class="overlay-content">
-                                <div class="border-one"></div>
-                                <div class="border-two"></div>
-                                <div>
-                                    <h4>Roof Inspection</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Project Block -->
-                    <div class="gallery-block-two masonry-item all cat-2 col-lg-3 col-md-6">
-                        <div class="inner-box">
-                            <div class="image">
-                                <img src="{{asset('assets/images/gallery/image-16.jpg')}}" alt="">
-                            </div>
-                            <div class="overlay-content">
-                                <div class="border-one"></div>
-                                <div class="border-two"></div>
-                                <div>
-                                    <h4>Roof Replacement</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Project Block -->
-                    <div class="gallery-block-two masonry-item all cat-3 col-lg-3 col-md-6">
-                        <div class="inner-box">
-                            <div class="image">
-                                <img src="{{asset('assets/images/gallery/image-17.jpg')}}" alt="">
-                            </div>
-                            <div class="overlay-content">
-                                <div class="border-one"></div>
-                                <div class="border-two"></div>
-                                <div>
-                                    <h4>Roof Coating</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    @include('main.includes.project', [
+        'project' => $project,
+        'projectHeading' => $projectHeading,
+    ])
 
     @include('main.includes.procedure', ['procedure'=>$procedure, 'procedureHeading'=>$procedureHeading])
 
@@ -345,9 +243,9 @@
                                         <div class="share-icon style-two post-share-icon">
                                             <div class="share-btn"><span class="fas fa-share-alt"></span></div>
                                             <ul class="social-links">
-                                                <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
-                                                <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                                                <li><a href="#"><span class="fab fa-skype"></span></a></li>
+                                                <li><a href="https://www.facebook.com/share.php?u={{route('blogs_detail.get', $blog->slug)}}&title={{$blog->name}}"><span class="fab fa-facebook-f"></span></a></li>
+                                                <li><a href="https://twitter.com/share?text={{$blog->name}}&url={{route('blogs_detail.get', $blog->slug)}}"><span class="fab fa-twitter"></span></a></li>
+                                                <li><a href="https://www.linkedin.com/shareArticle?mini=true&url={{route('blogs_detail.get', $blog->slug)}}&title={{$blog->name}}&source={{$blog->name}}"><span class="fab fa-linkedin"></span></a></li>
                                             </ul>
                                         </div>
                                     </div>

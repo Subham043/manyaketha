@@ -58,11 +58,24 @@ class CategoryService
     public function main_latest_four()
     {
         return Cache::remember('project_category_four_main', 60*60*24, function(){
+            return Category::with('project')->latest()
+            ->limit(4)
+            ->get()
+            ->map(function ($query) {
+                $query->setRelation('project', $query->project->where('is_draft', true)->take(3));
+                return $query;
+            });
+        });
+    }
+
+    public function main_all()
+    {
+        return Cache::remember('project_main_all', 60*60*24, function(){
             return Category::with([
                 'project' => function($q) {
-                    $q->where('is_draft', true)->limit(6)->latest();
+                    $q->where('is_draft', true)->latest();
                 },
-            ])->limit(3)->latest()
+            ])->latest()
             ->get();
         });
     }

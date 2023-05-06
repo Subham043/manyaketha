@@ -55,14 +55,17 @@ class Blog extends Model implements Sitemapable
         parent::boot();
         self::created(function ($model) {
             Cache::forget('all_blog_main');
+            Cache::forget('latest_six_blog_main');
             Cache::forget('blog_'.$model->slug);
         });
         self::updated(function ($model) {
             Cache::forget('all_blog_main');
+            Cache::forget('latest_six_blog_main');
             Cache::forget('blog_'.$model->slug);
         });
         self::deleted(function ($model) {
             Cache::forget('all_blog_main');
+            Cache::forget('latest_six_blog_main');
             Cache::forget('blog_'.$model->slug);
         });
     }

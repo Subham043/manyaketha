@@ -53,9 +53,9 @@
                             <div class="content-box">
                                 <div class="bottom-content">
                                     <div class="date"><strong>{{$data->created_at->format('j')}}</strong> <br> {{$data->created_at->format('F')}}</div>
-                                    <h2>{{$data->heading}}</h2>
+                                    <h2 class="col-auto">{{$data->heading}}</h2>
                                 </div>
-                                <div class="text">
+                                <div class="text mt-3">
                                     {!!$data->description!!}
                                 </div>
                                 <div class="post-share-info row no-gutters justify-content-between">
@@ -71,9 +71,9 @@
                                         <div class="share-icon style-two post-share-icon">
                                             <div class="share-btn"><span class="fas fa-share-alt"></span></div>
                                             <ul class="social-links">
-                                                <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
-                                                <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                                                <li><a href="#"><span class="fab fa-skype"></span></a></li>
+                                                <li><a href="https://www.facebook.com/share.php?u={{route('blogs_detail.get', $data->slug)}}&title={{$data->name}}"><span class="fab fa-facebook-f"></span></a></li>
+                                                <li><a href="https://twitter.com/share?text={{$data->name}}&url={{route('blogs_detail.get', $data->slug)}}"><span class="fab fa-twitter"></span></a></li>
+                                                <li><a href="https://www.linkedin.com/shareArticle?mini=true&url={{route('blogs_detail.get', $data->slug)}}&title={{$data->name}}&source={{$data->name}}"><span class="fab fa-linkedin"></span></a></li>
                                             </ul>
                                         </div>
                                     </div>

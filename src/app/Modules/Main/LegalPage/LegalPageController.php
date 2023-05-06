@@ -11,11 +11,11 @@ use App\Modules\Settings\Services\ThemeService;
 
 class LegalPageController extends Controller
 {
-    private $generalService;
-    private $themeService;
-    private $chatbotService;
-    private $legalService;
-    private $service;
+    private GeneralService $generalService;
+    private ThemeService $themeService;
+    private ChatbotService $chatbotService;
+    private LegalService $legalService;
+    private Service $service;
 
     public function __construct(
         GeneralService $generalService,
