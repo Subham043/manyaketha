@@ -90,6 +90,7 @@ use App\Modules\ServicePage\Controllers\ServiceDeleteController;
 use App\Modules\ServicePage\Controllers\ServiceHeadingController;
 use App\Modules\ServicePage\Controllers\ServicePaginateController;
 use App\Modules\ServicePage\Controllers\ServiceUpdateController;
+use App\Modules\TextEditorImage\Controllers\TextEditorImageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -334,6 +335,7 @@ Route::middleware(['auth'])->group(function () {
 
     });
 
+    Route::post('/text-editor-image', [TextEditorImageController::class, 'post', 'as' => 'texteditor_image.post'])->name('texteditor_image.post');
     Route::get('/logout', [LogoutController::class, 'get', 'as' => 'logout.get'])->name('logout.get');
 
 });

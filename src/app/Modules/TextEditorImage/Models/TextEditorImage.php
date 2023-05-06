@@ -1,20 +1,19 @@
 <?php
 
-namespace App\Modules\Counter\Models;
+namespace App\Modules\TextEditorImage\Models;
 
 use App\Modules\Authentication\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Support\Facades\Cache;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
 
-class Counter extends Model
+class TextEditorImage extends Model
 {
     use HasFactory, LogsActivity;
 
-    protected $table = 'counters';
+    protected $table = 'general_texteditor_images';
 
     /**
      * The attributes that are mass assignable.
@@ -22,35 +21,17 @@ class Counter extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'title',
         'image',
-        'counter',
-        'is_draft'
     ];
 
     protected $casts = [
-        'is_draft' => 'boolean',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
 
-    public $image_path = 'counters';
+    public $image_path = 'general_texteditor_images';
 
     protected $appends = ['image_link'];
-
-    public static function boot()
-    {
-        parent::boot();
-        self::created(function ($model) {
-            Cache::forget('counters_main');
-        });
-        self::updated(function ($model) {
-            Cache::forget('counters_main');
-        });
-        self::deleted(function ($model) {
-            Cache::forget('counters_main');
-        });
-    }
 
     protected function image(): Attribute
     {
@@ -74,10 +55,10 @@ class Counter extends Model
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-        ->useLogName('counters')
+        ->useLogName('text editor images')
         ->setDescriptionForEvent(
                 function(string $eventName){
-                    $desc = "Counter with title ".$this->title." has been {$eventName}";
+                    $desc = "Text Editor Image has been {$eventName}";
                     $desc .= auth()->user() ? " by ".auth()->user()->name."<".auth()->user()->email.">" : "";
                     return $desc;
                 }
