@@ -11,12 +11,10 @@ use App\Modules\ServicePage\Services\HeadingService;
 use App\Modules\ServicePage\Services\Service;
 use App\Modules\Settings\Services\ChatbotService;
 use App\Modules\Settings\Services\GeneralService;
-use App\Modules\Settings\Services\ThemeService;
 use Illuminate\Http\Request;
 
 class ServicePageController extends BaseController
 {
-    private Service $service;
     private HeadingService $headingService;
     private ProcedureService $procedureService;
     private ProcedureHeadingService $procedureHeadingService;
@@ -24,7 +22,6 @@ class ServicePageController extends BaseController
     public function __construct(
         SeoService $seoService,
         GeneralService $generalService,
-        ThemeService $themeService,
         ChatbotService $chatbotService,
         LegalService $legalService,
         Service $service,
@@ -33,36 +30,29 @@ class ServicePageController extends BaseController
         ProcedureHeadingService $procedureHeadingService,
     )
     {
-        parent::__construct($seoService, $generalService, $themeService, $chatbotService, $legalService);
-        $this->service = $service;
+        parent::__construct($seoService, $generalService, $chatbotService, $legalService, $service);
         $this->headingService = $headingService;
         $this->procedureService = $procedureService;
         $this->procedureHeadingService = $procedureHeadingService;
     }
 
     public function get(Request $request){
-        $seo = $this->seoService->getBySlugMain('blog-page');
-        $generalSetting = $this->generalService->getById(1);
-        $themeSetting = $this->themeService->getById(1);
-        $chatbotSetting = $this->chatbotService->getById(1);
-        $legal = $this->legalService->main_all();
         $services = $this->service->main_paginate($request->total ?? 10);
-        $serviceOption = $this->service->main_all();
         $headingService = $this->headingService->getById(1);
         $procedure = $this->procedureService->main_all();
         $procedureHeading = $this->procedureHeadingService->getById(1);
         return view('main.pages.service.index', compact([
-            'seo',
-            'generalSetting',
-            'themeSetting',
-            'chatbotSetting',
-            'legal',
             'services',
-            'serviceOption',
             'headingService',
             'procedure',
             'procedureHeading',
-        ]));
+        ]))->with([
+            'legal' => $this->legal_all(),
+            'seo' => $this->seo('service-page'),
+            'generalSetting' => $this->general_setting(),
+            'chatbotSetting' => $this->chatbot_setting(),
+            'serviceOption' => $this->service_option(),
+        ]);
     }
 
 }

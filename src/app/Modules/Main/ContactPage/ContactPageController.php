@@ -11,43 +11,32 @@ use App\Modules\Seo\Services\SeoService;
 use App\Modules\ServicePage\Services\Service;
 use App\Modules\Settings\Services\ChatbotService;
 use App\Modules\Settings\Services\GeneralService;
-use App\Modules\Settings\Services\ThemeService;
 
 class ContactPageController extends BaseController
 {
     private ContactFormService $contactFormService;
-    private Service $service;
 
     public function __construct(
         SeoService $seoService,
         GeneralService $generalService,
-        ThemeService $themeService,
         ChatbotService $chatbotService,
         LegalService $legalService,
         ContactFormService $contactFormService,
         Service $service,
     )
     {
-        parent::__construct($seoService, $generalService, $themeService, $chatbotService, $legalService);
+        parent::__construct($seoService, $generalService, $chatbotService, $legalService, $service);
         $this->contactFormService = $contactFormService;
-        $this->service = $service;
     }
 
     public function get(){
-        $seo = $this->seoService->getBySlugMain('contact-page');
-        $generalSetting = $this->generalService->getById(1);
-        $themeSetting = $this->themeService->getById(1);
-        $chatbotSetting = $this->chatbotService->getById(1);
-        $legal = $this->legalService->main_all();
-        $serviceOption = $this->service->main_all();
-        return view('main.pages.contact', compact([
-            'seo',
-            'generalSetting',
-            'themeSetting',
-            'chatbotSetting',
-            'legal',
-            'serviceOption',
-        ]));
+        return view('main.pages.contact')->with([
+            'legal' => $this->legal_all(),
+            'seo' => $this->seo('contact-page'),
+            'generalSetting' => $this->general_setting(),
+            'chatbotSetting' => $this->chatbot_setting(),
+            'serviceOption' => $this->service_option(),
+        ]);
     }
 
     public function post(ContactFormRequest $request){

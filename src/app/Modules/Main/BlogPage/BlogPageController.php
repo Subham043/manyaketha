@@ -14,41 +14,32 @@ use Illuminate\Http\Request;
 
 class BlogPageController extends BaseController
 {
-    private $blogService;
-    private Service $service;
+    private BlogService $blogService;
 
     public function __construct(
         SeoService $seoService,
         GeneralService $generalService,
-        ThemeService $themeService,
         ChatbotService $chatbotService,
         LegalService $legalService,
         BlogService $blogService,
         Service $service,
     )
     {
-        parent::__construct($seoService, $generalService, $themeService, $chatbotService, $legalService);
+        parent::__construct($seoService, $generalService, $chatbotService, $legalService, $service);
         $this->blogService = $blogService;
-        $this->service = $service;
     }
 
     public function get(Request $request){
-        $seo = $this->seoService->getBySlugMain('blog-page');
-        $generalSetting = $this->generalService->getById(1);
-        $themeSetting = $this->themeService->getById(1);
-        $chatbotSetting = $this->chatbotService->getById(1);
         $blogs = $this->blogService->main_paginate($request->total ?? 10);
-        $legal = $this->legalService->main_all();
-        $serviceOption = $this->service->main_all();
         return view('main.pages.blogs.index', compact([
-            'seo',
-            'generalSetting',
-            'themeSetting',
-            'chatbotSetting',
             'blogs',
-            'legal',
-            'serviceOption',
-        ]));
+        ]))->with([
+            'legal' => $this->legal_all(),
+            'seo' => $this->seo('blog-page'),
+            'generalSetting' => $this->general_setting(),
+            'chatbotSetting' => $this->chatbot_setting(),
+            'serviceOption' => $this->service_option(),
+        ]);
     }
 
 }

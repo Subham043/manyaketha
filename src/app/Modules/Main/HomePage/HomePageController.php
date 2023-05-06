@@ -21,7 +21,6 @@ use App\Modules\ServicePage\Services\HeadingService;
 use App\Modules\ServicePage\Services\Service;
 use App\Modules\Settings\Services\ChatbotService;
 use App\Modules\Settings\Services\GeneralService;
-use App\Modules\Settings\Services\ThemeService;
 use App\Modules\Team\Services\TeamHeadingService;
 use App\Modules\Team\Services\TeamService;
 use App\Modules\Testimonial\Services\TestimonialHeadingService;
@@ -45,15 +44,14 @@ class HomePageController extends BaseController
     private BlogHeadingService $blogHeadingService;
     private CategoryService $projectService;
     private ProjectHeadingService $projectHeadingService;
-    private Service $service;
     private HeadingService $headingService;
 
     public function __construct(
         SeoService $seoService,
         GeneralService $generalService,
-        ThemeService $themeService,
         ChatbotService $chatbotService,
         LegalService $legalService,
+        Service $service,
         PartnerService $partnerService,
         FeatureService $featureService,
         CounterService $counterService,
@@ -70,11 +68,10 @@ class HomePageController extends BaseController
         BlogHeadingService $blogHeadingService,
         CategoryService $projectService,
         ProjectHeadingService $projectHeadingService,
-        Service $service,
         HeadingService $headingService,
     )
     {
-        parent::__construct($seoService, $generalService, $themeService, $chatbotService, $legalService);
+        parent::__construct($seoService, $generalService, $chatbotService, $legalService, $service);
         $this->partnerService = $partnerService;
         $this->featureService = $featureService;
         $this->counterService = $counterService;
@@ -91,16 +88,10 @@ class HomePageController extends BaseController
         $this->blogHeadingService = $blogHeadingService;
         $this->projectService = $projectService;
         $this->projectHeadingService = $projectHeadingService;
-        $this->service = $service;
         $this->headingService = $headingService;
     }
 
     public function get(){
-        $legal = $this->legalService->main_all();
-        $seo = $this->seoService->getBySlugMain('home-page');
-        $generalSetting = $this->generalService->getById(1);
-        $themeSetting = $this->themeService->getById(1);
-        $chatbotSetting = $this->chatbotService->getById(1);
         $partner = $this->partnerService->main_all();
         $feature = $this->featureService->main_all();
         $counter = $this->counterService->main_all();
@@ -119,13 +110,7 @@ class HomePageController extends BaseController
         $services = $this->service->main_latest_six();
         $headingService = $this->headingService->getById(1);
         $about = $this->aboutService->getById(1);
-        $serviceOption = $this->service->main_all();
         return view('main.pages.index', compact([
-            'legal',
-            'seo',
-            'generalSetting',
-            'themeSetting',
-            'chatbotSetting',
             'partner',
             'feature',
             'counter',
@@ -144,8 +129,13 @@ class HomePageController extends BaseController
             'projectHeading',
             'services',
             'headingService',
-            'serviceOption',
-        ]));
+        ]))->with([
+            'legal' => $this->legal_all(),
+            'seo' => $this->seo('home-page'),
+            'generalSetting' => $this->general_setting(),
+            'chatbotSetting' => $this->chatbot_setting(),
+            'serviceOption' => $this->service_option(),
+        ]);
     }
 
 }

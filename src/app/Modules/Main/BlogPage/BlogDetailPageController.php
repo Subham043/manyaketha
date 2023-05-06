@@ -9,47 +9,38 @@ use App\Modules\Seo\Services\SeoService;
 use App\Modules\ServicePage\Services\Service;
 use App\Modules\Settings\Services\ChatbotService;
 use App\Modules\Settings\Services\GeneralService;
-use App\Modules\Settings\Services\ThemeService;
 
 class BlogDetailPageController extends BaseController
 {
-    private $blogService;
-    private Service $service;
+    private BlogService $blogService;
 
     public function __construct(
         SeoService $seoService,
         GeneralService $generalService,
-        ThemeService $themeService,
         ChatbotService $chatbotService,
         LegalService $legalService,
         BlogService $blogService,
         Service $service,
     )
     {
-        parent::__construct($seoService, $generalService, $themeService, $chatbotService, $legalService);
+        parent::__construct($seoService, $generalService, $chatbotService, $legalService, $service);
         $this->blogService = $blogService;
-        $this->service = $service;
     }
 
     public function get($slug){
-        $generalSetting = $this->generalService->getById(1);
-        $themeSetting = $this->themeService->getById(1);
-        $chatbotSetting = $this->chatbotService->getById(1);
-        $legal = $this->legalService->main_all();
         $data = $this->blogService->getBySlugMain($slug);
         $next = $this->blogService->getNext($data->id);
         $prev = $this->blogService->getPrev($data->id);
-        $serviceOption = $this->service->main_all();
         return view('main.pages.blogs.detail', compact([
-            'generalSetting',
-            'themeSetting',
-            'chatbotSetting',
             'data',
             'next',
             'prev',
-            'legal',
-            'serviceOption',
-        ]));
+        ]))->with([
+            'legal' => $this->legal_all(),
+            'generalSetting' => $this->general_setting(),
+            'chatbotSetting' => $this->chatbot_setting(),
+            'serviceOption' => $this->service_option(),
+        ]);
     }
 
 }
