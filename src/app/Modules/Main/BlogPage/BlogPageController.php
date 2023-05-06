@@ -2,6 +2,7 @@
 
 namespace App\Modules\Main\BlogPage;
 
+use App\Modules\Blog\Services\BlogHeadingService;
 use App\Modules\Legal\Services\LegalService;
 use App\Modules\Blog\Services\BlogService;
 use App\Modules\Main\BaseController\BaseController;
@@ -15,6 +16,7 @@ use Illuminate\Http\Request;
 class BlogPageController extends BaseController
 {
     private BlogService $blogService;
+    private BlogHeadingService $blogHeadingService;
 
     public function __construct(
         SeoService $seoService,
@@ -22,17 +24,21 @@ class BlogPageController extends BaseController
         ChatbotService $chatbotService,
         LegalService $legalService,
         BlogService $blogService,
+        BlogHeadingService $blogHeadingService,
         Service $service,
     )
     {
         parent::__construct($seoService, $generalService, $chatbotService, $legalService, $service);
         $this->blogService = $blogService;
+        $this->blogHeadingService = $blogHeadingService;
     }
 
     public function get(Request $request){
         $blogs = $this->blogService->main_paginate($request->total ?? 10);
+        $blogHeading = $this->blogHeadingService->getById(1);
         return view('main.pages.blogs.index', compact([
             'blogs',
+            'blogHeading'
         ]))->with([
             'legal' => $this->legal_all(),
             'seo' => $this->seo('blog-page'),

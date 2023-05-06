@@ -40,6 +40,7 @@
     <!-- Latest News -->
     <section class="latest-news-section">
         <div class="auto-container">
+            @include('main.includes.row_heading', ['data'=>$blogHeading])
             @if($blogs->total() > 0)
             <div class="row">
                 @foreach ($blogs->items() as $k => $v)

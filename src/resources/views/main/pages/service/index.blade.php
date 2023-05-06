@@ -40,15 +40,7 @@
     <!-- Services Section Two -->
     <section class="services-section-two">
         <div class="auto-container">
-            @if($headingService)
-            <div class="row align-items-center justify-content-between m-0">
-                <div class="sec-title col-lg-6 col-sm-12 p-0">
-                    <div class="sub-title">{{$headingService->sub_heading}}</div>
-                    <h2>{{$headingService->heading}}</h2>
-                </div>
-                <div class="text col-lg-6 col-sm-12 p-0">{{$headingService->description}}</div>
-            </div>
-            @endif
+            @include('main.includes.row_heading', ['data'=>$headingService])
             @if($services->total() > 0)
                 <div class="row">
 

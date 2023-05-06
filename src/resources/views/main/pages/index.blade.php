@@ -80,15 +80,7 @@
     <!-- Services Section Two -->
     <section class="services-section-two style-two pb-0">
         <div class="auto-container">
-            @if($headingService)
-            <div class="row align-items-center justify-content-between m-0">
-                <div class="sec-title col-lg-6 col-sm-12 p-0">
-                    <div class="sub-title">{{$headingService->sub_heading}}</div>
-                    <h2>{{$headingService->heading}}</h2>
-                </div>
-                <div class="text col-lg-6 col-sm-12 p-0">{{$headingService->description}}</div>
-            </div>
-            @endif
+            @include('main.includes.row_heading', ['data'=>$headingService])
             <div class="row">
                 <div class="theme_carousel owl-theme owl-carousel" data-options='{"loop": true, "margin": 0, "autoheight":true, "lazyload":true, "nav": true, "dots": true, "autoplay": true, "autoplayTimeout": 6000, "smartSpeed": 300, "responsive":{ "0" :{ "items": "1" }, "600" :{ "items" : "2" }, "768" :{ "items" : "2" } , "992":{ "items" : "3" }, "1200":{ "items" : "3" }}}'>
                     @foreach($services as $services)
@@ -214,15 +206,7 @@
     <!-- Latest News -->
     <section class="latest-news-section">
         <div class="auto-container">
-            @if($blogHeading)
-            <div class="row align-items-center justify-content-between m-0">
-                <div class="sec-title col-lg-6 col-sm-12">
-                    <div class="sub-title">{{$blogHeading->sub_heading}}</div>
-                    <h2>{{$blogHeading->heading}}</h2>
-                </div>
-                <div class="text col-lg-6 col-sm-12">{{$blogHeading->description}}</div>
-            </div>
-            @endif
+            @include('main.includes.row_heading', ['data'=>$blogHeading])
             <div class="row">
                 @foreach($blog as $blog)
                 <div class="col-lg-6 news-block-one">

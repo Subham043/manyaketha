@@ -6,7 +6,6 @@ use App\Modules\Legal\Services\LegalService;
 use App\Modules\ServicePage\Services\Service;
 use App\Modules\Settings\Services\ChatbotService;
 use App\Modules\Settings\Services\GeneralService;
-use App\Modules\Settings\Services\ThemeService;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Http\Response;
@@ -95,7 +94,6 @@ class Handler extends ExceptionHandler
                 'errors.error',
                 [
                     'generalSetting' => (new GeneralService)->getById(1),
-                    'themeSetting' => (new ThemeService)->getById(1),
                     'chatbotSetting' => (new ChatbotService)->getById(1),
                     'legal' => (new LegalService)->main_all(),
                     'serviceOption' => (new Service)->main_all(),

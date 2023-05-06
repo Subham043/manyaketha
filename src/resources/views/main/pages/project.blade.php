@@ -43,15 +43,7 @@
     <section class="portfolio-section">
         <div class="auto-container">
             <div class="top-content">
-                @if($projectHeading)
-                    <div class="row align-items-center justify-content-between m-0">
-                        <div class="sec-title col-lg-6 col-sm-12 p-0">
-                            <div class="sub-title">{{$projectHeading->sub_heading}}</div>
-                            <h2>{{$projectHeading->heading}}</h2>
-                        </div>
-                        <div class="text col-lg-6 col-sm-12 p-0">{{$projectHeading->description}}</div>
-                    </div>
-                @endif
+                @include('main.includes.row_heading', ['data'=>$projectHeading])
             </div>
             <!--Sortable Galery-->
             <div class="sortable-masonry">
