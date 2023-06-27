@@ -6032,4 +6032,7 @@ img {
     }
 }
 
-
+.featured_image{
+    height: 100px;
+    object-fit: contain;
+}

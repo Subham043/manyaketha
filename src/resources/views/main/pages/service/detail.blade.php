@@ -21,6 +21,22 @@
         <link rel="icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" sizes="192x192" />
         <link rel="apple-touch-icon" href="{{ empty($generalSetting) ? asset('assets/images/favicon.png') : $generalSetting->website_favicon_link}}" />
 
+        <style>
+            .fl-img{
+                float: left;
+                width: 45%;
+                margin-right: 20px;
+            }
+            .fr-img{
+                float: right;
+                width: 45%;
+                margin-left: 20px;
+            }
+            .clearfix {
+                overflow: auto;
+            }
+        </style>
+
         {!!$data->meta_header_script!!}
         {!!$data->meta_header_no_script!!}
 
@@ -50,6 +66,23 @@
                     <div class="text">
                         {!! $data->description !!}
                     </div>
+                    @if($data->additional_contents->count()>0)
+                    <div>
+                        @foreach($data->additional_contents as $key=>$val)
+                            @if(($key+1)%2!=0)
+                                <div class="text clearfix mb-4">
+                                    <img fetchpriority="low" src="{{$val->image_link}}" class="fl-img" alt="">
+                                    {!!$val->description!!}
+                                </div>
+                            @else
+                                <div class="text clearfix mb-4">
+                                    <img fetchpriority="low" class="fr-img" src="{{$val->image_link}}" alt="">
+                                    {!!$val->description!!}
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
+                    @endif
                     @if(count($testimonial)>0)
                     <div class="testimonial">
                         <h3>Service Testimonials</h3>
@@ -95,12 +128,13 @@
                             </div>
                         </div>
                         @endif
-                        <div class="widget contact-widget style-two">
+                        {{-- <div class="widget contact-widget style-two">
                             <div class="widget-content">
                                 <h3 class="widget-title">Get in touch</h3>
                                 @include('main.includes.common_contact_info')
                             </div>
-                        </div>
+                        </div> --}}
+                        @include('main.includes.common_contact')
                         @if($data->brochure)
                         <div class="widget widget_brochure">
                             <div class="widget-content">
@@ -108,7 +142,6 @@
                             </div>
                         </div>
                         @endif
-                        @include('main.includes.common_contact')
                     </div>
                 </aside>
             </div>

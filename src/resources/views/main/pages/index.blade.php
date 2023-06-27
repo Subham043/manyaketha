@@ -22,6 +22,38 @@
 
         {!!$seo->meta_header_script_nonce!!}
         {!!$seo->meta_header_no_script_nonce!!}
+
+        <style>
+            .header-video-container{
+                position: relative;
+                width: 100%;
+                padding-bottom: 56.25%;
+            }
+            .header-video-container:before{
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                /* background-color: #00000054; */
+                z-index: 7;
+                pointer-events:none;
+                background-image: linear-gradient(0deg, rgba(27, 27, 27, 1) 10%, rgba(27, 27, 27, 0.2) 100%);
+            }
+            .header-video-container:hover:before{
+                background-image: none;
+            }
+            .header-video {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: 0;
+                z-index: 6;
+            }
+        </style>
     @stop
 
     @section('content')
@@ -30,7 +62,7 @@
 
     @include('main.includes.header')
 
-    @if(count($banner)>0)
+    @if(count($banner)>0 && !$bannerVideo->is_draft)
     <!-- Bnner Section -->
     <section class="banner-section style-two">
         <div class="swiper-container banner-slider">
@@ -41,12 +73,9 @@
                     <div class="content-outer">
                         <div class="content-box">
                             <div class="inner">
-                                <h4>{{$banner->sub_title}}</h4>
                                 <h1>{{$banner->title}}</h1>
-                                <div class="text">{{$banner->description}}</div>
                                 <div class="link-box">
-                                    <a href="{{$banner->button_link}}" class="theme-btn btn-style-one style-four"><span>View Detail</span></a>
-                                    <a href="{{route('contact_page.get')}}" class="theme-btn btn-style-one style-two"><span>Contact Us</span></a>
+                                    <a href="{{$banner->button_link}}" class="theme-btn btn-style-one style-two"><span>{{$banner->button_text}}</span></a>
                                 </div>
                             </div>
                         </div>
@@ -61,20 +90,31 @@
         </div>
     </section>
     <!-- End Bnner Section -->
+    @else
+    <section class="banner-section style-two">
+        <div class="header-video-container">
+            <iframe src="{{$bannerVideo->banner_video}}?autoplay=1&mute=1&fs=0&loop=1&rel=0&showinfo=0&iv_load_policy=3&modestbranding=0&controls=1&enablejsapi=1" class="header-video" width="560" height="315" frameborder="0"></iframe>
+        </div>
+    </section>
     @endif
 
-    @include('main.includes.clients', ['partner'=>$partner, 'styleTwo' => false])
+    @include('main.includes.about', ['about'=>$about, 'ptop' => false])
+
+    @include('main.includes.counter', ['counter'=>$counter])
 
     <!-- Features Section Three -->
-    <section class="features-section-three style-two">
+    <section class="features-section-three style-two pt-0">
         <div class="auto-container">
+            @if($featureHeading)
+            <div class="sec-title text-center">
+                <div class="sub-title">{{$featureHeading->sub_heading}}</div>
+                <h2>{{$featureHeading->heading}}</h2>
+                <div class="text">{{$featureHeading->description}}</div>
+            </div>
+            @endif
             @include('main.includes.feature', ['feature'=>$feature])
         </div>
     </section>
-
-    @include('main.includes.about', ['about'=>$about, 'ptop' => true])
-
-    @include('main.includes.counter', ['counter'=>$counter])
 
     @if(count($services)>0)
     <!-- Services Section Two -->
@@ -201,6 +241,8 @@
             </div>
         </div>
     </section>
+
+    @include('main.includes.clients', ['partner'=>$partner, 'styleTwo' => false])
 
     @if(count($blog)>0)
     <!-- Latest News -->

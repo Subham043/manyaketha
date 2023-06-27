@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Modules\HomePage\Banner\Requests;
+namespace App\Modules\HomePage\BannerVideo\Requests;
 
+use App\Modules\HomePage\BannerVideo\Services\BannerVideoService;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Stevebauman\Purify\Facades\Purify;
+use Illuminate\Validation\Rule;
 
 
-class BannerCreateRequest extends FormRequest
+class BannerVideoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,13 +29,10 @@ class BannerCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string|max:250',
-            'button_link' => 'nullable|url|max:500',
-            'button_text' => 'required|string|max:250',
             'is_draft' => 'required|boolean',
-            'banner_image' => 'required|image|min:1|max:500',
-            'banner_image_alt' => 'nullable|string|max:500',
-            'banner_image_title' => 'nullable|string|max:500',
+            'banner_video' => 'required|url|min:1|max:500',
+            'banner_video_alt' => 'nullable|string|max:500',
+            'banner_video_title' => 'nullable|string|max:500',
         ];
     }
 
@@ -46,9 +45,9 @@ class BannerCreateRequest extends FormRequest
     {
         return [
             'is_draft' => 'Draft',
-            'banner_image' => 'Image',
-            'banner_image_alt' => 'Image Alt',
-            'banner_image_title' => 'Image Title',
+            'banner_video' => 'Image',
+            'banner_video_alt' => 'Image Alt',
+            'banner_video_title' => 'Image Title',
         ];
     }
 

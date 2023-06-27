@@ -3,6 +3,7 @@
 namespace App\Modules\ServicePage\Models;
 
 use App\Modules\Authentication\Models\User;
+use App\Modules\ServicePage\AdditionalContent\Models\AdditionalContent;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -138,6 +139,11 @@ class Service extends Model implements Sitemapable
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id')->withDefault();
+    }
+
+    public function additional_contents()
+    {
+        return $this->hasMany(AdditionalContent::class, 'service_id');
     }
 
     public function getActivitylogOptions(): LogOptions

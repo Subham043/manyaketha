@@ -5,10 +5,12 @@ namespace App\Modules\Main\HomePage;
 use App\Modules\Blog\Services\BlogHeadingService;
 use App\Modules\Blog\Services\BlogService;
 use App\Modules\Counter\Services\CounterService;
+use App\Modules\Feature\Services\FeatureHeadingService;
 use App\Modules\Feature\Services\FeatureService;
 use App\Modules\HomePage\About\Services\AboutService;
 use App\Modules\HomePage\AdditionalContent\Services\AdditionalContentService;
 use App\Modules\HomePage\Banner\Services\BannerService;
+use App\Modules\HomePage\BannerVideo\Services\BannerVideoService;
 use App\Modules\Legal\Services\LegalService;
 use App\Modules\Main\BaseController\BaseController;
 use App\Modules\Partner\Services\PartnerService;
@@ -33,6 +35,7 @@ class HomePageController extends BaseController
     private CounterService $counterService;
     private BannerService $bannerService;
     private AboutService $aboutService;
+    private BannerVideoService $bannerVideoService;
     private AdditionalContentService $additionalContentService;
     private ProcedureService $procedureService;
     private ProcedureHeadingService $procedureHeadingService;
@@ -45,6 +48,7 @@ class HomePageController extends BaseController
     private CategoryService $projectService;
     private ProjectHeadingService $projectHeadingService;
     private HeadingService $headingService;
+    private FeatureHeadingService $featureHeadingService;
 
     public function __construct(
         SeoService $seoService,
@@ -57,6 +61,7 @@ class HomePageController extends BaseController
         CounterService $counterService,
         BannerService $bannerService,
         AboutService $aboutService,
+        BannerVideoService $bannerVideoService,
         AdditionalContentService $additionalContentService,
         ProcedureService $procedureService,
         ProcedureHeadingService $procedureHeadingService,
@@ -69,6 +74,7 @@ class HomePageController extends BaseController
         CategoryService $projectService,
         ProjectHeadingService $projectHeadingService,
         HeadingService $headingService,
+        FeatureHeadingService $featureHeadingService,
     )
     {
         parent::__construct($seoService, $generalService, $chatbotService, $legalService, $service);
@@ -77,6 +83,7 @@ class HomePageController extends BaseController
         $this->counterService = $counterService;
         $this->bannerService = $bannerService;
         $this->aboutService = $aboutService;
+        $this->bannerVideoService = $bannerVideoService;
         $this->additionalContentService = $additionalContentService;
         $this->procedureService = $procedureService;
         $this->procedureHeadingService = $procedureHeadingService;
@@ -89,6 +96,7 @@ class HomePageController extends BaseController
         $this->projectService = $projectService;
         $this->projectHeadingService = $projectHeadingService;
         $this->headingService = $headingService;
+        $this->featureHeadingService = $featureHeadingService;
     }
 
     public function get(){
@@ -110,6 +118,8 @@ class HomePageController extends BaseController
         $services = $this->service->main_latest_six();
         $headingService = $this->headingService->getById(1);
         $about = $this->aboutService->getById(1);
+        $bannerVideo = $this->bannerVideoService->getById(1);
+        $featureHeading = $this->featureHeadingService->getById(1);
         return view('main.pages.index', compact([
             'partner',
             'feature',
@@ -129,6 +139,8 @@ class HomePageController extends BaseController
             'projectHeading',
             'services',
             'headingService',
+            'featureHeading',
+            'bannerVideo',
         ]))->with([
             'legal' => $this->legal_all(),
             'seo' => $this->seo('home-page'),

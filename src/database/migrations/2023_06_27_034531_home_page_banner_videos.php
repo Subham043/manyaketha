@@ -11,14 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('home_page_banners', function (Blueprint $table) {
+        Schema::create('home_page_banner_videos', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 250);
-            $table->string('button_text', 250)->nullable();
-            $table->string('button_link', 500)->nullable();
-            $table->string('banner_image', 500)->nullable();
-            $table->string('banner_image_alt', 500)->nullable();
-            $table->string('banner_image_title', 500)->nullable();
+            $table->string('banner_video', 500)->nullable();
+            $table->string('banner_video_alt', 500)->nullable();
+            $table->string('banner_video_title', 500)->nullable();
             $table->boolean('is_draft')->default(0);
             $table->foreignId('user_id')->nullable()->constrained('users')->nullOnDelete();
             $table->timestamps();
@@ -31,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('home_page_banners');
+        Schema::dropIfExists('home_page_banner_videos');
     }
 };

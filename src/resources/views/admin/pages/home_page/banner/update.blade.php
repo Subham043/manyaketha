@@ -27,13 +27,10 @@
                                         @include('admin.includes.input', ['key'=>'title', 'label'=>'Title', 'value'=>$data->title])
                                     </div>
                                     <div class="col-xxl-4 col-md-4">
-                                        @include('admin.includes.input', ['key'=>'sub_title', 'label'=>'Sub-Title', 'value'=>$data->sub_title])
+                                        @include('admin.includes.input', ['key'=>'button_text', 'label'=>'Button Text', 'value'=>$data->button_text])
                                     </div>
                                     <div class="col-xxl-4 col-md-4">
                                         @include('admin.includes.input', ['key'=>'button_link', 'label'=>'Button Link', 'value'=>$data->button_link])
-                                    </div>
-                                    <div class="col-xxl-12 col-md-12">
-                                        @include('admin.includes.textarea', ['key'=>'description', 'label'=>'Description', 'value'=>$data->description])
                                     </div>
                                     <div class="col-lg-12 col-md-12">
                                         <div class="mt-4 mt-md-0">
@@ -145,21 +142,15 @@ validation
         errorMessage: 'Title is invalid',
     },
   ])
-  .addField('#sub_title', [
+  .addField('#button_text', [
     {
       rule: 'required',
-      errorMessage: 'Sub-Title is required',
+      errorMessage: 'Button Text is required',
     },
     {
         rule: 'customRegexp',
         value: COMMON_REGEX,
-        errorMessage: 'Sub-Title is invalid',
-    },
-  ])
-  .addField('#description', [
-    {
-        rule: 'required',
-        errorMessage: 'Description is required',
+        errorMessage: 'Button Text is invalid',
     },
   ])
   .addField('#button_link', [
@@ -190,8 +181,7 @@ validation
         var formData = new FormData();
         formData.append('is_draft',document.getElementById('is_draft').checked ? 1 : 0)
         formData.append('title',document.getElementById('title').value)
-        formData.append('sub_title',document.getElementById('sub_title').value)
-        formData.append('description',document.getElementById('description').value)
+        formData.append('button_text',document.getElementById('button_text').value)
         formData.append('button_link',document.getElementById('button_link').value)
         formData.append('banner_image_title',document.getElementById('banner_image_title').value)
         formData.append('banner_image_alt',document.getElementById('banner_image_alt').value)
@@ -206,11 +196,8 @@ validation
         if(error?.response?.data?.errors?.title){
             validation.showErrors({'#title': error?.response?.data?.errors?.title[0]})
         }
-        if(error?.response?.data?.errors?.sub_title){
-            validation.showErrors({'#sub_title': error?.response?.data?.errors?.sub_title[0]})
-        }
-        if(error?.response?.data?.errors?.description){
-            validation.showErrors({'#description': error?.response?.data?.errors?.description[0]})
+        if(error?.response?.data?.errors?.button_text){
+            validation.showErrors({'#button_text': error?.response?.data?.errors?.button_text[0]})
         }
         if(error?.response?.data?.errors?.button_link){
             validation.showErrors({'#button_link': error?.response?.data?.errors?.button_link[0]})

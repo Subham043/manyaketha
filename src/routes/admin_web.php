@@ -71,6 +71,7 @@ use App\Modules\Feature\Controllers\FeatureDeleteController;
 use App\Modules\Feature\Controllers\FeatureHeadingController;
 use App\Modules\Feature\Controllers\FeaturePaginateController;
 use App\Modules\Feature\Controllers\FeatureUpdateController;
+use App\Modules\HomePage\BannerVideo\Controllers\BannerVideoController;
 use App\Modules\Procedure\Controllers\ProcedureCreateController;
 use App\Modules\Procedure\Controllers\ProcedureDeleteController;
 use App\Modules\Procedure\Controllers\ProcedureHeadingController;
@@ -91,6 +92,10 @@ use App\Modules\ServicePage\Controllers\ServiceHeadingController;
 use App\Modules\ServicePage\Controllers\ServicePaginateController;
 use App\Modules\ServicePage\Controllers\ServiceUpdateController;
 use App\Modules\TextEditorImage\Controllers\TextEditorImageController;
+use App\Modules\ServicePage\AdditionalContent\Controllers\AdditionalContentCreateController as ServiceAdditionalContentCreateController;
+use App\Modules\ServicePage\AdditionalContent\Controllers\AdditionalContentDeleteController as ServiceAdditionalContentDeleteController;
+use App\Modules\ServicePage\AdditionalContent\Controllers\AdditionalContentPaginateController as ServiceAdditionalContentPaginateController;
+use App\Modules\ServicePage\AdditionalContent\Controllers\AdditionalContentUpdateController as ServiceAdditionalContentUpdateController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -267,6 +272,11 @@ Route::middleware(['auth'])->group(function () {
 
         });
 
+        Route::prefix('/banner-video')->group(function () {
+            Route::get('/', [BannerVideoController::class, 'get', 'as' => 'home_page.banner_video.get'])->name('home_page.banner_video.get');
+            Route::post('/', [BannerVideoController::class, 'post', 'as' => 'home_page.banner_video.post'])->name('home_page.banner_video.post');
+        });
+
         Route::prefix('/about-section')->group(function () {
             Route::get('/', [AboutController::class, 'get', 'as' => 'home_page.about.get'])->name('home_page.about.get');
             Route::post('/', [AboutController::class, 'post', 'as' => 'home_page.about.post'])->name('home_page.about.post');
@@ -332,6 +342,16 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/update/{id}', [ServiceUpdateController::class, 'post', 'as' => 'service.update.post'])->name('service.update.post');
         Route::get('/delete/{id}', [ServiceDeleteController::class, 'get', 'as' => 'service.delete.get'])->name('service.delete.get');
         Route::post('/heading', [ServiceHeadingController::class, 'post', 'as' => 'service.heading.post'])->name('service.heading.post');
+
+        Route::prefix('{service_id}/additional-content')->group(function () {
+            Route::get('/', [ServiceAdditionalContentPaginateController::class, 'get', 'as' => 'service_page.additional_content.paginate.get'])->name('service_page.additional_content.paginate.get');
+            Route::get('/create', [ServiceAdditionalContentCreateController::class, 'get', 'as' => 'service_page.additional_content.create.get'])->name('service_page.additional_content.create.get');
+            Route::post('/create', [ServiceAdditionalContentCreateController::class, 'post', 'as' => 'service_page.additional_content.create.post'])->name('service_page.additional_content.create.post');
+            Route::get('/update/{id}', [ServiceAdditionalContentUpdateController::class, 'get', 'as' => 'service_page.additional_content.update.get'])->name('service_page.additional_content.update.get');
+            Route::post('/update/{id}', [ServiceAdditionalContentUpdateController::class, 'post', 'as' => 'service_page.additional_content.update.post'])->name('service_page.additional_content.update.post');
+            Route::get('/delete/{id}', [ServiceAdditionalContentDeleteController::class, 'get', 'as' => 'service_page.additional_content.delete.get'])->name('service_page.additional_content.delete.get');
+
+        });
 
     });
 

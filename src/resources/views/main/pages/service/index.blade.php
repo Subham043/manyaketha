@@ -72,9 +72,9 @@
         </div>
     </section>
 
-    @include('main.includes.cta3')
+    {{-- @include('main.includes.cta3') --}}
 
-    @include('main.includes.procedure', ['procedure'=>$procedure, 'procedureHeading'=>$procedureHeading])
+    {{-- @include('main.includes.procedure', ['procedure'=>$procedure, 'procedureHeading'=>$procedureHeading]) --}}
 
 
     @include('main.includes.cta2')

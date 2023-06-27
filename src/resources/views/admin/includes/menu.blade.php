@@ -166,6 +166,10 @@
                                             </li>
                                         @endcan
 
+                                        <li class="nav-item">
+                                            <a href="{{route('home_page.banner_video.get')}}" class="nav-link {{strpos(url()->current(), route('home_page.banner_video.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Banners Video </a>
+                                        </li>
+
                                         @can('edit home page about')
                                             <li class="nav-item">
                                                 <a href="{{route('home_page.about.get')}}" class="nav-link {{strpos(url()->current(), route('home_page.about.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> About Section </a>

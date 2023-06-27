@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Modules\HomePage\Banner\Requests;
+namespace App\Modules\ServicePage\AdditionalContent\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Stevebauman\Purify\Facades\Purify;
 
 
-class BannerCreateRequest extends FormRequest
+class AdditionalContentCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,13 +27,9 @@ class BannerCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string|max:250',
-            'button_link' => 'nullable|url|max:500',
-            'button_text' => 'required|string|max:250',
-            'is_draft' => 'required|boolean',
-            'banner_image' => 'required|image|min:1|max:500',
-            'banner_image_alt' => 'nullable|string|max:500',
-            'banner_image_title' => 'nullable|string|max:500',
+            'description' => 'required|string',
+            'description_unfiltered' => 'required|string',
+            'image' => 'required|image|min:1|max:500',
         ];
     }
 
@@ -45,10 +41,9 @@ class BannerCreateRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'is_draft' => 'Draft',
-            'banner_image' => 'Image',
-            'banner_image_alt' => 'Image Alt',
-            'banner_image_title' => 'Image Title',
+            'description' => 'Description',
+            'description_unfiltered' => 'Description Unfiltered',
+            'image' => 'Image',
         ];
     }
 

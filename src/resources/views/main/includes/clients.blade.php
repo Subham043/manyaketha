@@ -10,7 +10,12 @@
         <!--Sponsors Carousel-->
         <div class="theme_carousel owl-theme owl-carousel" data-options='{"loop": true, "margin": 40, "autoheight":true, "lazyload":true, "nav": true, "dots": true, "autoplay": true, "autoplayTimeout": 6000, "smartSpeed": 300, "responsive":{ "0" :{ "items": "1" }, "600" :{ "items" : "2" }, "768" :{ "items" : "3" } , "992":{ "items" : "4" }, "1200":{ "items" : "5" }}}'>
             @foreach($partner as $partner)
-            <div class="slide-item"><div class="image"><img src="{{$partner->image_link}}" alt="{{$partner->alt}}" title="{{$partner->title}}"></div></div>
+            <div class="slide-item">
+                <div class="image text-center">
+                    <img src="{{$partner->image_link}}" alt="{{$partner->image_alt}}" title="{{$partner->image_title}}">
+                    <h5 class="mt-2">{{$partner->image_title}}</h5>
+                </div>
+            </div>
             @endforeach
         </div>
     </div>
