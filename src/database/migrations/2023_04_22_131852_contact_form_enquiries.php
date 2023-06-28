@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('service', 500)->nullable();
             $table->string('message', 500)->nullable();
             $table->string('page_url', 500)->nullable();
+            $table->string('image', 500)->nullable();
             $table->timestamps();
             $table->index(['id', 'created_at']);
         });

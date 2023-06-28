@@ -34,6 +34,7 @@ class ContactFormRequest extends FormRequest
             'service' => 'required|string|max:255',
             'message' => 'required|string|max:500',
             'page_url' => 'required|url|max:500',
+            'image' => 'required|image|min:1|max:5000',
         ];
     }
 

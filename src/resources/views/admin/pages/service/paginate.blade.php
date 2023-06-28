@@ -107,6 +107,10 @@
                                                         <a href="{{route('service_page.additional_content.paginate.get', $item->id)}}" class="btn btn-sm btn-warning edit-item-btn">Additional Content</a>
                                                     </div>
 
+                                                    <div class="edit">
+                                                        <a href="{{route('service_page.additional_service.paginate.get', $item->id)}}" class="btn btn-sm btn-warning edit-item-btn">Additional Service</a>
+                                                    </div>
+
                                                     @can('delete services')
                                                     <div class="remove">
                                                         <button class="btn btn-sm btn-danger remove-item-btn" data-link="{{route('service.delete.get', $item->id)}}">Delete</button>

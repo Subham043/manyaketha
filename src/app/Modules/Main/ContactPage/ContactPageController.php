@@ -43,9 +43,12 @@ class ContactPageController extends BaseController
 
         try {
             //code...
-            $this->contactFormService->create(
-                $request->validated()
+            $contactForm = $this->contactFormService->create(
+                $request->safe()->except('image')
             );
+            if($request->hasFile('image')){
+                $this->contactFormService->saveImage($contactForm);
+            }
             (new RateLimitService($request))->clearRateLimit();
             return response()->json(["message" => "Enquiry recieved successfully."], 201);
         } catch (\Throwable $th) {

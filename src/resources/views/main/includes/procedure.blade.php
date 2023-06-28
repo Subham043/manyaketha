@@ -20,7 +20,9 @@
                 <div class="inner-box wow fadeiInUp" wow-duration="1500ms">
                     <div class="icon">
                         <img src="{{$v->image_link}}" alt="">
+                        @if($k+1!=count($procedure))
                         <div class="count">{{$k+1}}</div>
+                        @endif
                     </div>
                     <div class="text">{{$v->title}}</div>
                 </div>

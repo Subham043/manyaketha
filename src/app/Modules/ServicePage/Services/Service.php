@@ -22,7 +22,7 @@ class Service
 
     public function paginate(Int $total = 10): LengthAwarePaginator
     {
-        $query = ServiceModel::latest();
+        $query = ServiceModel::orderBy('item_order', 'asc');
         return QueryBuilder::for($query)
                 ->allowedFilters([
                     AllowedFilter::custom('search', new CommonFilter),
@@ -72,7 +72,6 @@ class Service
     {
         $this->deleteBrochure($service);
         $this->deleteImage($service);
-        $service->amenity()->detach();
         return $service->delete();
     }
 
@@ -116,7 +115,7 @@ class Service
     public function main_paginate(Int $total = 10, bool $status = false): LengthAwarePaginator
     {
         $query = ServiceModel::where('is_draft', true)
-                    ->latest();
+                    ->orderBy('item_order', 'asc');
         return QueryBuilder::for($query)
                 ->allowedFilters([
                     AllowedFilter::custom('search', new CommonFilter),
@@ -127,7 +126,7 @@ class Service
 
     public function getBySlugMain(String $slug): ServiceModel|null
     {
-        return ServiceModel::with('additional_contents')->where('slug', $slug)
+        return ServiceModel::with(['additional_contents', 'additional_services'])->where('slug', $slug)
         ->where('is_draft', true)
         ->firstOrFail();
         // return Cache::remember('service_'.$slug, 60*60*24, function() use($slug){

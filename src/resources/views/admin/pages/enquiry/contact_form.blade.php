@@ -28,7 +28,7 @@
                                     @include('admin.includes.search_list', ['link'=>route('enquiry.contact_form.paginate.get'), 'search'=>$search])
                                 </div>
                             </div>
-                            <div class="table-responsive table-card mt-3 mb-1">
+                            <div class="table-responsive table-card mt-3 mb-1" id="image-container">
                                 @if($data->total() > 0)
                                 <table class="table align-middle table-nowrap" id="customerTable">
                                     <thead class="table-light">
@@ -39,6 +39,7 @@
                                             <th class="sort" data-sort="customer_name">Page Url</th>
                                             <th class="sort" data-sort="customer_name">Service</th>
                                             <th class="sort" data-sort="customer_name">Message</th>
+                                            <th class="sort" data-sort="customer_name">Image</th>
                                             <th class="sort" data-sort="date">Created On</th>
                                             <th class="sort" data-sort="action">Action</th>
                                             </tr>
@@ -52,6 +53,11 @@
                                             <td class="customer_name"> <a href="{{$item->page_url}}" target="_blank" rel="noopener noreferrer">{{$item->page_url}}</a></td>
                                             <td class="customer_name">{{$item->service}}</td>
                                             <td class="customer_name">{{$item->message}}</td>
+                                            <td class="customer_name">
+                                                @if(!empty($item->image_link))
+                                                    <img src="{{$item->image_link}}" alt="" class="img-preview">
+                                                @endif
+                                            </td>
                                             <td class="date">{{$item->created_at->diffForHumans()}}</td>
                                             <td>
                                                 <div class="d-flex gap-2">
@@ -85,4 +91,30 @@
     </div>
 </div>
 
+@stop
+
+
+@section('javascript')
+<script type="text/javascript" nonce="{{ csp_nonce() }}">
+    const myViewer = new ImgPreviewer('#image-container',{
+      // aspect ratio of image
+        fillRatio: 0.9,
+        // attribute that holds the image
+        dataUrlKey: 'src',
+        // additional styles
+        style: {
+            modalOpacity: 0.6,
+            headerOpacity: 0,
+            zIndex: 99
+        },
+        // zoom options
+        imageZoom: {
+            min: 0.1,
+            max: 5,
+            step: 0.1
+        },
+        // detect whether the parent element of the image is hidden by the css style
+        bubblingLevel: 0,
+    });
+</script>
 @stop

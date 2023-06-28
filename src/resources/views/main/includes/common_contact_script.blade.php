@@ -75,6 +75,31 @@ validation
         errorMessage: 'Message is invalid',
     },
   ])
+  .addField('#image', [
+    {
+      rule: 'required',
+      errorMessage: 'Image is required',
+    },
+    {
+        rule: 'minFilesCount',
+        value: 1,
+    },
+    {
+        rule: 'maxFilesCount',
+        value: 1,
+    },
+    {
+        rule: 'files',
+        value: {
+        files: {
+            extensions: ['jpeg', 'jpg', 'png', 'webp'],
+            maxSize: 500000,
+            minSize: 1,
+            types: ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'],
+        },
+        },
+    },
+  ])
   .onSuccess(async (event) => {
     var submitBtn = document.getElementById('submitBtn')
     submitBtn.innerText = 'Sending Message ...'
@@ -86,6 +111,9 @@ validation
         formData.append('phone',document.getElementById('phone').value)
         formData.append('service',document.getElementById('service').value)
         formData.append('message',document.getElementById('message').value)
+        if((document.getElementById('image').files).length>0){
+            formData.append('image',document.getElementById('image').files[0])
+        }
         formData.append('page_url','{{Request::url()}}')
 
         const response = await axios.post('{{route('contact_page.post')}}', formData)
@@ -107,6 +135,9 @@ validation
         }
         if(error?.response?.data?.errors?.message){
             validation.showErrors({'#message': error?.response?.data?.errors?.message[0]})
+        }
+        if(error?.response?.data?.errors?.image){
+            validation.showErrors({'#image': error?.response?.data?.errors?.image[0]})
         }
         if(error?.response?.data?.message){
             errorToast(error?.response?.data?.message)

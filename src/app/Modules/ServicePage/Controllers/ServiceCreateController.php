@@ -3,6 +3,7 @@
 namespace App\Modules\ServicePage\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Modules\ServicePage\Models\Service as ModelsService;
 use App\Modules\ServicePage\Requests\ServiceCreateRequest;
 use App\Modules\ServicePage\Services\Service;
 
@@ -17,7 +18,7 @@ class ServiceCreateController extends Controller
     }
 
     public function get(){
-        return view('admin.pages.service.create');
+        return view('admin.pages.service.create')->with('orders', ModelsService::count()+1);
     }
 
     public function post(ServiceCreateRequest $request){

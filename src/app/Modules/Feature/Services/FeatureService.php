@@ -75,7 +75,7 @@ class FeatureService
     public function main_all(): Collection
     {
         return Cache::remember('features_main', 60*60*24, function(){
-            return Feature::where('is_draft', true)->latest()->get();
+            return Feature::where('is_draft', true)->get();
         });
     }
 

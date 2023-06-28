@@ -52,6 +52,7 @@
         'page' => 'Services',
         'data' => [
             'Services' => route('services.get'),
+            $data->service->name => route('services_detail.get', $data->service->slug),
             $data->name => null
         ]
     ])
@@ -66,56 +67,6 @@
                     <div class="text">
                         {!! $data->description !!}
                     </div>
-                    @if($data->additional_contents->count()>0)
-                        <div class="mb-4">
-                            @foreach($data->additional_contents as $key=>$val)
-                                @if(($key+1)%2!=0)
-                                    <div class="text row align-items-center clearfix mt-4">
-                                        <div class="col-md-6 col-sm-12">
-                                            <img fetchpriority="low" src="{{$val->image_link}}" alt="">
-                                        </div>
-                                        <div class="col-md-6 col-sm-12">
-                                            {!!$val->description!!}
-                                        </div>
-                                    </div>
-                                @else
-                                    <div class="text row align-items-center clearfix mt-4">
-                                        <div class="col-md-6 col-sm-12">
-                                            {!!$val->description!!}
-                                        </div>
-                                        <div class="col-md-6 col-sm-12">
-                                            <img fetchpriority="low" src="{{$val->image_link}}" alt="">
-                                        </div>
-                                    </div>
-                                @endif
-                            @endforeach
-                        </div>
-                    @endif
-                    @if($data->additional_services->count()>0)
-                        <div class="mt-4">
-                            <div class="row">
-                                <div class="theme_carousel owl-theme owl-carousel" data-options='{"loop": true, "margin": 0, "autoheight":true, "lazyload":true, "nav": true, "dots": true, "autoplay": true, "autoplayTimeout": 6000, "smartSpeed": 300, "responsive":{ "0" :{ "items": "1" }, "600" :{ "items" : "2" }, "768" :{ "items" : "2" } , "992":{ "items" : "2" }, "1200":{ "items" : "2" }}}'>
-                                    @foreach($data->additional_services as $additional_service)
-                                    <div class="service-block-two col-12">
-                                        <div class="inner-box">
-                                            <div class="image">
-                                                <img src="{{$additional_service->image_link}}" alt="">
-                                                <div class="overlay">
-                                                    <div class="link-btn"><a href="{{route('additional_services_detail.get', [$data->slug, $additional_service->slug])}}"><i class="flaticon-add"></i></a></div>
-                                                </div>
-                                            </div>
-                                            <div class="lower-content">
-                                                <h4><span>{!!$additional_service->name!!}</span></h4>
-                                                <div class="text">{{Str::limit($additional_service->description_unfiltered, 150)}}</div>
-                                                <div class="read-more-btn"><a href="{{route('additional_services_detail.get', [$data->slug, $additional_service->slug])}}">Learn More</a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-                    @endif
                     @if(count($testimonial)>0)
                     <div class="testimonial">
                         <h3>Service Testimonials</h3>
@@ -150,17 +101,6 @@
                 </div>
                 <aside class="col-lg-4 sidebar">
                     <div class="service-sidebar">
-                        @if(count($serviceOption)>0)
-                        <div class="widget widget_categories_two">
-                            <div class="widget-content">
-                                <ul>
-                                    @foreach($serviceOption as $v)
-                                    <li @class(["current"=>$data->slug==$v->slug])><a href="{{route('services_detail.get', $v->slug)}}">{!!$v->name!!}</a></li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
-                        @endif
                         {{-- <div class="widget contact-widget style-two">
                             <div class="widget-content">
                                 <h3 class="widget-title">Get in touch</h3>
@@ -168,13 +108,6 @@
                             </div>
                         </div> --}}
                         @include('main.includes.common_contact')
-                        @if($data->brochure)
-                        <div class="widget widget_brochure">
-                            <div class="widget-content">
-                                <div class="single-brochure"><div class="icon"><img src="{{asset('assets/images/icons/icon-29.png')}}" alt=""></div><a href="{{$data->brochure_link}}" download>Download Brochure</a></div>
-                            </div>
-                        </div>
-                        @endif
                     </div>
                 </aside>
             </div>

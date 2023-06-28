@@ -102,20 +102,6 @@
 
     @include('main.includes.counter', ['counter'=>$counter])
 
-    <!-- Features Section Three -->
-    <section class="features-section-three style-two pt-0">
-        <div class="auto-container">
-            @if($featureHeading)
-            <div class="sec-title text-center">
-                <div class="sub-title">{{$featureHeading->sub_heading}}</div>
-                <h2>{{$featureHeading->heading}}</h2>
-                <div class="text">{{$featureHeading->description}}</div>
-            </div>
-            @endif
-            @include('main.includes.feature', ['feature'=>$feature])
-        </div>
-    </section>
-
     @if(count($services)>0)
     <!-- Services Section Two -->
     <section class="services-section-two style-two pb-0">
@@ -146,7 +132,21 @@
     </section>
     @endif
 
-    @include('main.includes.cta1')
+    <!-- Features Section Three -->
+    <section class="features-section-three style-two pt-0">
+        <div class="auto-container">
+            @if($featureHeading)
+            <div class="sec-title text-center">
+                <div class="sub-title">{{$featureHeading->sub_heading}}</div>
+                <h2>{{$featureHeading->heading}}</h2>
+                <div class="text">{{$featureHeading->description}}</div>
+            </div>
+            @endif
+            @include('main.includes.feature', ['feature'=>$feature])
+        </div>
+    </section>
+
+    {{-- @include('main.includes.cta1') --}}
 
     @include('main.includes.project', [
         'project' => $project,
@@ -226,6 +226,9 @@
                                                 @endforeach
                                             @endif
                                         </select>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <input placeholder="Image" id="image" name="image" type="file" class="pt-2">
                                     </div>
                                     <div class="form-group col-md-12">
                                         <textarea name="form_message" id="message" name="message" placeholder="Message"></textarea>

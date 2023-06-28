@@ -12,6 +12,9 @@
             <input placeholder="Phone" id="phone" name="email" type="text">
         </div>
         <div class="form-group">
+            <input placeholder="Image" id="image" name="image" type="file" class="pt-2">
+        </div>
+        <div class="form-group">
             <select class="selectpicker" id="service" name="service">
                 <option value="">Service Required</option>
                 @if(count($serviceOption)>0)

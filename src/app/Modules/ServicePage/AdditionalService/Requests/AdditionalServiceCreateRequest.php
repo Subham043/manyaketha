@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Modules\ServicePage\Requests;
+namespace App\Modules\ServicePage\AdditionalService\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Stevebauman\Purify\Facades\Purify;
 
 
-class ServiceCreateRequest extends FormRequest
+class AdditionalServiceCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,14 +28,11 @@ class ServiceCreateRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:500',
-            'slug' => 'required|string|max:500|unique:services,slug',
+            'slug' => 'required|string|max:500|unique:additional_services,slug',
             'heading' => 'required|string|max:500',
             'description' => 'required|string',
             'description_unfiltered' => 'required|string',
             'image' => 'required|image|min:1|max:5000',
-            'brochure' => 'nullable|mimes:pdf|min:10|max:5000',
-            'item_order' => 'required|numeric',
-            'is_draft' => 'required|boolean',
             'meta_title' => 'nullable|string',
             'meta_description' => 'nullable|string',
             'meta_keywords' => 'nullable|string',
@@ -54,7 +51,9 @@ class ServiceCreateRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'is_draft' => 'Draft',
+            'description' => 'Description',
+            'description_unfiltered' => 'Description Unfiltered',
+            'image' => 'Image',
         ];
     }
 
@@ -65,11 +64,10 @@ class ServiceCreateRequest extends FormRequest
      */
     protected function passedValidation()
     {
-        $request = Purify::clean(
-            $this->except(['meta_header_script', 'meta_footer_script', 'meta_header_no_script', 'meta_footer_no_script'])
-        );
         $this->replace(
-            [...$request, ...$this->only(['meta_header_script', 'meta_footer_script', 'meta_header_no_script', 'meta_footer_no_script'])]
+            Purify::clean(
+                $this->all()
+            )
         );
     }
 }

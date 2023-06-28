@@ -2,6 +2,7 @@
 
 namespace App\Modules\Enquiry\ContactForm\Services;
 
+use App\Http\Services\FileService;
 use App\Modules\Enquiry\ContactForm\Models\ContactForm;
 use Illuminate\Database\Eloquent\Collection;
 use Spatie\QueryBuilder\QueryBuilder;
@@ -39,9 +40,33 @@ class ContactFormService
         return ContactForm::create($data);
     }
 
-    public function delete(ContactForm $user): bool|null
+    public function update(array $data, ContactForm $contactForm): ContactForm
     {
-        return $user->delete();
+        $contactForm->update($data);
+        return $contactForm;
+    }
+
+    public function saveImage(ContactForm $contactForm): ContactForm
+    {
+        $this->deleteImage($contactForm);
+        $image = (new FileService)->save_file('image', (new ContactForm)->image_path);
+        return $this->update([
+            'image' => $image,
+        ], $contactForm);
+    }
+
+    public function delete(ContactForm $contactForm): bool|null
+    {
+        $this->deleteImage($contactForm);
+        return $contactForm->delete();
+    }
+
+    public function deleteImage(ContactForm $contactForm): void
+    {
+        if($contactForm->image){
+            $path = str_replace("storage","app/public",$contactForm->image);
+            (new FileService)->delete_file($path);
+        }
     }
 
 }

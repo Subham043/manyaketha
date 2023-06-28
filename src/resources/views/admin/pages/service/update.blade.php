@@ -32,17 +32,25 @@
                                     <div class="col-xxl-4 col-md-4">
                                         @include('admin.includes.input', ['key'=>'heading', 'label'=>'Heading', 'value'=>$data->heading])
                                     </div>
-                                    <div class="col-xxl-6 col-md-6">
+                                    <div class="col-xxl-4 col-md-4">
                                         @include('admin.includes.file_input', ['key'=>'image', 'label'=>'Image'])
                                         @if(!empty($data->image_link))
                                             <img src="{{$data->image_link}}" alt="" class="img-preview">
                                         @endif
                                     </div>
-                                    <div class="col-xxl-6 col-md-6">
+                                    <div class="col-xxl-4 col-md-4">
                                         @include('admin.includes.file_input', ['key'=>'brochure', 'label'=>'Brochure (PDF)'])
                                         @if(!empty($data->brochure))
                                             <a href="{{$data->brochure_link}}" target="_blank" rel="noopener noreferrer">View PDF</a>
                                         @endif
+                                    </div>
+                                    <div class="col-xxl-4 col-md-4">
+                                        <label for="" class="form-label">Order</label>
+                                        <select id="item_order" name="item_order" class="form-control">
+                                            @for($i=1; $i<=$orders; $i++)
+                                                <option value="{{$i}}" @if($i==$data->item_order) selected @endif>{{$i}}</option>
+                                            @endfor
+                                        </select>
                                     </div>
                                     <div class="col-xxl-12 col-md-12">
                                         @include('admin.includes.quill', ['key'=>'description', 'label'=>'Description', 'value'=>$data->description])
@@ -172,6 +180,12 @@ validation
       errorMessage: 'Heading is required',
     },
   ])
+  .addField('#item_order', [
+    {
+      rule: 'required',
+      errorMessage: 'Order is required',
+    },
+  ])
   .addField('#name', [
     {
       rule: 'required',
@@ -284,6 +298,7 @@ validation
         var formData = new FormData();
         formData.append('is_draft',document.getElementById('is_draft').checked ? 1 : 0)
         formData.append('name',document.getElementById('name').value)
+        formData.append('item_order',document.getElementById('item_order').value)
         formData.append('slug',document.getElementById('slug').value)
         formData.append('heading',document.getElementById('heading').value)
         formData.append('description',quillDescription.root.innerHTML)
@@ -308,6 +323,9 @@ validation
     }catch (error){
         if(error?.response?.data?.errors?.name){
             validation.showErrors({'#name': error?.response?.data?.errors?.name[0]})
+        }
+        if(error?.response?.data?.errors?.item_order){
+            validation.showErrors({'#item_order': error?.response?.data?.errors?.item_order[0]})
         }
         if(error?.response?.data?.errors?.slug){
             validation.showErrors({'#slug': error?.response?.data?.errors?.slug[0]})

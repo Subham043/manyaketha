@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class ContactForm extends Model
 {
@@ -25,12 +26,31 @@ class ContactForm extends Model
         'service',
         'message',
         'page_url',
+        'image',
     ];
 
     protected $casts = [
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
+
+    public $image_path = 'contacts';
+
+    protected $appends = ['image_link'];
+
+    protected function image(): Attribute
+    {
+        return Attribute::make(
+            set: fn (string $value) => 'storage/'.$this->image_path.'/'.$value,
+        );
+    }
+
+    protected function imageLink(): Attribute
+    {
+        return new Attribute(
+            get: fn () => asset($this->image),
+        );
+    }
 
     public function getActivitylogOptions(): LogOptions
     {

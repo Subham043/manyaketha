@@ -96,6 +96,10 @@ use App\Modules\ServicePage\AdditionalContent\Controllers\AdditionalContentCreat
 use App\Modules\ServicePage\AdditionalContent\Controllers\AdditionalContentDeleteController as ServiceAdditionalContentDeleteController;
 use App\Modules\ServicePage\AdditionalContent\Controllers\AdditionalContentPaginateController as ServiceAdditionalContentPaginateController;
 use App\Modules\ServicePage\AdditionalContent\Controllers\AdditionalContentUpdateController as ServiceAdditionalContentUpdateController;
+use App\Modules\ServicePage\AdditionalService\Controllers\AdditionalServiceCreateController;
+use App\Modules\ServicePage\AdditionalService\Controllers\AdditionalServiceDeleteController;
+use App\Modules\ServicePage\AdditionalService\Controllers\AdditionalServicePaginateController;
+use App\Modules\ServicePage\AdditionalService\Controllers\AdditionalServiceUpdateController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -343,13 +347,35 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/delete/{id}', [ServiceDeleteController::class, 'get', 'as' => 'service.delete.get'])->name('service.delete.get');
         Route::post('/heading', [ServiceHeadingController::class, 'post', 'as' => 'service.heading.post'])->name('service.heading.post');
 
-        Route::prefix('{service_id}/additional-content')->group(function () {
-            Route::get('/', [ServiceAdditionalContentPaginateController::class, 'get', 'as' => 'service_page.additional_content.paginate.get'])->name('service_page.additional_content.paginate.get');
-            Route::get('/create', [ServiceAdditionalContentCreateController::class, 'get', 'as' => 'service_page.additional_content.create.get'])->name('service_page.additional_content.create.get');
-            Route::post('/create', [ServiceAdditionalContentCreateController::class, 'post', 'as' => 'service_page.additional_content.create.post'])->name('service_page.additional_content.create.post');
-            Route::get('/update/{id}', [ServiceAdditionalContentUpdateController::class, 'get', 'as' => 'service_page.additional_content.update.get'])->name('service_page.additional_content.update.get');
-            Route::post('/update/{id}', [ServiceAdditionalContentUpdateController::class, 'post', 'as' => 'service_page.additional_content.update.post'])->name('service_page.additional_content.update.post');
-            Route::get('/delete/{id}', [ServiceAdditionalContentDeleteController::class, 'get', 'as' => 'service_page.additional_content.delete.get'])->name('service_page.additional_content.delete.get');
+        Route::prefix('/{service_id}')->group(function () {
+            Route::prefix('/additional-content')->group(function () {
+                Route::get('/', [ServiceAdditionalContentPaginateController::class, 'get', 'as' => 'service_page.additional_content.paginate.get'])->name('service_page.additional_content.paginate.get');
+                Route::get('/create', [ServiceAdditionalContentCreateController::class, 'get', 'as' => 'service_page.additional_content.create.get'])->name('service_page.additional_content.create.get');
+                Route::post('/create', [ServiceAdditionalContentCreateController::class, 'post', 'as' => 'service_page.additional_content.create.post'])->name('service_page.additional_content.create.post');
+                Route::get('/update/{id}', [ServiceAdditionalContentUpdateController::class, 'get', 'as' => 'service_page.additional_content.update.get'])->name('service_page.additional_content.update.get');
+                Route::post('/update/{id}', [ServiceAdditionalContentUpdateController::class, 'post', 'as' => 'service_page.additional_content.update.post'])->name('service_page.additional_content.update.post');
+                Route::get('/delete/{id}', [ServiceAdditionalContentDeleteController::class, 'get', 'as' => 'service_page.additional_content.delete.get'])->name('service_page.additional_content.delete.get');
+            });
+
+            Route::prefix('/additional-service')->group(function () {
+                Route::get('/', [AdditionalServicePaginateController::class, 'get', 'as' => 'service_page.additional_service.paginate.get'])->name('service_page.additional_service.paginate.get');
+                Route::get('/create', [AdditionalServiceCreateController::class, 'get', 'as' => 'service_page.additional_service.create.get'])->name('service_page.additional_service.create.get');
+                Route::post('/create', [AdditionalServiceCreateController::class, 'post', 'as' => 'service_page.additional_service.create.post'])->name('service_page.additional_service.create.post');
+                Route::get('/update/{id}', [AdditionalServiceUpdateController::class, 'get', 'as' => 'service_page.additional_service.update.get'])->name('service_page.additional_service.update.get');
+                Route::post('/update/{id}', [AdditionalServiceUpdateController::class, 'post', 'as' => 'service_page.additional_service.update.post'])->name('service_page.additional_service.update.post');
+                Route::get('/delete/{id}', [AdditionalServiceDeleteController::class, 'get', 'as' => 'service_page.additional_service.delete.get'])->name('service_page.additional_service.delete.get');
+
+            });
+
+        });
+
+        Route::prefix('{service_id}/additional-service')->group(function () {
+            Route::get('/', [AdditionalServicePaginateController::class, 'get', 'as' => 'service_page.additional_service.paginate.get'])->name('service_page.additional_service.paginate.get');
+            Route::get('/create', [AdditionalServiceCreateController::class, 'get', 'as' => 'service_page.additional_service.create.get'])->name('service_page.additional_service.create.get');
+            Route::post('/create', [AdditionalServiceCreateController::class, 'post', 'as' => 'service_page.additional_service.create.post'])->name('service_page.additional_service.create.post');
+            Route::get('/update/{id}', [AdditionalServiceUpdateController::class, 'get', 'as' => 'service_page.additional_service.update.get'])->name('service_page.additional_service.update.get');
+            Route::post('/update/{id}', [AdditionalServiceUpdateController::class, 'post', 'as' => 'service_page.additional_service.update.post'])->name('service_page.additional_service.update.post');
+            Route::get('/delete/{id}', [AdditionalServiceDeleteController::class, 'get', 'as' => 'service_page.additional_service.delete.get'])->name('service_page.additional_service.delete.get');
 
         });
 

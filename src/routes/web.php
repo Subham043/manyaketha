@@ -9,6 +9,7 @@ use App\Modules\Main\CsrPage\CsrPageController;
 use App\Modules\Main\HomePage\HomePageController;
 use App\Modules\Main\LegalPage\LegalPageController;
 use App\Modules\Main\ProjectPage\ProjectPageController;
+use App\Modules\Main\ServicePage\AdditionalServiceDetailPageController;
 use App\Modules\Main\ServicePage\ServiceDetailPageController;
 use App\Modules\Main\ServicePage\ServicePageController;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +34,7 @@ Route::post('/contact-us-post', [ContactPageController::class, 'post', 'as' => '
 Route::get('/projects', [ProjectPageController::class, 'get', 'as' => 'projects.get'])->name('projects.get');
 Route::get('/services', [ServicePageController::class, 'get', 'as' => 'services.get'])->name('services.get');
 Route::get('/services/{slug}', [ServiceDetailPageController::class, 'get', 'as' => 'services_detail.get'])->name('services_detail.get');
+Route::get('/services/{service_slug}/{slug}', [AdditionalServiceDetailPageController::class, 'get', 'as' => 'additional_services_detail.get'])->name('additional_services_detail.get');
 Route::get('/blogs', [BlogPageController::class, 'get', 'as' => 'blogs.get'])->name('blogs.get');
 Route::get('/blogs/{slug}', [BlogDetailPageController::class, 'get', 'as' => 'blogs_detail.get'])->name('blogs_detail.get');
 Route::get('/{legal_slug}', [LegalPageController::class, 'get', 'as' => 'legal.get'])->name('legal.get');

@@ -79,6 +79,9 @@
                                         @endif
                                     </select>
                                 </div>
+                                <div class="form-group col-md-12">
+                                    <input placeholder="Image" id="image" name="image" type="file" class="pt-2">
+                                </div>
                                 <div class="form-group col-lg-12">
                                     <textarea name="form_message" placeholder="Message" id="message" name="message" class="form-control"></textarea>
                                 </div>

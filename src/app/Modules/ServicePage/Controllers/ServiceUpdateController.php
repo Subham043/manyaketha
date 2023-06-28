@@ -3,6 +3,7 @@
 namespace App\Modules\ServicePage\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Modules\ServicePage\Models\Service as ModelsService;
 use App\Modules\ServicePage\Requests\ServiceUpdateRequest;
 use App\Modules\ServicePage\Services\Service;
 
@@ -18,7 +19,7 @@ class ServiceUpdateController extends Controller
 
     public function get($id){
         $data = $this->service->getById($id);
-        return view('admin.pages.service.update', compact(['data']));
+        return view('admin.pages.service.update', compact(['data']))->with('orders', ModelsService::count());
     }
 
     public function post(ServiceUpdateRequest $request, $id){
