@@ -1,6 +1,6 @@
 <div class="widget widget_contact-form">
-    <h3 class="widget-title">Request a Free Quote</h3>
-    <div class="text">Fill-in the form & send for a quick estimate</div>
+    <h3 class="widget-title">Get Your Free Consultation!</h3>
+    <div class="text">Let’s Rebuild, Revamp, Reinforce, Revitalise Structures!</div>
     <form method="post" id="contactForm">
         <div class="form-group">
             <input placeholder="name" id="name" name="name" type="text">

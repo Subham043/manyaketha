@@ -229,7 +229,7 @@ validation
         files: {
             extensions: ['jpeg', 'jpg', 'png', 'webp'],
             maxSize: 500000,
-            minSize: 100,
+            minSize: 1,
             types: ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'],
         },
         },

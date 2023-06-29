@@ -2233,7 +2233,7 @@ img {
 
 .sec-title h2 {
     position: relative;
-    font-size: 48px;
+    font-size: 40px;
     line-height: 60px;
     font-family: cerebri-medium;
 }
@@ -4301,6 +4301,9 @@ img {
 .process-block .icon img {
     position: relative;
     z-index: 9;
+    width: auto;
+    height: 130px;
+    object-fit: contain;
 }
 
 .process-block .icon:before {
@@ -5840,6 +5843,7 @@ img {
 
 .gallery-block-two .inner-box {
     position: relative;
+    margin: 10px;
 }
 
 .gallery-block-two .image {

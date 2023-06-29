@@ -180,7 +180,7 @@
                                 <div class="inner-box">
                                     <div class="text">“{{$testimonial->message}}”</div>
                                     <div class="author-box">
-                                        <div class="author-thumb"><img src="{{asset('assets/images/resource/author-1.jpg')}}" alt=""></div>
+                                        <div class="author-thumb"><img src="{{$testimonial->image_link}}" alt=""></div>
                                         <div class="content">
                                             <h4>{{$testimonial->name}}</h4>
                                             <div class="designation">{{$testimonial->designation}}</div>

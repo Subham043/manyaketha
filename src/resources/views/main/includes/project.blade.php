@@ -2,16 +2,16 @@
 <section class="portfolio-section-two">
     <div class="auto-container">
         <div class="top-content">
-            <div class="row m-0 justify-content-between align-items-end">
+            <div class="row m-0 justify-content-between align-items-center">
                 @if($projectHeading)
                     <div class="sec-title light col-lg-6 col-md-6">
                         <div class="sub-title">{{$projectHeading->sub_heading}}</div>
                         <h2>{{$projectHeading->heading}}</h2>
-                        <div class="text">{{$projectHeading->description}}</div>
                     </div>
+                    <div class="text col-lg-6 col-md-6 col-sm-12 p-0">{{$projectHeading->description}}</div>
                 @endif
                 <!--Filter-->
-                <div class="filters clearfix">
+                <div class="filters clearfix col-12">
                     <ul class="filter-tabs filter-btns clearfix">
                         <li class="filter active" data-role="button" data-filter=".all">All <span class="count">0</span></li>
                         @foreach($project as $p)

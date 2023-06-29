@@ -421,6 +421,8 @@
 			var $filter = $('.filter-btns');
 			$container.isotope({
 				filter: '.all',
+                layoutMode: 'fitRows',
+                gutter:10,
 				animationOptions: {
 					duration: 500,
 					easing: 'linear'
@@ -432,6 +434,8 @@
 				try {
 					$container.isotope({
 						filter: selector,
+                        layoutMode: 'fitRows',
+                        gutter:10,
 						animationOptions: {
 							duration: 500,
 							easing: 'linear',
@@ -445,6 +449,8 @@
 				var selector = $filter.find('li.active').attr('data-filter');
 				$container.isotope({
 					filter: selector,
+                    layoutMode: 'fitRows',
+                    gutter:10,
 					animationOptions: {
 						duration: 500,
 						easing: 'linear',
