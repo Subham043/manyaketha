@@ -204,8 +204,8 @@
                 <div class="col-xl-6 right-column">
                     <div class="inner-container">
                         <div class="estimate-form">
-                            <div class="title">Get Free Consultation</div>
-                            <div class="sub-title">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea duis aute irure dolor in reprehenderit in voluptate. </div>
+                            <div class="title">Get Your Free Consultation!</div>
+                            <div class="sub-title">Let’s Rebuild, Revamp, Reinforce, Revitalise Structures! </div>
                             <form method="post" id="contactForm">
                                 <div class="row">
                                     <div class="form-group col-md-6">
