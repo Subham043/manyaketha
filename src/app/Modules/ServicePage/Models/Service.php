@@ -4,7 +4,9 @@ namespace App\Modules\ServicePage\Models;
 
 use App\Modules\Authentication\Models\User;
 use App\Modules\ServicePage\AdditionalContent\Models\AdditionalContent;
+use App\Modules\ServicePage\AdditionalContent\Models\AdditionalContentHeading;
 use App\Modules\ServicePage\AdditionalService\Models\AdditionalService;
+use App\Modules\ServicePage\AdditionalService\Models\AdditionalServiceHeading;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -148,9 +150,19 @@ class Service extends Model implements Sitemapable
         return $this->hasMany(AdditionalContent::class, 'service_id');
     }
 
+    public function additional_content_heading()
+    {
+        return $this->hasOne(AdditionalContentHeading::class, 'service_id');
+    }
+
     public function additional_services()
     {
         return $this->hasMany(AdditionalService::class, 'service_id');
+    }
+
+    public function additional_service_heading()
+    {
+        return $this->hasOne(AdditionalServiceHeading::class, 'service_id');
     }
 
     public function getActivitylogOptions(): LogOptions

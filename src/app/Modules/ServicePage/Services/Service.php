@@ -126,11 +126,9 @@ class Service
 
     public function getBySlugMain(String $slug): ServiceModel|null
     {
-        return ServiceModel::with(['additional_contents', 'additional_services'])->where('slug', $slug)
+        return ServiceModel::with(['additional_contents', 'additional_content_heading', 'additional_services', 'additional_service_heading'])->where('slug', $slug)
         ->where('is_draft', true)
         ->firstOrFail();
-        // return Cache::remember('service_'.$slug, 60*60*24, function() use($slug){
-        // });
     }
 
 }

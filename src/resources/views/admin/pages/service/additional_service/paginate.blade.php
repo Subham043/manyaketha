@@ -11,6 +11,39 @@
         @include('admin.includes.breadcrumb', ['page'=>'Additional Service', 'page_link'=>route('service_page.additional_service.paginate.get', $service_id), 'list'=>['List']])
         <!-- end page title -->
 
+        <div class="row" id="image-container">
+            <div class="col-lg-12">
+                <form id="countryForm" method="post" action="{{route('service_page.additional_service.heading.post', $service_id)}}" enctype="multipart/form-data">
+                @csrf
+                    <div class="card">
+                        <div class="card-header align-items-center d-flex">
+                            <h4 class="card-title mb-0 flex-grow-1">Heading</h4>
+                        </div><!-- end card header -->
+                        <div class="card-body">
+                            <div class="live-preview">
+                                <div class="row gy-4">
+                                    <div class="col-xxl-12 col-md-12">
+                                        @include('admin.includes.input', ['key'=>'heading', 'label'=>'Heading', 'value'=>!empty($additionalServiceHeading) ? (old('heading') ? old('heading') : $additionalServiceHeading->heading) : old('heading')])
+                                    </div>
+                                    <div class="col-xxl-12 col-md-12">
+                                        @include('admin.includes.textarea', ['key'=>'description', 'label'=>'Description', 'value'=>!empty($additionalServiceHeading) ? (old('description') ? old('description') : $additionalServiceHeading->description) : old('description')])
+                                    </div>
+                                    <div class="col-xxl-12 col-md-12">
+                                        <button type="submit" class="btn btn-primary waves-effect waves-light" id="submitBtn">Update</button>
+                                    </div>
+
+                                </div>
+                                <!--end row-->
+                            </div>
+
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <!--end col-->
+        </div>
+
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
@@ -84,4 +117,61 @@
     </div>
 </div>
 
+@stop
+
+
+@section('javascript')
+
+<script type="text/javascript" nonce="{{ csp_nonce() }}">
+// initialize the validation library
+const validation = new JustValidate('#countryForm', {
+      errorFieldCssClass: 'is-invalid',
+});
+// apply rules to form fields
+validation
+.addField('#heading', [
+    {
+      rule: 'required',
+      errorMessage: 'Heading is required',
+    },
+    {
+        rule: 'customRegexp',
+        value: COMMON_REGEX,
+        errorMessage: 'Heading is invalid',
+    },
+  ])
+.addField('#description', [
+    {
+      rule: 'required',
+      errorMessage: 'Description is required',
+    },
+  ])
+  .onSuccess(async (event) => {
+    var submitBtn = document.getElementById('submitBtn')
+    submitBtn.innerHTML = spinner
+    submitBtn.disabled = true;
+    try {
+        var formData = new FormData();
+        formData.append('heading',document.getElementById('heading').value)
+        formData.append('description',document.getElementById('description').value)
+        const response = await axios.post('{{route('service_page.additional_service.heading.post', $service_id)}}', formData)
+        successToast(response.data.message)
+    }catch (error){
+        if(error?.response?.data?.errors?.heading){
+            validation.showErrors({'#heading': error?.response?.data?.errors?.heading[0]})
+        }
+        if(error?.response?.data?.errors?.description){
+            validation.showErrors({'#description': error?.response?.data?.errors?.description[0]})
+        }
+        if(error?.response?.data?.message){
+            errorToast(error?.response?.data?.message)
+        }
+    }finally{
+        submitBtn.innerHTML =  `
+            Update
+            `
+        submitBtn.disabled = false;
+    }
+  });
+</script>
 @stop

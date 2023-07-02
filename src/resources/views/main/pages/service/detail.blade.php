@@ -67,7 +67,11 @@
                         {!! $data->description !!}
                     </div>
                     @if($data->additional_contents->count()>0)
-                        <div class="mb-4">
+                        <h4>{!! $data->additional_content_heading->heading !!}</h4>
+                        <div class="text">
+                            {!! $data->additional_content_heading->description !!}
+                        </div>
+                        <div class="mt-4 mb-4">
                             @foreach($data->additional_contents as $key=>$val)
                                 @if(($key+1)%2!=0)
                                     <div class="text row align-items-center clearfix mt-4">
@@ -92,6 +96,10 @@
                         </div>
                     @endif
                     @if($data->additional_services->count()>0)
+                        <h4>{!! $data->additional_service_heading->heading !!}</h4>
+                        <div class="text">
+                            {!! $data->additional_service_heading->description !!}
+                        </div>
                         <div class="mt-4">
                             <div class="row">
                                 <div class="theme_carousel owl-theme owl-carousel" data-options='{"loop": true, "margin": 0, "autoheight":true, "lazyload":true, "nav": true, "dots": true, "autoplay": true, "autoplayTimeout": 6000, "smartSpeed": 300, "responsive":{ "0" :{ "items": "1" }, "600" :{ "items" : "2" }, "768" :{ "items" : "2" } , "992":{ "items" : "2" }, "1200":{ "items" : "2" }}}'>
