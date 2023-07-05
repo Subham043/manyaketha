@@ -4,6 +4,7 @@ namespace App\Modules\Main\HomePage;
 
 use App\Modules\Blog\Services\BlogHeadingService;
 use App\Modules\Blog\Services\BlogService;
+use App\Modules\CallToAction\Services\CallToActionService;
 use App\Modules\Counter\Services\CounterService;
 use App\Modules\Feature\Services\FeatureHeadingService;
 use App\Modules\Feature\Services\FeatureService;
@@ -13,6 +14,7 @@ use App\Modules\HomePage\Banner\Services\BannerService;
 use App\Modules\HomePage\BannerVideo\Services\BannerVideoService;
 use App\Modules\Legal\Services\LegalService;
 use App\Modules\Main\BaseController\BaseController;
+use App\Modules\Offer\Services\OfferService;
 use App\Modules\Partner\Services\PartnerService;
 use App\Modules\Procedure\Services\ProcedureHeadingService;
 use App\Modules\Procedure\Services\ProcedureService;
@@ -49,6 +51,8 @@ class HomePageController extends BaseController
     private ProjectHeadingService $projectHeadingService;
     private HeadingService $headingService;
     private FeatureHeadingService $featureHeadingService;
+    private OfferService $offerService;
+    private CallToActionService $callToActionService;
 
     public function __construct(
         SeoService $seoService,
@@ -75,6 +79,8 @@ class HomePageController extends BaseController
         ProjectHeadingService $projectHeadingService,
         HeadingService $headingService,
         FeatureHeadingService $featureHeadingService,
+        OfferService $offerService,
+        CallToActionService $callToActionService,
     )
     {
         parent::__construct($seoService, $generalService, $chatbotService, $legalService, $service);
@@ -97,6 +103,8 @@ class HomePageController extends BaseController
         $this->projectHeadingService = $projectHeadingService;
         $this->headingService = $headingService;
         $this->featureHeadingService = $featureHeadingService;
+        $this->offerService = $offerService;
+        $this->callToActionService = $callToActionService;
     }
 
     public function get(){
@@ -120,6 +128,8 @@ class HomePageController extends BaseController
         $about = $this->aboutService->getById(1);
         $bannerVideo = $this->bannerVideoService->getById(1);
         $featureHeading = $this->featureHeadingService->getById(1);
+        $offer = $this->offerService->getById(1);
+        $callToAction = $this->callToActionService->getById(1);
         return view('main.pages.index', compact([
             'partner',
             'feature',
@@ -141,6 +151,8 @@ class HomePageController extends BaseController
             'headingService',
             'featureHeading',
             'bannerVideo',
+            'offer',
+            'callToAction',
         ]))->with([
             'legal' => $this->legal_all(),
             'seo' => $this->seo('home-page'),

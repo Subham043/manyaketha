@@ -2,6 +2,7 @@
 
 namespace App\Modules\Main\ServicePage;
 
+use App\Modules\CallToAction\Services\CallToActionService;
 use App\Modules\Legal\Services\LegalService;
 use App\Modules\Main\BaseController\BaseController;
 use App\Modules\Seo\Services\SeoService;
@@ -15,6 +16,7 @@ class AdditionalServiceDetailPageController extends BaseController
 {
     private TestimonialService $testimonialService;
     private AdditionalServiceService $additionalService;
+    private CallToActionService $callToActionService;
 
     public function __construct(
         SeoService $seoService,
@@ -24,19 +26,23 @@ class AdditionalServiceDetailPageController extends BaseController
         Service $service,
         AdditionalServiceService $additionalService,
         TestimonialService $testimonialService,
+        CallToActionService $callToActionService
     )
     {
         parent::__construct($seoService, $generalService, $chatbotService, $legalService, $service);
         $this->testimonialService = $testimonialService;
         $this->additionalService = $additionalService;
+        $this->callToActionService = $callToActionService;
     }
 
     public function get($service_slug, $slug){
         $testimonial = $this->testimonialService->main_all();
         $data = $this->additionalService->getBySlugMain($service_slug, $slug);
+        $callToAction = $this->callToActionService->getById(1);
         return view('main.pages.service.additional_detail', compact([
             'testimonial',
             'data',
+            'callToAction',
         ]))->with([
             'legal' => $this->legal_all(),
             'generalSetting' => $this->general_setting(),

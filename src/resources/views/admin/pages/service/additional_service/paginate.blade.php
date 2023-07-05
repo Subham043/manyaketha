@@ -90,6 +90,10 @@
                                                         <a href="{{route('service_page.additional_service.update.get', [$service_id, $item->id])}}" class="btn btn-sm btn-primary edit-item-btn">Edit</a>
                                                     </div>
 
+                                                    <div class="edit">
+                                                        <a href="{{route('service_page.additional_service_content.paginate.get', [$service_id, $item->id])}}" class="btn btn-sm btn-warning edit-item-btn">Additional Content</a>
+                                                    </div>
+
                                                     <div class="remove">
                                                         <button class="btn btn-sm btn-danger remove-item-btn" data-link="{{route('service_page.additional_service.delete.get', [$service_id, $item->id])}}">Delete</button>
                                                     </div>

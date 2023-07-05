@@ -94,7 +94,7 @@
     </section>
     <!-- sidebar-page-container end -->
 
-    @include('main.includes.cta2')
+    @include('main.includes.cta2', ['data' => $callToAction])
 
     @include('main.includes.footer')
 

@@ -4,11 +4,11 @@
         <div class="top-content">
             <div class="row m-0 justify-content-between align-items-center">
                 @if($projectHeading)
-                    <div class="sec-title light col-lg-6 col-md-6">
+                    <div class="sec-title light col-lg-6 col-md-6 mb-3">
                         <div class="sub-title">{{$projectHeading->sub_heading}}</div>
                         <h2>{{$projectHeading->heading}}</h2>
                     </div>
-                    <div class="text col-lg-6 col-md-6 col-sm-12 p-0">{{$projectHeading->description}}</div>
+                    <div class="text col-lg-6 col-md-6 col-sm-12 p-0 mb-3">{{$projectHeading->description}}</div>
                 @endif
                 <!--Filter-->
                 <div class="filters clearfix col-12">

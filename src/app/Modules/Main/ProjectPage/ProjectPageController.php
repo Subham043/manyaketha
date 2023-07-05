@@ -2,6 +2,7 @@
 
 namespace App\Modules\Main\ProjectPage;
 
+use App\Modules\CallToAction\Services\CallToActionService;
 use App\Modules\Legal\Services\LegalService;
 use App\Modules\Main\BaseController\BaseController;
 use App\Modules\Settings\Services\ChatbotService;
@@ -15,6 +16,7 @@ class ProjectPageController extends BaseController
 {
     private CategoryService $categoryService;
     private ProjectHeadingService $projectHeadingService;
+    private CallToActionService $callToActionService;
 
     public function __construct(
         GeneralService $generalService,
@@ -24,19 +26,23 @@ class ProjectPageController extends BaseController
         CategoryService $categoryService,
         SeoService $seoService,
         ProjectHeadingService $projectHeadingService,
+        CallToActionService $callToActionService
     )
     {
         parent::__construct($seoService, $generalService, $chatbotService, $legalService, $service);
         $this->categoryService = $categoryService;
         $this->projectHeadingService = $projectHeadingService;
+        $this->callToActionService = $callToActionService;
     }
 
     public function get(){
         $project = $this->categoryService->main_all();
         $projectHeading = $this->projectHeadingService->getById(1);
+        $callToAction = $this->callToActionService->getById(1);
         return view('main.pages.project', compact([
             'project',
-            'projectHeading'
+            'projectHeading',
+            'callToAction',
         ]))->with([
             'legal' => $this->legal_all(),
             'seo' => $this->seo('project-page'),

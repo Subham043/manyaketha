@@ -53,12 +53,77 @@
                 border: 0;
                 z-index: 6;
             }
+            .offer-parent .offer-text-container h1, .offer-parent .offer-text-container h2, .offer-parent .offer-text-container h3, .offer-parent .offer-text-container h4, .offer-parent .offer-text-container h5, .offer-parent .offer-text-container h6, .offer-parent .offer-text-container p{
+                padding: 0;
+                margin: 0;
+            }
+            .offer-parent {
+            position: relative;
+            width: 100%;
+            padding: 5rem;
+            padding-left: 0.5rem;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            background-color: #f2c23140;
+            margin-left: auto;
+            margin-right: auto;
+            }
+
+            .offer-child {
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 2;
+            /* Text */
+            }
+            .offer-child p {
+            position: absolute;
+            top: 16px;
+            right: 0;
+            color: white;
+            transform: rotate(45deg);
+            margin: 0;
+            line-height: 1;
+            font-size: 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+            }
+
+            /* Triangle */
+            .offer-child::before {
+            content: "";
+            display: block;
+            width: 70px;
+            height: 70px;
+            border-top: solid 35px #fe0a01;
+            border-right: solid 35px #fe0a01;
+            border-left: solid 35px transparent;
+            border-bottom: solid 35px transparent;
+            }
         </style>
+
+        @if(count($blog)==0)
+            <style>
+                .clients-logo-section {
+                    border-bottom: none;
+                }
+            </style>
+        @endif
+
     @stop
 
     @section('content')
 
     @include('main.includes.preloader')
+
+    <div class="offer-parent">
+        <div class="offer-child">
+          <p>Offer</p>
+        </div>
+        <div class="offer-text-container">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores sed ullam perferendis! Aut quasi saepe voluptatum accusamus repellat tenetur ducimus, error vitae similique, labore eveniet neque dolorem assumenda magnam nam?</p>
+        </div>
+    </div>
 
     @include('main.includes.header')
 
@@ -289,7 +354,7 @@
     </section>
     @endif
 
-    @include('main.includes.cta2')
+    @include('main.includes.cta2', ['data' => $callToAction])
 
     @include('main.includes.footer')
 

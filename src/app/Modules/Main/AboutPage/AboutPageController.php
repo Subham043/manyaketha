@@ -4,6 +4,7 @@ namespace App\Modules\Main\AboutPage;
 
 use App\Modules\AboutPage\About\Services\AboutService;
 use App\Modules\AboutPage\AdditionalContent\Services\AdditionalContentService;
+use App\Modules\CallToAction\Services\CallToActionService;
 use App\Modules\Feature\Services\FeatureHeadingService;
 use App\Modules\Feature\Services\FeatureService;
 use App\Modules\Legal\Services\LegalService;
@@ -25,6 +26,7 @@ class AboutPageController extends BaseController
     private AdditionalContentService $additionalContentService;
     private TeamService $teamService;
     private TeamHeadingService $teamHeadingService;
+    private CallToActionService $callToActionService;
 
     public function __construct(
         SeoService $seoService,
@@ -39,6 +41,7 @@ class AboutPageController extends BaseController
         TeamService $teamService,
         TeamHeadingService $teamHeadingService,
         Service $service,
+        CallToActionService $callToActionService,
     )
     {
         parent::__construct($seoService, $generalService, $chatbotService, $legalService, $service);
@@ -49,6 +52,7 @@ class AboutPageController extends BaseController
         $this->additionalContentService = $additionalContentService;
         $this->teamService = $teamService;
         $this->teamHeadingService = $teamHeadingService;
+        $this->callToActionService = $callToActionService;
     }
 
     public function get(){
@@ -59,6 +63,7 @@ class AboutPageController extends BaseController
         $additionalContent = $this->additionalContentService->main_all();
         $team = $this->teamService->main_all();
         $teamHeading = $this->teamHeadingService->getById(1);
+        $callToAction = $this->callToActionService->getById(1);
         return view('main.pages.about', compact([
             'partner',
             'feature',
@@ -67,6 +72,7 @@ class AboutPageController extends BaseController
             'additionalContent',
             'team',
             'teamHeading',
+            'callToAction',
         ]))->with([
             'legal' => $this->legal_all(),
             'seo' => $this->seo('about-page'),

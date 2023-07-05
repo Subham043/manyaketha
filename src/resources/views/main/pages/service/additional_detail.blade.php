@@ -35,6 +35,10 @@
             .clearfix {
                 overflow: auto;
             }
+            .content-img{
+                height: 150px;
+                object-fit: contain;
+            }
         </style>
 
         {!!$data->meta_header_script!!}
@@ -67,6 +71,37 @@
                     <div class="text">
                         {!! $data->description !!}
                     </div>
+                    @if($data->additional_service_contents->count()>0)
+                        <div class="mt-4 mb-4">
+                            @foreach($data->additional_service_contents as $key=>$val)
+                                {{-- @if(($key+1)%2!=0) --}}
+                                    <div class="text row align-items-center clearfix mt-4">
+                                        <div class="col-md-12 col-sm-12 d-flex flex-wrap gap-5">
+                                            <img fetchpriority="low" src="{{$val->image_link}}" class="content-img" alt="">
+                                            @if($val->additional_service_content_images->count()>0)
+                                                @foreach($val->additional_service_content_images as $k=>$v)
+                                                    <img fetchpriority="low" src="{{$v->image_link}}" class="content-img" alt="">
+                                                @endforeach
+                                            @endif
+                                        </div>
+                                        <div class="col-md-12 col-sm-12">
+                                            <h4>{{$val->name}}</h4>
+                                            {!!$val->description!!}
+                                        </div>
+                                    </div>
+                                {{-- @else
+                                    <div class="text row align-items-center clearfix mt-4">
+                                        <div class="col-md-12 col-sm-12">
+                                            {!!$val->description!!}
+                                        </div>
+                                        <div class="col-md-12 col-sm-12">
+                                            <img fetchpriority="low" src="{{$val->image_link}}" alt="">
+                                        </div>
+                                    </div>
+                                @endif --}}
+                            @endforeach
+                        </div>
+                    @endif
                     @if(count($testimonial)>0)
                     <div class="testimonial">
                         <h3>Service Testimonials</h3>
@@ -114,7 +149,7 @@
         </div>
     </section>
 
-    @include('main.includes.cta2')
+    @include('main.includes.cta2', ['data' => $callToAction])
 
     @include('main.includes.footer')
 

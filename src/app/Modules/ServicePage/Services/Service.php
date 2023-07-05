@@ -126,7 +126,13 @@ class Service
 
     public function getBySlugMain(String $slug): ServiceModel|null
     {
-        return ServiceModel::with(['additional_contents', 'additional_content_heading', 'additional_services', 'additional_service_heading'])->where('slug', $slug)
+        return ServiceModel::with([
+            'additional_contents' => function($q) {
+                $q->with(['additional_content_images']);
+            },
+            'additional_content_heading',
+            'additional_services',
+            'additional_service_heading'])->where('slug', $slug)
         ->where('is_draft', true)
         ->firstOrFail();
     }

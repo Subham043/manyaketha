@@ -2234,7 +2234,7 @@ img {
 .sec-title h2 {
     position: relative;
     font-size: 30px;
-    line-height: 60px;
+    line-height: 40px;
     font-family: cerebri-medium;
 }
 
@@ -2597,7 +2597,7 @@ img {
     border-top: 1px solid #efefef;
     max-width: 800px;
     margin: 0 auto;
-    margin-bottom: 70px;
+    margin-bottom: 35px;
 }
 
 .filter-tabs li {
@@ -2887,13 +2887,17 @@ img {
 /* Clients  Logo Section */
 .clients-logo-section {
     position: relative;
-    padding: 65px 0;
+    padding: 40px 0;
     border-bottom: 1px solid #e5e5e5;
 }
 
 .clients-logo-section .owl-item img {
     width: auto;
     margin: 0 auto;
+}
+
+.clients-logo-section .owl-item h5 {
+    font-size: 1rem;
 }
 
 .clients-logo-section .auto-container {
@@ -3705,7 +3709,7 @@ img {
 
 .clients-logo-section.style-two {
     border-bottom: 0;
-    padding: 80px 0 110px;
+    padding: 50px 0 50px;
 }
 
 
@@ -6037,6 +6041,13 @@ img {
 }
 
 .featured_image{
-    height: 100px;
+    height: 150px;
     object-fit: contain;
+}
+
+.highlight-heading{
+    padding: 10px;
+    background-color: rgb(252 240 210);
+    border-left: 5px solid #f20819;
+    display: inline-block;
 }

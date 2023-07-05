@@ -3,6 +3,7 @@
 namespace App\Modules\ServicePage\AdditionalService\Models;
 
 use App\Modules\Authentication\Models\User;
+use App\Modules\ServicePage\AdditionalServiceContent\Models\AdditionalServiceContent;
 use App\Modules\ServicePage\Models\Service;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -104,6 +105,11 @@ class AdditionalService extends Model
     public function service()
     {
         return $this->belongsTo(Service::class, 'service_id')->withDefault();
+    }
+
+    public function additional_service_contents()
+    {
+        return $this->hasMany(AdditionalServiceContent::class, 'additional_service_id');
     }
 
     public function getActivitylogOptions(): LogOptions

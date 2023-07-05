@@ -66,12 +66,14 @@ use App\Modules\AboutPage\AdditionalContent\Controllers\AdditionalContentDeleteC
 use App\Modules\AboutPage\AdditionalContent\Controllers\AdditionalContentPaginateController as AdditionalContentPagePaginateController;
 use App\Modules\AboutPage\AdditionalContent\Controllers\AdditionalContentUpdateController as AdditionalContentPageUpdateController;
 use App\Modules\Blog\Controllers\BlogHeadingController;
+use App\Modules\CallToAction\Controllers\CallToActionController;
 use App\Modules\Feature\Controllers\FeatureCreateController;
 use App\Modules\Feature\Controllers\FeatureDeleteController;
 use App\Modules\Feature\Controllers\FeatureHeadingController;
 use App\Modules\Feature\Controllers\FeaturePaginateController;
 use App\Modules\Feature\Controllers\FeatureUpdateController;
 use App\Modules\HomePage\BannerVideo\Controllers\BannerVideoController;
+use App\Modules\Offer\Controllers\OfferController;
 use App\Modules\Procedure\Controllers\ProcedureCreateController;
 use App\Modules\Procedure\Controllers\ProcedureDeleteController;
 use App\Modules\Procedure\Controllers\ProcedureHeadingController;
@@ -101,7 +103,17 @@ use App\Modules\ServicePage\AdditionalService\Controllers\AdditionalServiceDelet
 use App\Modules\ServicePage\AdditionalService\Controllers\AdditionalServicePaginateController;
 use App\Modules\ServicePage\AdditionalService\Controllers\AdditionalServiceUpdateController;
 use App\Modules\ServicePage\AdditionalContent\Controllers\AdditionalContentHeadingController;
+use App\Modules\ServicePage\AdditionalContentImage\Controllers\AdditionalContentImageCreateController;
+use App\Modules\ServicePage\AdditionalContentImage\Controllers\AdditionalContentImageDeleteController;
+use App\Modules\ServicePage\AdditionalContentImage\Controllers\AdditionalContentImagePaginateController;
 use App\Modules\ServicePage\AdditionalService\Controllers\AdditionalServiceHeadingController;
+use App\Modules\ServicePage\AdditionalServiceContent\Controllers\AdditionalServiceContentCreateController;
+use App\Modules\ServicePage\AdditionalServiceContent\Controllers\AdditionalServiceContentDeleteController;
+use App\Modules\ServicePage\AdditionalServiceContent\Controllers\AdditionalServiceContentPaginateController;
+use App\Modules\ServicePage\AdditionalServiceContent\Controllers\AdditionalServiceContentUpdateController;
+use App\Modules\ServicePage\AdditionalServiceContentImage\Controllers\AdditionalServiceContentImageCreateController;
+use App\Modules\ServicePage\AdditionalServiceContentImage\Controllers\AdditionalServiceContentImageDeleteController;
+use App\Modules\ServicePage\AdditionalServiceContentImage\Controllers\AdditionalServiceContentImagePaginateController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -300,6 +312,16 @@ Route::middleware(['auth'])->group(function () {
 
     });
 
+    Route::prefix('/offer')->group(function () {
+        Route::get('/', [OfferController::class, 'get', 'as' => 'offer.get'])->name('offer.get');
+        Route::post('/', [OfferController::class, 'post', 'as' => 'offer.post'])->name('offer.post');
+    });
+
+    Route::prefix('/call-to-action')->group(function () {
+        Route::get('/', [CallToActionController::class, 'get', 'as' => 'ctc.get'])->name('ctc.get');
+        Route::post('/', [CallToActionController::class, 'post', 'as' => 'ctc.post'])->name('ctc.post');
+    });
+
     Route::prefix('/about-page')->group(function () {
 
         Route::prefix('/about-section')->group(function () {
@@ -358,6 +380,11 @@ Route::middleware(['auth'])->group(function () {
                 Route::get('/update/{id}', [ServiceAdditionalContentUpdateController::class, 'get', 'as' => 'service_page.additional_content.update.get'])->name('service_page.additional_content.update.get');
                 Route::post('/update/{id}', [ServiceAdditionalContentUpdateController::class, 'post', 'as' => 'service_page.additional_content.update.post'])->name('service_page.additional_content.update.post');
                 Route::get('/delete/{id}', [ServiceAdditionalContentDeleteController::class, 'get', 'as' => 'service_page.additional_content.delete.get'])->name('service_page.additional_content.delete.get');
+                Route::prefix('/{service_content_id}/image')->group(function () {
+                    Route::get('/', [AdditionalContentImagePaginateController::class, 'get', 'as' => 'service_page.additional_content_image.paginate.get'])->name('service_page.additional_content_image.paginate.get');
+                    Route::post('/create', [AdditionalContentImageCreateController::class, 'post', 'as' => 'service_page.additional_content_image.create.post'])->name('service_page.additional_content_image.create.post');
+                    Route::get('/delete/{id}', [AdditionalContentImageDeleteController::class, 'get', 'as' => 'service_page.additional_content_image.delete.get'])->name('service_page.additional_content_image.delete.get');
+                });
             });
 
             Route::prefix('/additional-service')->group(function () {
@@ -368,6 +395,20 @@ Route::middleware(['auth'])->group(function () {
                 Route::get('/update/{id}', [AdditionalServiceUpdateController::class, 'get', 'as' => 'service_page.additional_service.update.get'])->name('service_page.additional_service.update.get');
                 Route::post('/update/{id}', [AdditionalServiceUpdateController::class, 'post', 'as' => 'service_page.additional_service.update.post'])->name('service_page.additional_service.update.post');
                 Route::get('/delete/{id}', [AdditionalServiceDeleteController::class, 'get', 'as' => 'service_page.additional_service.delete.get'])->name('service_page.additional_service.delete.get');
+                Route::prefix('/{additional_service_id}/additional-service-content')->group(function () {
+                    Route::get('/', [AdditionalServiceContentPaginateController::class, 'get', 'as' => 'service_page.additional_service_content.paginate.get'])->name('service_page.additional_service_content.paginate.get');
+                    Route::get('/create', [AdditionalServiceContentCreateController::class, 'get', 'as' => 'service_page.additional_service_content.create.get'])->name('service_page.additional_service_content.create.get');
+                    Route::post('/create', [AdditionalServiceContentCreateController::class, 'post', 'as' => 'service_page.additional_service_content.create.post'])->name('service_page.additional_service_content.create.post');
+                    Route::get('/update/{id}', [AdditionalServiceContentUpdateController::class, 'get', 'as' => 'service_page.additional_service_content.update.get'])->name('service_page.additional_service_content.update.get');
+                    Route::post('/update/{id}', [AdditionalServiceContentUpdateController::class, 'post', 'as' => 'service_page.additional_service_content.update.post'])->name('service_page.additional_service_content.update.post');
+                    Route::get('/delete/{id}', [AdditionalServiceContentDeleteController::class, 'get', 'as' => 'service_page.additional_service_content.delete.get'])->name('service_page.additional_service_content.delete.get');
+                    Route::prefix('/{additional_service_content_id}/image')->group(function () {
+                        Route::get('/', [AdditionalServiceContentImagePaginateController::class, 'get', 'as' => 'service_page.additional_service_content_image.paginate.get'])->name('service_page.additional_service_content_image.paginate.get');
+                        Route::post('/create', [AdditionalServiceContentImageCreateController::class, 'post', 'as' => 'service_page.additional_service_content_image.create.post'])->name('service_page.additional_service_content_image.create.post');
+                        Route::get('/delete/{id}', [AdditionalServiceContentImageDeleteController::class, 'get', 'as' => 'service_page.additional_service_content_image.delete.get'])->name('service_page.additional_service_content_image.delete.get');
+                    });
+
+                });
 
             });
 

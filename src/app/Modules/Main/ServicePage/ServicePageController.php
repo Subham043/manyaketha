@@ -2,6 +2,7 @@
 
 namespace App\Modules\Main\ServicePage;
 
+use App\Modules\CallToAction\Services\CallToActionService;
 use App\Modules\Legal\Services\LegalService;
 use App\Modules\Main\BaseController\BaseController;
 use App\Modules\Procedure\Services\ProcedureHeadingService;
@@ -18,6 +19,7 @@ class ServicePageController extends BaseController
     private HeadingService $headingService;
     private ProcedureService $procedureService;
     private ProcedureHeadingService $procedureHeadingService;
+    private CallToActionService $callToActionService;
 
     public function __construct(
         SeoService $seoService,
@@ -28,12 +30,14 @@ class ServicePageController extends BaseController
         HeadingService $headingService,
         ProcedureService $procedureService,
         ProcedureHeadingService $procedureHeadingService,
+        CallToActionService $callToActionService
     )
     {
         parent::__construct($seoService, $generalService, $chatbotService, $legalService, $service);
         $this->headingService = $headingService;
         $this->procedureService = $procedureService;
         $this->procedureHeadingService = $procedureHeadingService;
+        $this->callToActionService = $callToActionService;
     }
 
     public function get(Request $request){
@@ -41,11 +45,13 @@ class ServicePageController extends BaseController
         $headingService = $this->headingService->getById(1);
         $procedure = $this->procedureService->main_all();
         $procedureHeading = $this->procedureHeadingService->getById(1);
+        $callToAction = $this->callToActionService->getById(1);
         return view('main.pages.service.index', compact([
             'services',
             'headingService',
             'procedure',
             'procedureHeading',
+            'callToAction',
         ]))->with([
             'legal' => $this->legal_all(),
             'seo' => $this->seo('service-page'),

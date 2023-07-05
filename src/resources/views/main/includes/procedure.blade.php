@@ -6,11 +6,11 @@
         @if($procedureHeading)
         <div class="row">
             <div class="top-content row align-items-center justify-content-between m-0">
-                <div class="sec-title col-lg-6 col-sm-12">
+                <div class="sec-title col-lg-12 col-sm-12 mb-3">
                     <div class="sub-title">{{$procedureHeading->sub_heading}}</div>
-                    <h2>{{$procedureHeading->heading}}</h2>
+                    <h2 class="highlight-heading">{{$procedureHeading->heading}}</h2>
                 </div>
-                <div class="text col-lg-6 col-sm-12">{{$procedureHeading->description}}</div>
+                <div class="text col-lg-12 col-sm-12 mb-3">{{$procedureHeading->description}}</div>
             </div>
         </div>
         @endif

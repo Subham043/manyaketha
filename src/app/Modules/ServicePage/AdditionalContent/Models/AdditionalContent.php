@@ -3,6 +3,7 @@
 namespace App\Modules\ServicePage\AdditionalContent\Models;
 
 use App\Modules\Authentication\Models\User;
+use App\Modules\ServicePage\AdditionalContentImage\Models\AdditionalContentImage;
 use App\Modules\ServicePage\Models\Service;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -59,6 +60,11 @@ class AdditionalContent extends Model
     public function service()
     {
         return $this->belongsTo(Service::class, 'service_id')->withDefault();
+    }
+
+    public function additional_content_images()
+    {
+        return $this->hasMany(AdditionalContentImage::class, 'service_content_id');
     }
 
     public function getActivitylogOptions(): LogOptions

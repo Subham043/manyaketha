@@ -61,7 +61,7 @@
 
     @include('main.includes.clients', ['partner'=>$partner, 'styleTwo' => true])
 
-    @include('main.includes.cta2')
+    @include('main.includes.cta2', ['data' => $callToAction])
 
     @include('main.includes.footer')
 

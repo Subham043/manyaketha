@@ -77,7 +77,7 @@
     {{-- @include('main.includes.procedure', ['procedure'=>$procedure, 'procedureHeading'=>$procedureHeading]) --}}
 
 
-    @include('main.includes.cta2')
+    @include('main.includes.cta2', ['data' => $callToAction])
 
     @include('main.includes.footer')
 

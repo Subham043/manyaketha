@@ -82,6 +82,9 @@ class AdditionalServiceService
         return AdditionalService::with([
             'service' => function($query) use($service_slug){
                 $query->where('slug', $service_slug)->where('is_draft', true);
+            },
+            'additional_service_contents' => function($query) {
+                $query->with('additional_service_content_images');
             }
         ])->where('slug', $slug)->whereHas('service', function($query) use($service_slug){
             $query->where('slug', $service_slug)->where('is_draft', true);
