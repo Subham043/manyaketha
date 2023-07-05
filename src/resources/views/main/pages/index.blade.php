@@ -116,14 +116,16 @@
 
     @include('main.includes.preloader')
 
+    @if($offer)
     <div class="offer-parent">
         <div class="offer-child">
           <p>Offer</p>
         </div>
         <div class="offer-text-container">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores sed ullam perferendis! Aut quasi saepe voluptatum accusamus repellat tenetur ducimus, error vitae similique, labore eveniet neque dolorem assumenda magnam nam?</p>
+            {!!$offer->description!!}
         </div>
     </div>
+    @endif
 
     @include('main.includes.header')
 
