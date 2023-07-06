@@ -100,6 +100,48 @@
             border-left: solid 35px transparent;
             border-bottom: solid 35px transparent;
             }
+
+            /* mettalic-color */
+            body {
+                /* color: #fff; */
+                /* background: #2C2C2B; */
+            }
+            .about-section-two {
+                background: #2C2C2B;
+                color: white;
+            }
+            .funfacts-section.style-two, .features-section-three.style-two:before, .features-section-three, .working-process.style-two, .clients-logo-section, .latest-news-section, .cta-section-two {
+                background: #2C2C2B;
+                color: #fff;
+            }
+            .header-upper, .sticky-header, .main-menu .inner-container{
+                background: #2C2C2B;
+                color: white;
+            }
+            .main-menu .navigation>li>a{
+                color: white;
+            }
+            .funfacts-section.style-two .count-box, .funfacts-section.style-two .text{
+                color: white;
+            }
+            .highlight-heading, .feature-block-three h4 {
+                color: #222;
+            }
+            .services-section-two{
+                background-color: #f2c23140;
+            }
+            .service-block-two .inner-box{
+                margin-bottom: 80px;
+            }
+            .features-section-three{
+                padding-top: 70px !important;
+            }
+            .services-section-two.style-two:before{
+                background-color: transparent;
+            }
+            /* .services-section-two.style-two{
+                background: #2C2C2B;
+            } */
         </style>
 
         @if(count($blog)==0)
