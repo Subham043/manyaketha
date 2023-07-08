@@ -39,6 +39,9 @@
                 height: 150px;
                 object-fit: contain;
             }
+            .gap-5{
+                gap: 5px;
+            }
         </style>
 
         {!!$data->meta_header_script!!}
@@ -76,7 +79,7 @@
                             @foreach($data->additional_service_contents as $key=>$val)
                                 {{-- @if(($key+1)%2!=0) --}}
                                     <div class="text row align-items-center clearfix mt-4">
-                                        <div class="col-md-12 col-sm-12 d-flex flex-wrap gap-5">
+                                        <div class="col-md-12 col-sm-12 d-flex flex-wrap gap-5 px-0">
                                             <img fetchpriority="low" src="{{$val->image_link}}" class="content-img" alt="">
                                             @if($val->additional_service_content_images->count()>0)
                                                 @foreach($val->additional_service_content_images as $k=>$v)
@@ -84,7 +87,7 @@
                                                 @endforeach
                                             @endif
                                         </div>
-                                        <div class="col-md-12 col-sm-12">
+                                        <div class="col-md-12 col-sm-12 px-0 mt-2">
                                             <h4>{{$val->name}}</h4>
                                             {!!$val->description!!}
                                         </div>

@@ -252,7 +252,7 @@
 		    // Banner Slider
 			var bannerSlider = new Swiper('.banner-slider', {
 				preloadImages: false,
-                loop: true,
+                loop: false,
                 grabCursor: true,
                 centeredSlides: false,
                 resistance: true,

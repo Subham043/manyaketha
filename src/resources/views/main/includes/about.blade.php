@@ -1,7 +1,7 @@
 @if($about)
 <!-- About Section -->
 <section @class(["about-section-two", "pt-0"=>$ptop])>
-    <div class="shape-one"><img src="{{asset('assets/images/shape/shape-2.png')}}" alt=""></div>
+    {{-- <div class="shape-one"><img src="{{asset('assets/images/shape/shape-2.png')}}" alt=""></div> --}}
     <div class="auto-container">
         <div class="row align-items-center">
             <div class="col-lg-5">

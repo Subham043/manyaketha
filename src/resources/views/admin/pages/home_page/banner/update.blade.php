@@ -131,26 +131,14 @@ const validation = new JustValidate('#countryForm', {
 });
 // apply rules to form fields
 validation
-  .addField('#title', [
+.addField('#title', [
     {
-      rule: 'required',
-      errorMessage: 'Title is required',
-    },
-    {
-        rule: 'customRegexp',
-        value: COMMON_REGEX,
-        errorMessage: 'Title is invalid',
+        validator: (value, fields) => true,
     },
   ])
-  .addField('#button_text', [
+  .addField('#button_link', [
     {
-      rule: 'required',
-      errorMessage: 'Button Text is required',
-    },
-    {
-        rule: 'customRegexp',
-        value: COMMON_REGEX,
-        errorMessage: 'Button Text is invalid',
+        validator: (value, fields) => true,
     },
   ])
   .addField('#button_link', [

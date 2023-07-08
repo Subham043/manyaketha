@@ -1,8 +1,8 @@
 <!-- Working Process -->
 @if(count($procedure)>0)
 <section class="working-process style-two">
-    <div class="shape-one"><img src="{{asset('assets/images/shape/shape-3.png')}}" alt=""></div>
-    <div class="auto-container">
+    {{-- <div class="shape-one"><img src="{{asset('assets/images/shape/shape-3.png')}}" alt=""></div> --}}
+    <div class="auto-container red-border-procedure">
         @if($procedureHeading)
         <div class="row">
             <div class="top-content row align-items-center justify-content-between m-0">

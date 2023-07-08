@@ -101,6 +101,10 @@
             border-bottom: solid 35px transparent;
             }
 
+            .v-hidden{
+                visibility: hidden;
+            }
+
             /* mettalic-color */
             body {
                 /* color: #fff; */
@@ -126,6 +130,9 @@
             }
             .highlight-heading, .feature-block-three h4 {
                 color: #222;
+            }
+            .highlight-heading{
+                color: white;
             }
             .services-section-two{
                 background-color: #f2c23140;
@@ -159,14 +166,14 @@
     @include('main.includes.preloader')
 
     @if($offer)
-    <div class="offer-parent">
+    {{-- <div class="offer-parent">
         <div class="offer-child">
           <p>Offer</p>
         </div>
         <div class="offer-text-container">
             {!!$offer->description!!}
         </div>
-    </div>
+    </div> --}}
     @endif
 
     @include('main.includes.header')
@@ -182,10 +189,17 @@
                     <div class="content-outer">
                         <div class="content-box">
                             <div class="inner">
+                                @if(!$banner->title && !$banner->link)
+                                    <img src="{{$banner->banner_image_link}}" class="v-hidden" alt="">
+                                @endif
+                                @if($banner->title)
                                 <h1>{{$banner->title}}</h1>
+                                @endif
+                                @if($banner->button_link)
                                 <div class="link-box">
                                     <a href="{{$banner->button_link}}" class="theme-btn btn-style-one style-two"><span>{{$banner->button_text}}</span></a>
                                 </div>
+                                @endif
                             </div>
                         </div>
                     </div>

@@ -39,6 +39,9 @@
                 height: 150px;
                 object-fit: contain;
             }
+            .gap-5{
+                gap: 5px;
+            }
         </style>
 
         {!!$data->meta_header_script!!}
@@ -81,7 +84,7 @@
                             @foreach($data->additional_contents as $key=>$val)
                                 {{-- @if(($key+1)%2!=0) --}}
                                     <div class="text row align-items-center clearfix mt-4">
-                                        <div class="col-md-12 col-sm-12 d-flex flex-wrap gap-5">
+                                        <div class="col-md-12 col-sm-12 d-flex flex-wrap gap-5 px-0">
                                             <img fetchpriority="low" src="{{$val->image_link}}" class="content-img" alt="">
                                             @if($val->additional_content_images->count()>0)
                                                 @foreach($val->additional_content_images as $k=>$v)
@@ -89,7 +92,7 @@
                                                 @endforeach
                                             @endif
                                         </div>
-                                        <div class="col-md-12 col-sm-12">
+                                        <div class="col-md-12 col-sm-12 px-0 mt-2">
                                             {!!$val->description!!}
                                         </div>
                                     </div>
@@ -115,7 +118,7 @@
                         @endif
                         <div class="mt-4">
                             <div class="row">
-                                <div class="theme_carousel owl-theme owl-carousel" data-options='{"loop": true, "margin": 0, "autoheight":true, "lazyload":true, "nav": true, "dots": true, "autoplay": true, "autoplayTimeout": 6000, "smartSpeed": 300, "responsive":{ "0" :{ "items": "1" }, "600" :{ "items" : "2" }, "768" :{ "items" : "2" } , "992":{ "items" : "2" }, "1200":{ "items" : "2" }}}'>
+                                <div class="theme_carousel owl-theme owl-carousel" data-options='{"loop": false, "margin": 0, "autoheight":true, "lazyload":true, "nav": true, "dots": true, "autoplay": true, "autoplayTimeout": 6000, "smartSpeed": 300, "responsive":{ "0" :{ "items": "1" }, "600" :{ "items" : "2" }, "768" :{ "items" : "2" } , "992":{ "items" : "2" }, "1200":{ "items" : "2" }}}'>
                                     @foreach($data->additional_services as $additional_service)
                                     <div class="service-block-two col-12">
                                         <div class="inner-box">
@@ -141,7 +144,7 @@
                     <div class="testimonial">
                         <h3>Service Testimonials</h3>
                         <div class="row">
-                            <div class="theme_carousel owl-theme owl-carousel" data-options='{"loop": true, "margin": 0, "autoheight":true, "lazyload":true, "nav": true, "dots": true, "autoplay": true, "autoplayTimeout": 6000, "smartSpeed": 300, "responsive":{ "0" :{ "items": "1" }, "600" :{ "items" : "2" }, "768" :{ "items" : "2" } , "992":{ "items" : "2" }, "1200":{ "items" : "2" }}}'>
+                            <div class="theme_carousel owl-theme owl-carousel" data-options='{"loop": false, "margin": 0, "autoheight":true, "lazyload":true, "nav": true, "dots": true, "autoplay": true, "autoplayTimeout": 6000, "smartSpeed": 300, "responsive":{ "0" :{ "items": "1" }, "600" :{ "items" : "2" }, "768" :{ "items" : "2" } , "992":{ "items" : "2" }, "1200":{ "items" : "2" }}}'>
                                 @foreach($testimonial as $testimonial)
                                 <div class="testimonial-block">
                                     <div class="inner-box">
