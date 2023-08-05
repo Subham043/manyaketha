@@ -157,6 +157,14 @@
                             </li>
                             @endcan
 
+                            @can('list campaigns')
+                            <li class="nav-item">
+                                <a class="nav-link menu-link {{strpos(url()->current(),route('campaign.paginate.get')) !== false ? 'active' : ''}}" href="{{route('campaign.paginate.get')}}">
+                                    <i class="ri-briefcase-line"></i> <span data-key="t-widgets">Campaigns</span>
+                                </a>
+                            </li>
+                            @endcan
+
                             @can('list services')
                             <li class="nav-item">
                                 <a class="nav-link menu-link {{strpos(url()->current(),route('service.paginate.get')) !== false ? 'active' : ''}}" href="{{route('service.paginate.get')}}">

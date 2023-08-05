@@ -101,6 +101,12 @@ class OtherPermissionSeeder extends Seeder
         Permission::create(['name' => 'create features']);
         Permission::create(['name' => 'list features']);
 
+        //permission for campaigns
+        Permission::create(['name' => 'edit campaigns']);
+        Permission::create(['name' => 'delete campaigns']);
+        Permission::create(['name' => 'create campaigns']);
+        Permission::create(['name' => 'list campaigns']);
+
 
     }
 }

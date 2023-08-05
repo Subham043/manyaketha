@@ -67,6 +67,10 @@ use App\Modules\AboutPage\AdditionalContent\Controllers\AdditionalContentPaginat
 use App\Modules\AboutPage\AdditionalContent\Controllers\AdditionalContentUpdateController as AdditionalContentPageUpdateController;
 use App\Modules\Blog\Controllers\BlogHeadingController;
 use App\Modules\CallToAction\Controllers\CallToActionController;
+use App\Modules\Campaign\Controllers\CampaignCreateController;
+use App\Modules\Campaign\Controllers\CampaignDeleteController;
+use App\Modules\Campaign\Controllers\CampaignPaginateController;
+use App\Modules\Campaign\Controllers\CampaignUpdateController;
 use App\Modules\Feature\Controllers\FeatureCreateController;
 use App\Modules\Feature\Controllers\FeatureDeleteController;
 use App\Modules\Feature\Controllers\FeatureHeadingController;
@@ -414,6 +418,16 @@ Route::middleware(['auth'])->group(function () {
 
         });
 
+    });
+
+    Route::prefix('/campaign')->group(function () {
+
+        Route::get('/', [CampaignPaginateController::class, 'get', 'as' => 'campaign.paginate.get'])->name('campaign.paginate.get');
+        Route::get('/create', [CampaignCreateController::class, 'get', 'as' => 'campaign.create.get'])->name('campaign.create.get');
+        Route::post('/create', [CampaignCreateController::class, 'post', 'as' => 'campaign.create.post'])->name('campaign.create.post');
+        Route::get('/update/{id}', [CampaignUpdateController::class, 'get', 'as' => 'campaign.update.get'])->name('campaign.update.get');
+        Route::post('/update/{id}', [CampaignUpdateController::class, 'post', 'as' => 'campaign.update.post'])->name('campaign.update.post');
+        Route::get('/delete/{id}', [CampaignDeleteController::class, 'get', 'as' => 'campaign.delete.get'])->name('campaign.delete.get');
     });
 
     Route::post('/text-editor-image', [TextEditorImageController::class, 'post', 'as' => 'texteditor_image.post'])->name('texteditor_image.post');
