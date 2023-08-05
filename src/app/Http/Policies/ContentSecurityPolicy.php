@@ -49,6 +49,12 @@ class ContentSecurityPolicy extends Basic
         ->addDirective(Directive::IMG, 's3.amazonaws.com')
 
         //start of common
+        ->addDirective(Directive::CONNECT, 'www.googletagmanager.com')
+        ->addDirective(Directive::CONNECT, 'www.google-analytics.com')
+        ->addDirective(Directive::IMG, 'www.google.com')
+        ->addDirective(Directive::IMG, 'www.google.co.in')
+        ->addDirective(Directive::IMG, 'googleads.g.doubleclick.net')
+        ->addDirective(Directive::SCRIPT, 'www.googletagmanager.com')
         ->addDirective(Directive::IMG, 'i3.ytimg.com')
         ->addDirective(Directive::FONT, 'at.alicdn.com')
         ->addDirective(Directive::FONT, 'fonts.gstatic.com')

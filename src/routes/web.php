@@ -4,6 +4,7 @@ use App\Modules\Main\AboutPage\AboutPageController;
 use App\Modules\Main\AwardPage\AwardPageController;
 use App\Modules\Main\BlogPage\BlogDetailPageController;
 use App\Modules\Main\BlogPage\BlogPageController;
+use App\Modules\Main\CampaignPage\CampaignPageController;
 use App\Modules\Main\ContactPage\ContactPageController;
 use App\Modules\Main\CsrPage\CsrPageController;
 use App\Modules\Main\HomePage\HomePageController;
@@ -37,4 +38,5 @@ Route::get('/services/{slug}', [ServiceDetailPageController::class, 'get', 'as' 
 Route::get('/services/{service_slug}/{slug}', [AdditionalServiceDetailPageController::class, 'get', 'as' => 'additional_services_detail.get'])->name('additional_services_detail.get');
 Route::get('/blogs', [BlogPageController::class, 'get', 'as' => 'blogs.get'])->name('blogs.get');
 Route::get('/blogs/{slug}', [BlogDetailPageController::class, 'get', 'as' => 'blogs_detail.get'])->name('blogs_detail.get');
+Route::get('/campaign/{slug}', [CampaignPageController::class, 'get', 'as' => 'campaign_detail.get'])->name('campaign_detail.get');
 Route::get('/{legal_slug}', [LegalPageController::class, 'get', 'as' => 'legal.get'])->name('legal.get');
