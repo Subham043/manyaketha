@@ -64,7 +64,7 @@
             padding-left: 0.5rem;
             padding-top: 0.5rem;
             padding-bottom: 0.5rem;
-            background-color: #f2c23140;
+            background-color: #d2b80078;
             margin-left: auto;
             margin-right: auto;
             }
@@ -111,15 +111,15 @@
                 /* background: #2C2C2B; */
             }
             .about-section-two {
-                background: #2C2C2B;
+                background: #595552;
                 color: white;
             }
             .funfacts-section.style-two, .features-section-three.style-two:before, .features-section-three, .working-process.style-two, .clients-logo-section, .latest-news-section, .cta-section-two {
-                background: #2C2C2B;
+                background: #595552;
                 color: #fff;
             }
-            .header-upper, .sticky-header, .main-menu .inner-container{
-                background: #2C2C2B;
+            .header-upper, .sticky-header, .main-menu .inner-container, .main-footer{
+                background: #595552;
                 color: white;
             }
             .main-menu .navigation>li>a{
@@ -135,7 +135,7 @@
                 color: white;
             }
             .services-section-two{
-                background-color: #f2c23140;
+                background-color: #d2b80078;
             }
             .service-block-two .inner-box{
                 margin-bottom: 80px;
@@ -149,6 +149,9 @@
             /* .services-section-two.style-two{
                 background: #2C2C2B;
             } */
+            .news-block-one h4{
+                color: white
+            }
         </style>
 
         @if(count($blog)==0)
