@@ -71,6 +71,14 @@ use App\Modules\Campaign\Controllers\CampaignCreateController;
 use App\Modules\Campaign\Controllers\CampaignDeleteController;
 use App\Modules\Campaign\Controllers\CampaignPaginateController;
 use App\Modules\Campaign\Controllers\CampaignUpdateController;
+use App\Modules\Campaign\Faq\Controllers\FaqCreateController;
+use App\Modules\Campaign\Faq\Controllers\FaqDeleteController;
+use App\Modules\Campaign\Faq\Controllers\FaqPaginateController;
+use App\Modules\Campaign\Faq\Controllers\FaqUpdateController;
+use App\Modules\Campaign\Gallery\Controllers\GalleryCreateController;
+use App\Modules\Campaign\Gallery\Controllers\GalleryDeleteController;
+use App\Modules\Campaign\Gallery\Controllers\GalleryPaginateController;
+use App\Modules\Campaign\Gallery\Controllers\GalleryUpdateController;
 use App\Modules\Feature\Controllers\FeatureCreateController;
 use App\Modules\Feature\Controllers\FeatureDeleteController;
 use App\Modules\Feature\Controllers\FeatureHeadingController;
@@ -428,6 +436,25 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/update/{id}', [CampaignUpdateController::class, 'get', 'as' => 'campaign.update.get'])->name('campaign.update.get');
         Route::post('/update/{id}', [CampaignUpdateController::class, 'post', 'as' => 'campaign.update.post'])->name('campaign.update.post');
         Route::get('/delete/{id}', [CampaignDeleteController::class, 'get', 'as' => 'campaign.delete.get'])->name('campaign.delete.get');
+
+        Route::prefix('/{campaign_id}')->group(function () {
+            Route::prefix('/gallery')->group(function () {
+                Route::get('/', [GalleryPaginateController::class, 'get', 'as' => 'gallery.paginate.get'])->name('gallery.paginate.get');
+                Route::get('/create', [GalleryCreateController::class, 'get', 'as' => 'gallery.create.get'])->name('gallery.create.get');
+                Route::post('/create', [GalleryCreateController::class, 'post', 'as' => 'gallery.create.post'])->name('gallery.create.post');
+                Route::get('/update/{id}', [GalleryUpdateController::class, 'get', 'as' => 'gallery.update.get'])->name('gallery.update.get');
+                Route::post('/update/{id}', [GalleryUpdateController::class, 'post', 'as' => 'gallery.update.post'])->name('gallery.update.post');
+                Route::get('/delete/{id}', [GalleryDeleteController::class, 'get', 'as' => 'gallery.delete.get'])->name('gallery.delete.get');
+            });
+            Route::prefix('/faq')->group(function () {
+                Route::get('/', [FaqPaginateController::class, 'get', 'as' => 'faq.paginate.get'])->name('faq.paginate.get');
+                Route::get('/create', [FaqCreateController::class, 'get', 'as' => 'faq.create.get'])->name('faq.create.get');
+                Route::post('/create', [FaqCreateController::class, 'post', 'as' => 'faq.create.post'])->name('faq.create.post');
+                Route::get('/update/{id}', [FaqUpdateController::class, 'get', 'as' => 'faq.update.get'])->name('faq.update.get');
+                Route::post('/update/{id}', [FaqUpdateController::class, 'post', 'as' => 'faq.update.post'])->name('faq.update.post');
+                Route::get('/delete/{id}', [FaqDeleteController::class, 'get', 'as' => 'faq.delete.get'])->name('faq.delete.get');
+            });
+        });
     });
 
     Route::post('/text-editor-image', [TextEditorImageController::class, 'post', 'as' => 'texteditor_image.post'])->name('texteditor_image.post');

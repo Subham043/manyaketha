@@ -65,15 +65,15 @@
                             </li>
                             @endcan
 
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a class="nav-link menu-link {{strpos(url()->current(),route('offer.get')) !== false ? 'active' : ''}}" href="{{route('offer.get')}}">
                                     <i class="ri-shield-user-fill"></i> <span data-key="t-widgets">Offer</span>
                                 </a>
-                            </li>
+                            </li> --}}
 
                             <li class="nav-item">
                                 <a class="nav-link menu-link {{strpos(url()->current(),route('ctc.get')) !== false ? 'active' : ''}}" href="{{route('ctc.get')}}">
-                                    <i class="ri-shield-user-fill"></i> <span data-key="t-widgets">Call to Action</span>
+                                    <i class="ri-bubble-chart-line"></i> <span data-key="t-widgets">Call to Action</span>
                                 </a>
                             </li>
 
@@ -160,7 +160,7 @@
                             @can('list campaigns')
                             <li class="nav-item">
                                 <a class="nav-link menu-link {{strpos(url()->current(),route('campaign.paginate.get')) !== false ? 'active' : ''}}" href="{{route('campaign.paginate.get')}}">
-                                    <i class="ri-briefcase-line"></i> <span data-key="t-widgets">Campaigns</span>
+                                    <i class="ri-dv-line"></i> <span data-key="t-widgets">Campaigns</span>
                                 </a>
                             </li>
                             @endcan

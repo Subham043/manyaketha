@@ -3,6 +3,8 @@
 namespace App\Modules\Campaign\Models;
 
 use App\Modules\Authentication\Models\User;
+use App\Modules\Campaign\Faq\Models\Faq;
+use App\Modules\Campaign\Gallery\Models\Gallery;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -169,6 +171,16 @@ class Campaign extends Model implements Sitemapable
         return new Attribute(
             get: fn () => str_replace("<noscript","<noscript nonce='".csp_nonce()."'",$this->meta_footer_no_script),
         );
+    }
+
+    public function gallery()
+    {
+        return $this->hasMany(Gallery::class, 'campaign_id');
+    }
+
+    public function faq()
+    {
+        return $this->hasMany(Faq::class, 'campaign_id');
     }
 
     public function getActivitylogOptions(): LogOptions
