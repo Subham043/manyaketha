@@ -43,6 +43,28 @@
 
 
 <body>
+    <div class="header-top">
+        <div class="container">
+            <div class="inner-container">
+                <div class="left-column">
+                    <div class="contact-info">
+                        <li><a href="tel:{{ $data->phone}}"><i class="fas fa-phone"></i>Phone: {{ $data->phone}}</a></li>
+                        <li><a href="mailto:{{ $data->email}}"><i class="far fa-envelope"></i>{{ $data->email}}</a></li>
+                    </div>
+                </div>
+                <div class="right-column">
+                    <div class="social-links">
+                        <ul>
+                            <li><a href="{{ $data->instagram}}"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="{{ $data->facebook}}"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="{{ $data->linkedin}}"><i class="fab fa-linkedin-in"></i></a></li>
+                            <li><a href="{{ $data->youtube}}"><i class="fab fa-youtube"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <header>
         <img src="{{ $data->header_logo_link }}" alt="">
     </header>
@@ -318,8 +340,99 @@
     </section>
     @endif
 
-    <footer>
-        <p>(c) {{ date('Y') }} Manyaketha Ventures. All rights reserved.</p>
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <!--Widgets Section-->
+            <div class="widgets-section">
+                <div class="row clearfix">
+
+                    <!--Column-->
+                    <div class="column col-lg-3 col-md-6">
+                        <div class="widget about-widget">
+                            <div class="logo"><a href="{{route('home_page.get')}}"><img src="{{ $data->footer_logo_link}}"></a></div>
+                            <ul class="social-links">
+                                <li><a href="{{ $data->instagram}}"><i class="fab fa-instagram"></i></a></li>
+                                <li><a href="{{ $data->facebook}}"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="{{ $data->linkedin}}"><i class="fab fa-linkedin-in"></i></a></li>
+                                <li><a href="{{ $data->youtube}}"><i class="fab fa-youtube"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!--Column-->
+                    <div class="column col-lg-3 col-md-6">
+                        <div class="widget links-widget">
+                            <h3 class="widget-title">Our Services</h3>
+                            <div class="widget-content">
+                                <ul>
+                                    @foreach($serviceOption as $v)
+                                    <li><a href="{{route('services_detail.get', $v->slug)}}">{{$v->name}}</a></li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Column-->
+                    <div class="column col-lg-3 col-md-6">
+                        <div class="widget links-widget">
+                            <h3 class="widget-title">Quick links</h3>
+                            <div class="widget-content">
+                                <ul>
+                                    <li><a href="{{route('about_page.get')}}">About Us</a></li>
+                                    <li><a href="{{route('services.get')}}">Services</a></li>
+                                    <li><a href="{{route('projects.get')}}">Projects</a></li>
+                                    <li><a href="{{route('blogs.get')}}">Blogs</a></li>
+                                    <li><a href="{{route('contact_page.get')}}">Contact us</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Column-->
+                    <div class="column col-lg-3 col-md-6">
+                        <div class="widget contact-widget">
+                            <h3 class="widget-title">Get in touch</h3>
+                            <div class="widget-content">
+                                <ul class="contact-info">
+                                    <li class="d-flex align-items-center justify-content-between mb-2">
+                                        <div class="icon col-auto p-0 m-0"><span class="flaticon-gps"></span></div>
+                                        <div class="text col-10 p-0 m-0">{{ $data->address}}</div>
+                                    </li>
+                                    <li class="d-flex align-items-center justify-content-between mb-2">
+                                        <div class="icon col-auto p-0 m-0"><span class="flaticon-phone"></span></div>
+                                        <div class="text col-10 p-0 m-0">
+                                            <a href="tel:{{ $data->phone}}">{{ $data->phone}}</a>
+                                        </div>
+                                    </li>
+                                    <li class="d-flex align-items-center justify-content-between mb-2">
+                                        <div class="icon col-auto p-0 m-0"><span class="flaticon-comment"></span></div>
+                                        <div class="text col-10 p-0 m-0">
+                                            <a href="mailto:{{ $data->email}}">{{ $data->email}}</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="copyright">
+                    <div class="text">(c) {{date('Y')}} Manyaketha Ventures. All rights reserved.</div>
+                    <ul class="social-links d-flex gap-1 flex-wrap justify-content-center align-items-center">
+                        @foreach($legal as $legal)
+                            <li><a href="{{route('legal.get', $legal->slug)}}">{{$legal->page_name}}</a></li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        </div>
     </footer>
 
     <div class="modal fade" id="contactModal" data-keyboard="false" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
