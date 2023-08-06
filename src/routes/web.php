@@ -37,6 +37,7 @@ Route::get('/services', [ServicePageController::class, 'get', 'as' => 'services.
 Route::get('/services/{slug}', [ServiceDetailPageController::class, 'get', 'as' => 'services_detail.get'])->name('services_detail.get');
 Route::get('/services/{service_slug}/{slug}', [AdditionalServiceDetailPageController::class, 'get', 'as' => 'additional_services_detail.get'])->name('additional_services_detail.get');
 Route::get('/blogs', [BlogPageController::class, 'get', 'as' => 'blogs.get'])->name('blogs.get');
+Route::post('/campaign-enquiry-post', [CampaignPageController::class, 'post', 'as' => 'campaign_detail.post'])->name('campaign_detail.post');
 Route::get('/blogs/{slug}', [BlogDetailPageController::class, 'get', 'as' => 'blogs_detail.get'])->name('blogs_detail.get');
 Route::get('/campaign/{slug}', [CampaignPageController::class, 'get', 'as' => 'campaign_detail.get'])->name('campaign_detail.get');
 Route::get('/{legal_slug}', [LegalPageController::class, 'get', 'as' => 'legal.get'])->name('legal.get');

@@ -51,6 +51,9 @@
                                             <li class="nav-item">
                                                 <a href="{{route('enquiry.contact_form.paginate.get')}}" class="nav-link {{strpos(url()->current(), route('enquiry.contact_form.paginate.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Contact Form </a>
                                             </li>
+                                            <li class="nav-item">
+                                                <a href="{{route('enquiry.campaign_form.paginate.get')}}" class="nav-link {{strpos(url()->current(), route('enquiry.campaign_form.paginate.get')) !== false ? 'active' : ''}}" data-key="t-analytics"> Campaign Form </a>
+                                            </li>
                                         @endcan
 
                                     </ul>

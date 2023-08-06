@@ -79,6 +79,9 @@ use App\Modules\Campaign\Gallery\Controllers\GalleryCreateController;
 use App\Modules\Campaign\Gallery\Controllers\GalleryDeleteController;
 use App\Modules\Campaign\Gallery\Controllers\GalleryPaginateController;
 use App\Modules\Campaign\Gallery\Controllers\GalleryUpdateController;
+use App\Modules\Enquiry\CampaignForm\Controllers\CampaignFormDeleteController;
+use App\Modules\Enquiry\CampaignForm\Controllers\CampaignFormExcelController;
+use App\Modules\Enquiry\CampaignForm\Controllers\CampaignFormPaginateController;
 use App\Modules\Feature\Controllers\FeatureCreateController;
 use App\Modules\Feature\Controllers\FeatureDeleteController;
 use App\Modules\Feature\Controllers\FeatureHeadingController;
@@ -177,7 +180,11 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/', [ContactFormPaginateController::class, 'get', 'as' => 'enquiry.contact_form.paginate.get'])->name('enquiry.contact_form.paginate.get');
             Route::get('/excel', [ContactFormExcelController::class, 'get', 'as' => 'enquiry.contact_form.excel.get'])->name('enquiry.contact_form.excel.get');
             Route::get('/delete/{id}', [ContactFormDeleteController::class, 'get', 'as' => 'enquiry.contact_form.delete.get'])->name('enquiry.contact_form.delete.get');
-
+        });
+        Route::prefix('/campaign-form')->group(function () {
+            Route::get('/', [CampaignFormPaginateController::class, 'get', 'as' => 'enquiry.campaign_form.paginate.get'])->name('enquiry.campaign_form.paginate.get');
+            Route::get('/excel', [CampaignFormExcelController::class, 'get', 'as' => 'enquiry.campaign_form.excel.get'])->name('enquiry.campaign_form.excel.get');
+            Route::get('/delete/{id}', [CampaignFormDeleteController::class, 'get', 'as' => 'enquiry.campaign_form.delete.get'])->name('enquiry.campaign_form.delete.get');
         });
     });
 

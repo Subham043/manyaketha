@@ -297,7 +297,7 @@ border-radius: 2px;
     vertical-align: top;
     letter-spacing: 0px;
     display: inline-block;
-    text-align: justify;
+    text-align: center;
 }
 
 ul.steps-list li:after {
@@ -481,6 +481,7 @@ footer {
 
 .btn-15:hover {
     color: #fff;
+    text-decoration: none;
 }
 
 .btn-15:hover:after {
@@ -502,4 +503,60 @@ footer {
 
 .form-group {
     margin-bottom: 0.5rem;
+}
+
+.modal-img{
+    height: 70px;
+    object-fit: contain;
+    margin-right: auto;
+    width: auto;
+}
+
+.modal-open { overflow-y: auto !important; }
+
+.modal-backdrop.show {
+    opacity: 0;
+}
+
+.popup_btn_modal{
+    background-color: #515150 !important;
+    border-radius: 30px !important;
+    border: none 0 !important;
+    box-shadow: 1px 1px 2px #a6a29a !important;
+    color: white !important;
+    cursor: pointer !important;
+    height: 60px !important;
+    outline: 0 !important;
+    position: fixed !important;
+    text-align: center !important;
+    transition: 200ms background-color ease !important;
+    width: 60px !important;
+    z-index: 2000000000 !important;
+    bottom: 24px !important;
+    right: 24px !important;
+}
+
+.popup_btn_modal>svg {
+    cursor: pointer !important;
+    fill: #fff !important;
+    height: 37.5px !important;
+    stroke: #fff !important;
+    width: 37.5px !important;
+}
+
+@media screen and (min-width: 576px) {
+    #contactModal .modal-header {
+        background-color: #272727;
+    }
+
+    #contactModal .modal-dialog {
+        margin-right: unset;
+    }
+
+    #contactModal .modal-content{
+        position: absolute;
+        bottom: 70px;
+        width: 70%;
+        right: 25px;
+    }
 }
