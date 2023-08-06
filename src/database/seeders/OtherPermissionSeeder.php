@@ -107,6 +107,12 @@ class OtherPermissionSeeder extends Seeder
         Permission::create(['name' => 'create campaigns']);
         Permission::create(['name' => 'list campaigns']);
 
+        //permission for call to action
+        Permission::create(['name' => 'edit call to action']);
+
+        //permission for offer
+        Permission::create(['name' => 'edit offer']);
+
 
     }
 }

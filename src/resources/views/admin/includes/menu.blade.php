@@ -65,17 +65,23 @@
                             </li>
                             @endcan
 
-                            {{-- <li class="nav-item">
-                                <a class="nav-link menu-link {{strpos(url()->current(),route('offer.get')) !== false ? 'active' : ''}}" href="{{route('offer.get')}}">
-                                    <i class="ri-shield-user-fill"></i> <span data-key="t-widgets">Offer</span>
-                                </a>
-                            </li> --}}
+                            {{--
+                            @can('edit offer')
+                                <li class="nav-item">
+                                    <a class="nav-link menu-link {{strpos(url()->current(),route('offer.get')) !== false ? 'active' : ''}}" href="{{route('offer.get')}}">
+                                        <i class="ri-shield-user-fill"></i> <span data-key="t-widgets">Offer</span>
+                                    </a>
+                                </li>
+                            @endcan
+                            --}}
 
+                            @can('edit call to action')
                             <li class="nav-item">
                                 <a class="nav-link menu-link {{strpos(url()->current(),route('ctc.get')) !== false ? 'active' : ''}}" href="{{route('ctc.get')}}">
                                     <i class="ri-bubble-chart-line"></i> <span data-key="t-widgets">Call to Action</span>
                                 </a>
                             </li>
+                            @endcan
 
                             @can('list users')
                             <li class="nav-item">

@@ -4,7 +4,9 @@ namespace App\Modules\Settings\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Modules\Blog\Models\Blog;
+use App\Modules\Campaign\Models\Campaign;
 use App\Modules\Legal\Models\Legal;
+use App\Modules\ServicePage\AdditionalService\Models\AdditionalService;
 use App\Modules\ServicePage\Models\Service;
 use Carbon\Carbon;
 use Spatie\Sitemap\Sitemap;
@@ -52,6 +54,8 @@ class SitemapController extends Controller
             ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
             ->setPriority(0.1))
         ->add(Blog::where('is_draft', true)->latest()->get())
+        ->add(AdditionalService::latest()->get())
+        ->add(Campaign::where('is_draft', true)->latest()->get())
         ->add(Legal::where('is_draft', true)->latest()->get())
         ->writeToFile(base_path().'/public/sitemap.xml');
         return redirect()->back()->with('success_status', 'Sitemap generated successfully.');

@@ -12,6 +12,7 @@ class OfferController extends Controller
 
     public function __construct(OfferService $offerService)
     {
+        $this->middleware('permission:edit offer', ['only' => ['get','post']]);
         $this->offerService = $offerService;
     }
 

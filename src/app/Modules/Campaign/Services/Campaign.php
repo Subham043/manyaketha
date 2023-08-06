@@ -125,50 +125,18 @@ class Campaign
         }
     }
 
-    public function clear_cache(CampaignModel $campaign): void
-    {
-        Cache::forget('all_campaign_main');
-        Cache::forget('latest_six_campaign_main');
-        Cache::forget('campaign_'.$campaign->slug);
-    }
-
-    public function main_all()
-    {
-        return Cache::remember('all_campaign_main', 60*60*24, function(){
-            return CampaignModel::select('name', 'heading', 'slug', 'id')->where('is_draft', true)->get();
-        });
-    }
-
-    public function main_latest_six()
-    {
-        return Cache::remember('latest_six_campaign_main', 60*60*24, function(){
-            return CampaignModel::where('is_draft', true)->limit(6)->get();
-        });
-    }
-
-    public function main_paginate(Int $total = 10, bool $status = false): LengthAwarePaginator
-    {
-        $query = CampaignModel::where('is_draft', true)
-                    ->orderBy('item_order', 'asc');
-        return QueryBuilder::for($query)
-                ->allowedFilters([
-                    AllowedFilter::custom('search', new CommonFilter),
-                ])
-                ->paginate($total)
-                ->appends(request()->query());
-    }
-
     public function getBySlugMain(String $slug): CampaignModel|null
     {
         return CampaignModel::
-        // with([
-        //     'additional_contents' => function($q) {
-        //         $q->with(['additional_content_images']);
-        //     },
-        //     'additional_content_heading',
-        //     'additional_campaigns',
-        //     'additional_campaign_heading'])->where('slug', $slug)
-        where('is_draft', true)
+        with([
+            'gallery' => function($q) {
+                $q->where('is_draft', true);
+            },
+            'faq' => function($q) {
+                $q->where('is_draft', true);
+            },
+            ])->where('slug', $slug)
+        ->where('is_draft', true)
         ->firstOrFail();
     }
 

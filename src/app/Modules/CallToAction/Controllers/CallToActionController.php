@@ -12,6 +12,7 @@ class CallToActionController extends Controller
 
     public function __construct(CallToActionService $offerService)
     {
+        $this->middleware('permission:edit call to action', ['only' => ['get','post']]);
         $this->offerService = $offerService;
     }
 

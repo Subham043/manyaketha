@@ -10,8 +10,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
+use Spatie\Sitemap\Contracts\Sitemapable;
+use Spatie\Sitemap\Tags\Url;
 
-class AdditionalService extends Model
+class AdditionalService extends Model implements Sitemapable
 {
     use HasFactory, LogsActivity;
 
@@ -126,5 +128,10 @@ class AdditionalService extends Model
         ->logFillable()
         ->logOnlyDirty();
         // Chain fluent methods for configuration options
+    }
+
+    public function toSitemapTag(): Url | string | array
+    {
+        return route('additional_services_detail.get', [$this->service->slug, $this->slug]);
     }
 }

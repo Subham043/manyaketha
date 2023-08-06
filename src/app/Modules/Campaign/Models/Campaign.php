@@ -62,26 +62,6 @@ class Campaign extends Model implements Sitemapable
 
     protected $appends = ['banner_image_link', 'about_image_link', 'header_logo_link', 'footer_logo_link', 'meta_header_script_nonce', 'meta_footer_script_nonce', 'meta_header_no_script_nonce', 'meta_footer_no_script_nonce'];
 
-    public static function boot()
-    {
-        parent::boot();
-        self::created(function ($model) {
-            Cache::forget('all_campaign_main');
-            Cache::forget('latest_six_campaign_main');
-            Cache::forget('campaign_'.$model->slug);
-        });
-        self::updated(function ($model) {
-            Cache::forget('all_campaign_main');
-            Cache::forget('latest_six_campaign_main');
-            Cache::forget('campaign_'.$model->slug);
-        });
-        self::deleted(function ($model) {
-            Cache::forget('all_campaign_main');
-            Cache::forget('latest_six_campaign_main');
-            Cache::forget('campaign_'.$model->slug);
-        });
-    }
-
     protected function bannerImage(): Attribute
     {
         return Attribute::make(
@@ -201,7 +181,7 @@ class Campaign extends Model implements Sitemapable
 
     public function toSitemapTag(): Url | string | array
     {
-        return route('campaigns_detail.get', $this->slug);
+        return route('campaign_detail.get', $this->slug);
     }
 
 }
