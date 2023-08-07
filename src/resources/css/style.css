@@ -404,7 +404,7 @@ img {
     text-align: center;
     z-index: 100;
     cursor: pointer;
-    background: #d2b800;
+    background: #f2c230;
     border-radius: 50%;
     margin-left: -26px;
     display: none;
@@ -2920,7 +2920,7 @@ img {
     right: 0;
     height: 100%;
     /* background-image: url(../images/shape/shape-2.jpg); */
-    background-color: #d2b80078;
+    background-color: #f2c23140;
 }
 
 .features-section-two .single-block {
@@ -3178,7 +3178,7 @@ img {
 
 .latest-news-section {
     position: relative;
-    padding: 110px 0 70px;
+    padding: 50px 0 50px;
 }
 
 .news-block-one {
@@ -3296,7 +3296,7 @@ img {
 
 .main-footer {
     position: relative;
-    padding-top: 210px;
+    padding-top: 160px;
     background: #232828;
 }
 
@@ -3529,7 +3529,7 @@ img {
 
 .about-section-two {
     position: relative;
-    padding: 110px 0 80px;
+    padding: 50px 0 50px;
 }
 
 .about-section-two .shape-one {
@@ -3594,7 +3594,7 @@ img {
 
 .features-section-three {
     position: relative;
-    padding: 110px 0 50px;
+    padding: 50px 0 50px;
     /* background-color: #ebf7f7; */
 }
 
@@ -3610,7 +3610,7 @@ img {
     right: 0;
     bottom: 0;
     /* background-image: url(../images/shape/shape-2.jpg); */
-    background-color: #d2b80078;
+    background-color: #f2c23140;
 }
 
 .features-section-three .auto-container {
@@ -3625,7 +3625,7 @@ img {
     position: relative;
     margin-bottom: 30px;
     box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.07);
-    padding: 50px 20px;
+    padding: 50px 10px;
     text-align: center;
     background-color: #fff;
 }
@@ -3638,6 +3638,8 @@ img {
 
 .feature-block-three .icon img {
     position: relative;
+    height: 100px;
+    object-fit: contain;
 }
 
 .feature-block-three .icon:before {
@@ -3653,7 +3655,7 @@ img {
 }
 
 .feature-block-three h4 {
-    font-size: 22px;
+    font-size: 18px;
     font-family: cerebri-bold;
     margin-bottom: 10px;
 }
@@ -3691,7 +3693,7 @@ img {
 }
 
 .feature-block-three .overlay .icon:before {
-    background-color: #f0da7a52;
+    background-color: #f2c23140;
     top: -45px;
 }
 
@@ -4055,7 +4057,7 @@ img {
 
 .services-section-two {
     position: relative;
-    padding: 110px 0 0;
+    padding: 50px 0 50px;
 }
 
 .services-section-two .text {
@@ -4148,7 +4150,7 @@ img {
 .service-block-two .lower-content {
     position: relative;
     text-align: center;
-    padding: 45px;
+    padding: 10px 15px;
     box-shadow: 0px 8px 15px 0px rgba(0, 0, 0, 0.12);
     transition: .5s;
     background-color: #fff;
@@ -4227,7 +4229,7 @@ img {
     height: 100%;
     max-height: 700px;
     /* background-image: url(../images/shape/shape-2.jpg); */
-    background-color: #d2b80078;
+    background-color: #f2c23140;
 }
 
 /* Style Two */
@@ -4305,7 +4307,7 @@ img {
     position: relative;
     z-index: 9;
     width: auto;
-    height: 130px;
+    height: 100px;
     object-fit: contain;
 }
 
@@ -4362,7 +4364,7 @@ img {
 
 .working-process.style-two {
     position: relative;
-    padding: 110px 0 80px;
+    padding: 50px 0 50px;
     margin-top: 0;
     background-color: #fff;
 }
@@ -4373,13 +4375,13 @@ img {
 
 .working-process.style-two .process-block .icon:before {
     /* background-color: #ffdb302b; */
-    background-color: #d2b800;
+    background-color: #f2c230;
     transform: scale3d(1, 1, 1);
     opacity: 1;
 }
 
 .working-process.style-two .process-block .inner-box:hover .icon:before {
-    /* background-color: #d2b800; */
+    /* background-color: #f2c230; */
     background-color: #f20819;
 }
 
@@ -5708,9 +5710,9 @@ img {
 /* Two Column Section */
 .two-column-section {
     position: relative;
-    padding: 110px 0 60px;
+    padding: 50px 0 50px;
     background-size: cover;
-    background-color: #d2b80078;
+    background-color: #f2c23140;
 }
 
 .two-column-section .auto-container {
@@ -5792,7 +5794,7 @@ img {
     background-size: cover;
     text-align: center;
     padding: 73px 0;
-    background-color: #d2b80078;
+    background-color: #f2c23140;
 
 }
 
@@ -5817,8 +5819,8 @@ img {
 
 .portfolio-section-two {
     position: relative;
-    padding: 100px 0 0;
-    background-color: #d2b80078;
+    padding: 50px 0 50px;
+    background-color: #f2c23140;
 }
 
 .portfolio-section-two .auto-container {

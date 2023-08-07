@@ -64,7 +64,7 @@
             padding-left: 0.5rem;
             padding-top: 0.5rem;
             padding-bottom: 0.5rem;
-            background-color: #d2b80078;
+            background-color: #f2c23140;
             margin-left: auto;
             margin-right: auto;
             }
@@ -108,18 +108,22 @@
             /* mettalic-color */
             body {
                 /* color: #fff; */
-                /* background: #2C2C2B; */
+                background: #fff;
             }
-            .about-section-two {
-                background: #595552;
-                color: white;
+
+            .cta-section-two {
+                background: transparent;
             }
-            .funfacts-section.style-two, .features-section-three.style-two:before, .features-section-three, .working-process.style-two, .clients-logo-section, .latest-news-section, .cta-section-two {
+            .about-section-two, .clients-logo-section {
+                background: white;
+                color: #222;
+            }
+            .funfacts-section.style-two, .features-section-three.style-two:before, .features-section-three, .working-process.style-two, .latest-news-section {
                 background: #595552;
                 color: #fff;
             }
             .header-upper, .sticky-header, .main-menu .inner-container, .main-footer{
-                background: #595552;
+                background: #2C2C2B;
                 color: white;
             }
             .main-menu .navigation>li>a{
@@ -135,14 +139,14 @@
                 color: white;
             }
             .services-section-two{
-                background-color: #d2b80078;
+                background-color: #f2c23140;
             }
             .service-block-two .inner-box{
                 margin-bottom: 80px;
             }
-            .features-section-three{
+            /* .features-section-three{
                 padding-top: 70px !important;
-            }
+            } */
             .services-section-two.style-two:before{
                 background-color: transparent;
             }
@@ -151,6 +155,12 @@
             } */
             .news-block-one h4{
                 color: white
+            }
+            .funfacts-section.style-two {
+                padding: 60px 0 !important;
+            }
+            .clients-logo-section{
+                border-bottom: none;
             }
         </style>
 
@@ -259,7 +269,7 @@
     @endif
 
     <!-- Features Section Three -->
-    <section class="features-section-three style-two pt-0">
+    <section class="features-section-three style-two">
         <div class="auto-container">
             @if($featureHeading)
             <div class="sec-title text-center">
@@ -371,8 +381,6 @@
         </div>
     </section>
 
-    @include('main.includes.clients', ['partner'=>$partner, 'styleTwo' => false])
-
     @if(count($blog)>0)
     <!-- Latest News -->
     <section class="latest-news-section">
@@ -414,6 +422,8 @@
         </div>
     </section>
     @endif
+
+    @include('main.includes.clients', ['partner'=>$partner, 'styleTwo' => true])
 
     @include('main.includes.cta2', ['data' => $callToAction])
 
